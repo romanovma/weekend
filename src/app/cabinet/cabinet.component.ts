@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  moduleId: module.id,
+  // moduleId: module.id,
   selector: 'app-cabinet',
   templateUrl: 'cabinet.component.html',
   styleUrls: ['cabinet.component.css']

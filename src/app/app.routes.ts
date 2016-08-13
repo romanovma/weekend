@@ -1,4 +1,4 @@
-import { provideRouter, RouterConfig } from '@angular/router';
+import { Routes, RouterModule }        from '@angular/router';
 
 import { StartComponent }              from './start/';
 import { LoginComponent }              from './login/';
@@ -9,7 +9,7 @@ import { UserComponent }               from './user/';
 import { CabinetComponent }            from './cabinet/';
 
 
-const routes: RouterConfig = [
+const appRoutes: Routes = [
   {
     path: '',
     redirectTo: '/start',
@@ -45,6 +45,8 @@ const routes: RouterConfig = [
   }
 ];
 
-export const appRouterProviders = [
-  provideRouter(routes)
+export const appRoutingProviders: any[] = [
+
 ];
+
+export const routing = RouterModule.forRoot(appRoutes);

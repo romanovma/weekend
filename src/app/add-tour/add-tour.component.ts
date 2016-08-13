@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  moduleId: module.id,
+  // moduleId: module.id,
   selector: 'app-add-tour',
   templateUrl: 'add-tour.component.html',
   styleUrls: ['add-tour.component.css']
