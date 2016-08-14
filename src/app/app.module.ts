@@ -10,30 +10,25 @@ import { MdCardModule }                 from '@angular2-material/card';
 import { MdButtonModule }               from '@angular2-material/button';
 import { MdToolbarModule }              from '@angular2-material/toolbar';
 
+import { StartModule }                   from './start/start.module';
+
 import { AppComponent }                 from './app.component';
-import { AddTourComponent }             from './add-tour/add-tour.component';
 import { CabinetComponent }             from './cabinet/cabinet.component';
 import { LoginComponent }               from './login/login.component';
 import { SearchComponent }              from './search/search.component';
-import { StartComponent }               from './start/start.component';
-import { TourComponent }                from './tour/tour.component';
 import { UserComponent }                from './user/user.component';
-import { HelpComponent } from './help/help.component';
-import { TourListComponent } from './tour-list/tour-list.component';
+import { HelpComponent }                from './help/help.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddTourComponent,
     CabinetComponent,
     LoginComponent,
     SearchComponent,
-    StartComponent,
-    TourComponent,
     UserComponent,
-    HelpComponent,
-    TourListComponent
+    HelpComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +38,8 @@ import { TourListComponent } from './tour-list/tour-list.component';
     routing,
     MdCardModule,
     MdButtonModule,
-    MdToolbarModule
+    MdToolbarModule,
+    StartModule
   ],
   providers: [
     appRoutingProviders
@@ -51,6 +47,7 @@ import { TourListComponent } from './tour-list/tour-list.component';
   entryComponents: [AppComponent],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 
 }

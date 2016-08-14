@@ -10,11 +10,11 @@ import {
   async, inject
 } from '@angular/core/testing';
 
-import { TourComponent } from './tour.component';
+import { TourBuyComponent } from './tour-buy.component';
 
 describe('Component: Tour', () => {
   it('should create an instance', () => {
-    let component = new TourComponent();
+    let component = new TourBuyComponent();
     expect(component).toBeTruthy();
   });
 });

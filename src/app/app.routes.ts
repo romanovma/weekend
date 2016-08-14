@@ -1,10 +1,7 @@
 import { Routes, RouterModule }        from '@angular/router';
 
-import { StartComponent }              from './start/';
 import { LoginComponent }              from './login/';
 import { SearchComponent }             from './search/';
-import { AddTourComponent }            from './add-tour/';
-import { TourComponent }               from './tour/';
 import { UserComponent }               from './user/';
 import { CabinetComponent }            from './cabinet/';
 import { HelpComponent }               from './help/';
@@ -17,24 +14,12 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'start',
-    component: StartComponent
-  },
-  {
     path: 'login',
     component: LoginComponent
   },
   {
     path: 'search',
     component: SearchComponent
-  },
-  {
-    path: 'tour/add',
-    component: AddTourComponent
-  },
-  {
-    path: 'tour/:id',
-    component: TourComponent
   },
   {
     path: 'me/:id',

@@ -3,10 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   //moduleId: module.id,
   selector: 'app-tour',
-  templateUrl: 'tour.component.html',
-  styleUrls: ['tour.component.css']
+  templateUrl: 'tour-buy.component.html',
+  styleUrls: ['tour-buy.component.css']
 })
-export class TourComponent implements OnInit {
+export class TourBuyComponent implements OnInit {
 
   constructor() {}
 
