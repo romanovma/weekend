@@ -1,13 +1,11 @@
 import { BrowserModule }                from '@angular/platform-browser';
 import { NgModule, ApplicationRef }     from '@angular/core';
 import { CommonModule }                 from '@angular/common';
-import { FormsModule }                  from '@angular/forms';
+import { FormsModule, disableDeprecatedForms, provideForms }                  from '@angular/forms';
 import { HttpModule }                   from '@angular/http';
 
 import { routing, appRoutingProviders } from './app.routes';
 
-import { MdCardModule }                 from '@angular2-material/card';
-import { MdButtonModule }               from '@angular2-material/button';
 import { MdToolbarModule }              from '@angular2-material/toolbar';
 
 import { StartModule }                   from './start/start.module';
@@ -18,6 +16,7 @@ import { LoginComponent }               from './login/login.component';
 import { SearchComponent }              from './search/search.component';
 import { UserComponent }                from './user/user.component';
 import { HelpComponent }                from './help/help.component';
+import { TourFilterComponent } from './tours/tour-filter/tour-filter.component';
 
 
 
@@ -28,7 +27,8 @@ import { HelpComponent }                from './help/help.component';
     LoginComponent,
     SearchComponent,
     UserComponent,
-    HelpComponent
+    HelpComponent,
+    TourFilterComponent
   ],
   imports: [
     BrowserModule,
@@ -36,13 +36,13 @@ import { HelpComponent }                from './help/help.component';
     FormsModule,
     HttpModule,
     routing,
-    MdCardModule,
-    MdButtonModule,
     MdToolbarModule,
     StartModule
   ],
   providers: [
-    appRoutingProviders
+    appRoutingProviders,
+    disableDeprecatedForms(),
+    provideForms()
   ],
   entryComponents: [AppComponent],
   bootstrap: [AppComponent]

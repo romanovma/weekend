@@ -1,0 +1,17 @@
+.tour-search {
+  position: relative;
+}
+
+.tour-search__input {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+md-list {
+  padding-top: 0;
+  margin-top: -8px;
+  cursor: pointer;
+  position: absolute;
+  top: 108px;
+  left: 0;
+}

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TourCollection} from '../shared/tour-collection';
+import { TourCollection} from '../tours/tour-collection';
 
 @Component({
   selector: 'app-start',
   templateUrl: 'start.component.html',
-  styleUrls: ['start.component.css']
+  styleUrls: ['start.component.scss']
 })
 export class StartComponent implements OnInit {
   trendingTours: TourCollection = {

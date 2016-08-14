@@ -1,19 +1,46 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
 
-import { Tour }           from '../shared/tour';
 import { Observable }     from 'rxjs/Observable';
-// import 'rxjs/operators/map';
-import 'rxjs/add/operator/catch';
+import                         'rxjs/add/observable/throw';
+import                         'rxjs/add/operator/catch';
+
+import { Tour }           from './tour';
+
 
 @Injectable()
 export class TourService {
 
   constructor(private http: Http) { }
 
-  private toursUrl = 'app/shared/tours.json';
+  private toursUrl = 'app/tours/tours.json';
 
-  getToursByCollection(): Observable<Tour[]> {
+  getToursByText(term:string): Observable<Tour[]> {
+    return this.http.get(this.toursUrl)
+                    .map(this.extractData)
+                    .map(dataArray => {
+                      return dataArray.filter(d => {
+                        console.info(d.title.toLowerCase().indexOf(term.toLowerCase()));
+                        console.info(d.description.toLowerCase().indexOf(term.toLowerCase()));
+                        return d.title.toLowerCase().indexOf(term.toLowerCase()) > -1 || d.description.toLowerCase().indexOf(term.toLowerCase()) > -1
+                      });
+                    })
+                    .catch(this.handleError);
+  }
+
+  // filterTours(dataArray) {
+  //   return dataArray.filter(d => {
+  //     return d.title.toLowerCase().indexOf(term.toLowerCase()) > -1 || d.description.toLowerCase().indexOf(term.toLowerCase()) > -1
+  //   });
+  // }
+
+  getToursByCollection(collection: string): Observable<Tour[]> {
+    return this.http.get(this.toursUrl)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  getToursByQuery(query: Object): Observable<Tour[]> {
     return this.http.get(this.toursUrl)
                     .map(this.extractData)
                     .catch(this.handleError);

@@ -31,9 +31,18 @@ body {
   border: 1px solid $primary-color;
   color: $secondary-color;
   &:hover {
-    background: $secondary-hover;
+    color: $secondary-hover;
     border-color: $secondary-hover;
   }
+}
+
+md-list {
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+/* put it here because of material css modularizing bug on styling 'md-list-item.highlighted .md-list-item' */
+md-list-item.highlighted .md-list-item {
+  background: rgba(0, 0, 0, 0.04);
 }
 
 

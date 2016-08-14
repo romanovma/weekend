@@ -1,6 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { TourBuyComponent }  from './tour-buy.component';
+import { TourBuyComponent }  from './tour-buy/tour-buy.component';
 
 const tourRoutes: Routes = [
   { path: 'tour/:id', component: TourBuyComponent }

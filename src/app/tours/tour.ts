@@ -1,4 +1,4 @@
-import { Operator } from './operator';
+import { Operator } from '../shared/operator';
 
 export class Tour {
   id: number;

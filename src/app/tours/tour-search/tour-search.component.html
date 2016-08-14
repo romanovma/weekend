@@ -1,0 +1,35 @@
+<div class="tour-search">
+  <h1>Search Tour</h1>
+
+  <form #tourForm="ngForm"
+  (keydown.arrowdown)=onArrowDown()
+  (keydown.arrowup)=onArrowUp()
+  (keydown.Enter)=onEnter()>
+
+    <div class="form-group tour-search__input">
+      <md-input #tourInput class="form-control"
+      placeholder="I want.." autoFocus
+      (keyup)="search(tourInput.value)">
+      </md-input>
+    </div>
+
+    <button md-button md-raised-button [disabled]="!tourForm.form.valid" class="text-uppercase md-base-color"
+    (click)="navigate()"
+    (touchend)="navigate()">
+    Go
+    </button>
+
+    <md-list>
+      <md-list-item
+      *ngFor="let t of tours | async"
+      [class.highlighted]="t.id === highlightedTour?.id"
+      (click)="navigate()"
+      (touchend)="navigate()"
+      (mouseover)="highlight(t)">
+        {{t.title}}
+      </md-list-item>
+    </md-list>
+
+  </form>
+
+</div>
