@@ -1,3 +1,48 @@
-.example-fill-remaining-space {
+/* variables */
+$primary-color: #3F51B5;
+$primary-hover: #283593;
+
+$secondary-color: #2196F3;
+$secondary-hover: #1565C0;
+
+
+/* reset */
+body {
+  margin: 0;
+}
+
+
+/* elements */
+.button {
+  transition: all 0.3s ease-in;
+  padding: 0.5em 1em;
+}
+
+.button--theme-primary {
+  background: $primary-color;
+  color: white;
+  &:hover {
+    background: $primary-hover;
+  }
+}
+
+.button--theme-ghost {
+  background: transparent;
+  border: 1px solid $primary-color;
+  color: $secondary-color;
+  &:hover {
+    background: $secondary-hover;
+    border-color: $secondary-hover;
+  }
+}
+
+
+/* app.component specific */
+md-toolbar a {
+  margin: 0 20px;
+  font-size: 0.7em;
+  text-decoration: none;
+}
+.fill-remaining-space {
   flex: 1 1 auto;
 }
