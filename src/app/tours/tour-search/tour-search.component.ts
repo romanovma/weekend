@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { FormControl, REACTIVE_FORM_DIRECTIVES }        from '@angular/forms';
 
 import { Observable }           from 'rxjs/Observable';
 import { Subject }              from 'rxjs/Subject';
@@ -10,10 +9,9 @@ import                               'rxjs/add/operator/distinctUntilChanged';
 import                               'rxjs/add/operator/switchMap';
 import                               'rxjs/add/operator/do';
 
-
-
 import { TourService }          from '../tour.service';
 import { Tour }                 from '../tour'
+
 
 @Component({
   selector: 'app-tour-search',
@@ -24,7 +22,6 @@ import { Tour }                 from '../tour'
     TourService
   ]
 })
-
 export class TourSearchComponent implements OnInit {
   errorMessage: string;
   staticTours: Tour[];

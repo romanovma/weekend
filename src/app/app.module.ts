@@ -12,7 +12,6 @@ import { StartModule }                   from './start/start.module';
 
 import { AppComponent }                 from './app.component';
 import { CabinetComponent }             from './cabinet/cabinet.component';
-import { LoginComponent }               from './login/login.component';
 import { SearchComponent }              from './search/search.component';
 import { UserComponent }                from './user/user.component';
 import { HelpComponent }                from './help/help.component';
@@ -24,7 +23,6 @@ import { TourFilterComponent } from './tours/tour-filter/tour-filter.component';
   declarations: [
     AppComponent,
     CabinetComponent,
-    LoginComponent,
     SearchComponent,
     UserComponent,
     HelpComponent,

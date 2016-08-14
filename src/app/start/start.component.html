@@ -2,16 +2,17 @@
   <div class="hero">
     <app-tour-search></app-tour-search>
     <div class="login-buttons">
-
+      <app-login-button [loginType]="loginVk"></app-login-button>
+      <app-login-button [loginType]="loginFacebook"></app-login-button>
+      <app-login-button [loginType]="loginMail"></app-login-button>
     </div>
   </div>
 
-
   <app-tour-list
-    [collection]="trendingTours">
+    [collectionId]="trendingTours">
   </app-tour-list>
 
   <app-tour-list
-    [collection]="specialOfferTours">
+    [collectionId]="specialOfferTours">
   </app-tour-list>
 </div>

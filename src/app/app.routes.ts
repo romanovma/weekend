@@ -1,6 +1,6 @@
 import { Routes, RouterModule }        from '@angular/router';
 
-import { LoginComponent }              from './login/';
+// import { LoginComponent }              from './login/';
 import { SearchComponent }             from './search/';
 import { UserComponent }               from './user/';
 import { CabinetComponent }            from './cabinet/';
@@ -13,10 +13,10 @@ const appRoutes: Routes = [
     redirectTo: '/start',
     pathMatch: 'full'
   },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
+  // {
+  //   path: 'login',
+  //   component: LoginComponent
+  // },
   {
     path: 'search',
     component: SearchComponent

@@ -8,15 +8,12 @@ import { TourCollection} from '../tours/tour-collection';
   styleUrls: ['start.component.scss']
 })
 export class StartComponent implements OnInit {
-  trendingTours: TourCollection = {
-    id: 'trending',
-    title: 'Trending'
-  };
+  trendingTours: string = 'trending';
+  specialOfferTours: string = 'special-offer';
 
-  specialOfferTours: TourCollection = {
-    id: 'special-offer',
-    title: 'Special Offer'
-  }
+  loginVk: string = 'VK';
+  loginFacebook: string = 'Facebook';
+  loginMail: string = 'email';
 
   constructor() {}
 

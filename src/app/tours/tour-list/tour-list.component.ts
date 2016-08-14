@@ -18,7 +18,7 @@ import { TourService }          from '../tour.service';
   ]
 })
 export class TourListComponent implements OnInit {
-  @Input() collection: TourCollection;
+  @Input() collectionId: string;
   @Input() query;
 
   errorMessage;
@@ -29,8 +29,8 @@ export class TourListComponent implements OnInit {
     private router: Router) {}
 
   ngOnInit() {
-    if (this.collection) {
-      this.tourService.getToursByCollection(this.collection.id)
+    if (this.collectionId) {
+      this.tourService.getToursByCollection(this.collectionId)
                       .subscribe(
                         tours => this.tours = tours,
                         error => this.errorMessage = <any>error);
