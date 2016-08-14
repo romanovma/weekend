@@ -7,6 +7,7 @@ import { AddTourComponent }            from './add-tour/';
 import { TourComponent }               from './tour/';
 import { UserComponent }               from './user/';
 import { CabinetComponent }            from './cabinet/';
+import { HelpComponent }               from './help/';
 
 
 const appRoutes: Routes = [
@@ -42,6 +43,10 @@ const appRoutes: Routes = [
   {
     path: 'cabinet/:id',
     component: CabinetComponent
+  },
+  {
+    path: 'help',
+    component: HelpComponent
   }
 ];
 

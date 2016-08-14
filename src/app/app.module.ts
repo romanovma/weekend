@@ -18,6 +18,8 @@ import { SearchComponent }              from './search/search.component';
 import { StartComponent }               from './start/start.component';
 import { TourComponent }                from './tour/tour.component';
 import { UserComponent }                from './user/user.component';
+import { HelpComponent } from './help/help.component';
+import { TourListComponent } from './tour-list/tour-list.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { UserComponent }                from './user/user.component';
     SearchComponent,
     StartComponent,
     TourComponent,
-    UserComponent
+    UserComponent,
+    HelpComponent,
+    TourListComponent
   ],
   imports: [
     BrowserModule,
