@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { TourCollection} from '../shared/tour-collection';
+import { Tour}           from '../shared/tour';
+
 
 @Component({
   selector: 'app-tour-list',
@@ -6,6 +10,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['tour-list.component.scss']
 })
 export class TourListComponent implements OnInit {
+  @Input() collection: TourCollection;
+  @Input() query;
+
+  tours: Tour[];
 
   constructor() { }
 
