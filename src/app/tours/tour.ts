@@ -1,5 +1,3 @@
-import { Operator } from '../shared/operator';
-
 export class Tour {
   id: number;
   title: string;
@@ -8,9 +6,9 @@ export class Tour {
   duration: number;
   movementType: string;
   price: number;
-  operator: Operator;
   rating: number;
   description: string;
   photo: string[];
   visited: number;
+  operator: string;
 }

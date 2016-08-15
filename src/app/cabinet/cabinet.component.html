@@ -1,3 +1,13 @@
-<p>
-  cabinet works!
-</p>
+<div class="cabinet">
+  <div class="cabinet__header">
+    <div class="cabinet__balance">balance: <strong>{{cabinet?.balance}}</strong></div>
+    <div class="cabinet__request-payout">request payout</div>
+    <span class="fill-remaining-space"></span>
+    <button md-button md-raised-button class="text-uppercase md-base-color"
+    (click)="addTour()">
+    Add Tour
+    </button>
+  </div>
+  <h1 class="cabinet__title">My tours</h1>
+  <app-tour-list collectionId="collection" grid="grid"></app-tour-list>
+</div>

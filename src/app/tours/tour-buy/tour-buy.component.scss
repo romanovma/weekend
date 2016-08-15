@@ -1,0 +1,45 @@
+.tour-buy {
+  padding: 30px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.tour-buy__navigation {
+  text-align: center;
+}
+
+
+.tour-buy__main {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  & > div {
+    margin: 10px;
+  }
+}
+
+.tour-buy__video {
+  width: 300px;
+  height: 260px;
+  border: 1px solid #ddd;
+}
+
+.tour-buy__cta {
+  width: 300px;
+  & > div {
+    margin: 5px;
+  }
+}
+
+.tour-buy__info {
+  width: 300px;
+  & > div {
+    margin: 5px;
+  }
+}
+
+.tour-buy__photos {
+  width: 300px;
+  height: 100px;
+  border: 1px solid #eee;
+}

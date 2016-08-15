@@ -1,3 +1,31 @@
-<p>
-  tour-filter works!
-</p>
+<div class="tour-filter">
+  <div class="tour-filter__filter">
+    <form>
+      <div class="form-group">
+        <md-input class="form-control"
+        placeholder="Max price"
+        [(ngModel)]="queryModel.maxPrice"
+        name="maxPrice"></md-input>
+      </div>
+      <div class="form-group">
+        <md-input class="form-control"
+        placeholder="Date"
+        [(ngModel)]="queryModel.date"
+        name="date"></md-input>
+      </div>
+      <div class="form-group">
+        <md-input class="form-control"
+        placeholder="Duration"
+        [(ngModel)]="queryModel.duration"
+        name="duration"></md-input>
+      </div>
+    </form>
+  </div>
+
+
+  <app-tour-list
+  [maxPrice]="queryModel?.maxPrice"
+  [date]="queryModel?.date"
+  [duration]="queryModel?.duration">
+  </app-tour-list>
+</div>

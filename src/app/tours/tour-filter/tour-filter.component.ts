@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }    from '@angular/core';
+
+import { TourQuery }            from '../tour-query';
+
 
 @Component({
   selector: 'app-tour-filter',
@@ -6,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['tour-filter.component.scss']
 })
 export class TourFilterComponent implements OnInit {
+  queryModel: TourQuery = new TourQuery();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

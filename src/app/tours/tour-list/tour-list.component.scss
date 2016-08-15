@@ -1,4 +1,4 @@
-.tourlist {
+.tourlist__list {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -12,4 +12,12 @@
   width: 300px;
   background: #fee;
   cursor: pointer;
+  margin: 10px;
+}
+
+.grid .tourlist__tour {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
 }

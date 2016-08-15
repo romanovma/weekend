@@ -1,13 +1,15 @@
-<h1>{{collectionId}}</h1>
-<div class="tourlist">
-  <div class="tourlist__tour" *ngFor="let tour of tours"
-    (click)="onSelect(tour)"
-    (ontouchend)="onSelect(tour)">
-      <div>title: {{tour.title}}</div>
-      <div>photo: {{tour.photo[0]}}</div>
-      <div>duration: {{tour.duration}}</div>
-      <div>type: {{tour.movementType}}</div>
-      <div>price: {{tour.price}}</div>
-      <div>visited: {{tour.visited}}</div>
+<div class="tourlist" [class.grid]="grid">
+  <h1 class="tourlist__title">{{collectionId}}</h1>
+  <div class="tourlist__list">
+    <div class="tourlist__tour" *ngFor="let tour of tours"
+      (click)="onSelect(tour?.id)"
+      (ontouchend)="onSelect(tour)">
+        <div>title: {{tour.title}}</div>
+        <div>photo: {{tour.photo[0]}}</div>
+        <div>duration: {{tour.duration}}</div>
+        <div>type: {{tour.movementType}}</div>
+        <div>price: {{tour.price}}</div>
+        <div>visited: {{tour.visited}}</div>
+    </div>
   </div>
 </div>

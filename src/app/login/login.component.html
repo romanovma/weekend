@@ -1,3 +1,8 @@
-<p>
-  login works!
-</p>
+<div class="login">
+  <div class="login-buttons">
+    <app-login-button [loginType]="loginVk"></app-login-button>
+    <app-login-button [loginType]="loginFacebook"></app-login-button>
+    <app-login-button [loginType]="loginMail"></app-login-button>
+    <app-login-button [loginType]="loginCabinet" [cabinet]="constTrue"></app-login-button>
+  </div>
+</div>

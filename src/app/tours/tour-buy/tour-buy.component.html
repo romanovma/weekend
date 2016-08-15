@@ -1,3 +1,25 @@
-<p>
-  tour works!
-</p>
+<div class="tour-buy" *ngIf="tour">
+  <div class="tour-buy__navigation">
+    <h1>{{tour.title}}</h1>
+  </div>
+  <div class="tour-buy__main">
+    <div class="tour-buy__video">
+      {{tour.video[0]}}
+    </div>
+    <div class="tour-buy__cta">
+      <div class="tour-buy__calendar">Date: {{tour.dates[0]}}</div>
+      <div>Duration: {{tour.duration}}</div>
+      <div>Type: {{tour.movementType}}</div>
+      <div>Price: {{tour.price}}</div>
+      <div><button md-button md-raised-button class="text-uppercase md-base-color">buy</button></div>
+    </div>
+    <div class="tour-buy__info">
+      <div>operator: {{tour.operator}} - rating: {{tour.rating}}</div>
+      <div>Description:</div>
+      <div>{{tour.description}}</div>
+    </div>
+    <div class="tour-buy__photos">
+      {{tour.photo}}
+    </div>
+  </div>
+</div>

@@ -15,13 +15,18 @@ export class TourService {
 
   private toursUrl = 'app/tours/tours.json';
 
+  getTourById(id: number): Observable<Tour> {
+    return this.http.get(this.toursUrl)
+                    .map(this.extractData)
+                    .map(dataArray => dataArray.filter(d => d.id === id)[0])
+                    .catch(this.handleError);
+  }
+
   getToursByText(term:string): Observable<Tour[]> {
     return this.http.get(this.toursUrl)
                     .map(this.extractData)
                     .map(dataArray => {
                       return dataArray.filter(d => {
-                        console.info(d.title.toLowerCase().indexOf(term.toLowerCase()));
-                        console.info(d.description.toLowerCase().indexOf(term.toLowerCase()));
                         return d.title.toLowerCase().indexOf(term.toLowerCase()) > -1 || d.description.toLowerCase().indexOf(term.toLowerCase()) > -1
                       });
                     })

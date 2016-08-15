@@ -56,50 +56,15 @@ export class TourSearchComponent implements OnInit {
   }
 
   onEnter() {
-    // if (this.highlightFirst()) {
-      this.navigate();
-    // }
+    this.navigate();
   }
 
-  // onBlur() {
-  //   this.highlightFirst();
-  // }
-
-  // highlightFirst() {
-  //   if (this.highlightedTour && this.highlightedTour.id) {
-  //     return true;
-  //   }
-  //
-  //   if (!this.highlightedTour && this.staticTours && this.staticTours.length) {
-  //     this.highlightedTour = this.staticTours[0];
-  //     return true;
-  //   }
-  //
-  //   this.errorMessage = 'None of Tours are highlighted';
-  //   console.info(this.errorMessage);
-  //   return false;
-  // }
-
   navigate() {
-    // if (this.highlightedTour) {
-      //return this.router.navigate(['/Tour', this.highlightedTour.id]);
-      console.info('navigate');
-    // }
-
-    // if (this.tourName && this.staticTours && this.staticTours.length) {
-    //   let Tour = this.staticTours.filter(st => st.name.toLowerCase() === this.tourName.toLowerCase())[0];
-    //   if (Tour) {
-    //     return this.router.navigate(['/Tour', Tour.id]);
-    //   }
-    // }
-    //
-    // if (!this.tourName && !this.highlightedTour) {
-    //   this.errorMessage = 'Please input the Tour name';
-    //   console.info(this.errorMessage);
-    // } else {
-    //   this.errorMessage = 'There is no Tour with such name. You can see the full list of Tours here.';
-    //   console.info(this.errorMessage);
-    // }
+    if (this.highlightedTour) {
+      this.router.navigate(['/tour', this.highlightedTour.id]);
+    } else {
+      this.router.navigate(['/search']);
+    }
   }
 
   highlight(t: Tour) {

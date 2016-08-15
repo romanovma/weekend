@@ -1,0 +1,11 @@
+.login-buttons {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+app-login-button {
+  margin: 10px;
+}

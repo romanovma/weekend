@@ -1,0 +1,28 @@
+.cabinet {
+  padding: 30px;
+  max-width: 700px;
+  margin: auto;
+
+  .tourlist__title {
+    display: none;
+  }
+}
+
+.cabinet__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  & > div{
+    margin: 10px;
+  }
+}
+
+.cabinet__request-payout{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+.cabinet__title {
+  text-align: center;
+}

@@ -12,6 +12,8 @@ import { TourListComponent }    from './tour-list/tour-list.component';
 import { TourBuyComponent }     from './tour-buy/tour-buy.component';
 import { TourAddComponent }     from './tour-add/tour-add.component';
 import { TourSearchComponent }  from './tour-search/tour-search.component';
+import { TourFilterComponent }  from './tour-filter/tour-filter.component';
+
 
 
 import { TourService }    from './tour.service';
@@ -31,7 +33,8 @@ import { tourRouting }    from './tour.routes';
     TourListComponent,
     TourBuyComponent,
     TourAddComponent,
-    TourSearchComponent
+    TourSearchComponent,
+    TourFilterComponent
   ],
   exports: [
     TourListComponent,

@@ -8,25 +8,18 @@ import { routing, appRoutingProviders } from './app.routes';
 
 import { MdToolbarModule }              from '@angular2-material/toolbar';
 
-import { StartModule }                   from './start/start.module';
+import { StartModule }                  from './start/start.module';
+import { UserModule }                   from './user/user.module';
+import { CabinetModule }                from './cabinet/cabinet.module';
 
 import { AppComponent }                 from './app.component';
-import { CabinetComponent }             from './cabinet/cabinet.component';
-import { SearchComponent }              from './search/search.component';
-import { UserComponent }                from './user/user.component';
 import { HelpComponent }                from './help/help.component';
-import { TourFilterComponent } from './tours/tour-filter/tour-filter.component';
-
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CabinetComponent,
-    SearchComponent,
-    UserComponent,
-    HelpComponent,
-    TourFilterComponent
+    HelpComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +28,9 @@ import { TourFilterComponent } from './tours/tour-filter/tour-filter.component';
     HttpModule,
     routing,
     MdToolbarModule,
-    StartModule
+    StartModule,
+    UserModule,
+    CabinetModule
   ],
   providers: [
     appRoutingProviders,
