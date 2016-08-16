@@ -20,4 +20,19 @@
   height: auto;
   display: flex;
   justify-content: space-around;
+  & > div {
+    width: 16%;
+  }
+}
+
+.tourlist__controls {
+  height: 36px;
+  position: relative;
+  margin: 10px;
+}
+
+.tourlist__add {
+  display: none;
+  position: absolute;
+  right: 0;
 }

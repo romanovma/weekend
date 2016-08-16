@@ -6,13 +6,17 @@
   .tourlist__title {
     display: none;
   }
+
+  .tourlist__add {
+    display: inline-block !important;
+  }
 }
 
 .cabinet__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  & > div{
+  & > div {
     margin: 10px;
   }
 }
@@ -21,7 +25,6 @@
   text-decoration: underline;
   cursor: pointer;
 }
-
 
 .cabinet__title {
   text-align: center;

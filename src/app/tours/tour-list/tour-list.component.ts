@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import { Router } from '@angular/router';
-import {NgClass} from '@angular/common';
+import { NgClass } from '@angular/common';
 
 import { TourCollection}        from '../tour-collection';
 import { Tour}                  from '../tour';
@@ -29,6 +29,8 @@ export class TourListComponent implements OnInit, OnChanges {
   errorMessage;
   tours: Tour[];
   query: TourQuery;
+  addingTour = false;
+  error: any;
 
 
   constructor(
@@ -36,12 +38,7 @@ export class TourListComponent implements OnInit, OnChanges {
     private router: Router) {}
 
   ngOnInit() {
-    if (this.collectionId) {
-      this.tourService.getToursByCollection(this.collectionId)
-                      .subscribe(
-                        tours => this.tours = tours,
-                        error => this.errorMessage = <any>error);
-    }
+    this.getTours();
   }
 
   ngOnChanges() {
@@ -51,6 +48,15 @@ export class TourListComponent implements OnInit, OnChanges {
                         error => this.errorMessage = <any>error);
   }
 
+  getTours() {
+    if (this.collectionId) {
+      this.tourService.getToursByCollection(this.collectionId)
+                      .subscribe(
+                        tours => this.tours = tours,
+                        error => this.errorMessage = <any>error);
+    }
+  }
+
   onSelect(id: number) {
     if (id) {
       this.router.navigate(['/tour', id]);
@@ -58,5 +64,16 @@ export class TourListComponent implements OnInit, OnChanges {
       console.error('Cannot navigate to tour as id is not specified');
     }
   }
+
+  addTour() {
+    this.addingTour = true;
+    // this.selectedTour = null;
+  }
+
+  close(savedTour: Tour) {
+    this.addingTour = false;
+    if (savedTour) { this.getTours(); }
+  }
+
 
 }

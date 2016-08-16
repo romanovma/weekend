@@ -40,8 +40,4 @@ export class CabinetComponent implements OnInit, OnDestroy {
     // this.sub.unsubscribe();
   }
 
-  addTour() {
-
-  }
-
 }
