@@ -27,21 +27,21 @@ export class CabinetComponent implements OnInit, OnDestroy {
     private cabinetService: CabinetService) {}
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-      let id = +params['id'];
-      this.cabinetService.getCabinetById(id)
-                      .subscribe(
-                        cabinet => this.cabinet = cabinet,
-                        error => this.errorMessage = <any>error);
-    });
+    // this.sub = this.route.params.subscribe(params => {
+    //   let id = +params['id'];
+    //   this.cabinetService.getCabinetById(id)
+    //                   .subscribe(
+    //                     cabinet => this.cabinet = cabinet,
+    //                     error => this.errorMessage = <any>error);
+    // });
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    // this.sub.unsubscribe();
   }
 
   addTour() {
-    
+
   }
 
 }

@@ -1,10 +1,13 @@
 import { BrowserModule }                from '@angular/platform-browser';
-import { NgModule, ApplicationRef }     from '@angular/core';
+import { NgModule }                     from '@angular/core';
 import { CommonModule }                 from '@angular/common';
 import { FormsModule, disableDeprecatedForms, provideForms }                  from '@angular/forms';
-import { HttpModule }                   from '@angular/http';
+import { HttpModule, XHRBackend }                   from '@angular/http';
 
 import { routing, appRoutingProviders } from './app.routes';
+
+// import { InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api';
+// import { InMemoryDataService }               from './in-memory-data.service';
 
 import { MdToolbarModule }              from '@angular2-material/toolbar';
 
@@ -36,6 +39,8 @@ import { HelpComponent }                from './help/help.component';
     appRoutingProviders,
     disableDeprecatedForms(),
     provideForms()
+    // { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
+    // { provide: SEED_DATA,  useClass: InMemoryDataService }     // in-mem server data
   ],
   entryComponents: [AppComponent],
   bootstrap: [AppComponent]

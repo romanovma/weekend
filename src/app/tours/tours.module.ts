@@ -1,12 +1,16 @@
 import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
 import { FormsModule, disableDeprecatedForms, provideForms }                  from '@angular/forms';
+import { HttpModule, XHRBackend }                   from '@angular/http';
+
 
 import { MdInputModule }        from '@angular2-material/input';
 import { MdListModule }         from '@angular2-material/list';
 import { MdCardModule }         from '@angular2-material/card';
 import { MdButtonModule }       from '@angular2-material/button';
 
+import { InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api';
+import { InMemoryDataService }               from './in-memory-data.service';
 
 import { TourListComponent }    from './tour-list/tour-list.component';
 import { TourBuyComponent }     from './tour-buy/tour-buy.component';
@@ -44,7 +48,9 @@ import { tourRouting }    from './tour.routes';
   providers: [
     TourService,
     disableDeprecatedForms(),
-    provideForms()
+    provideForms(),
+    { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
+    { provide: SEED_DATA,  useClass: InMemoryDataService }     // in-mem server data
   ]
 })
 
