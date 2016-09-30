@@ -2,8 +2,8 @@ import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core
 import { Router } from '@angular/router';
 import { NgClass } from '@angular/common';
 
-import { TourCollection}        from '../tour-collection';
-import { Tour}                  from '../tour';
+import { TourCollection }       from '../tour-collection';
+import { Tour }                 from '../tour';
 import { TourQuery }            from '../tour-query';
 import { TourService }          from '../tour.service';
 
@@ -21,7 +21,9 @@ import { TourService }          from '../tour.service';
 })
 export class TourListComponent implements OnInit, OnChanges {
   @Input() collectionId: string;
+  @Input() collectionTitle: string;
   @Input() grid: boolean = false;
+  @Input() withCity: boolean = false;
   @Input() maxPrice: number;
   @Input() date: Date;
   @Input() duration: number;
@@ -31,6 +33,7 @@ export class TourListComponent implements OnInit, OnChanges {
   query: TourQuery;
   addingTour = false;
   error: any;
+  ratingArr: number[] = [0,0,0,0,0];
 
 
   constructor(
@@ -74,6 +77,30 @@ export class TourListComponent implements OnInit, OnChanges {
     this.addingTour = false;
     if (savedTour) { this.getTours(); }
   }
+
+  setMovementTypeClass(type) {
+    return {
+      car: type === 'car',
+      walk: type === 'walk',
+      bycicle: type === 'bycicle'
+    }
+  }
+
+  //TODO: change to pipe
+  translateType(value) {
+    switch (value) {
+    case "car":
+      return 'на авто';
+    case "walk":
+      return 'пешком';
+    case "bycicle":
+      return 'велосипед';
+    default:
+      return '';
+    }
+  }
+
+  //TODO: create pipe for number formatting for tour price
 
 
 }

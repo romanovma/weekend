@@ -1,5 +1,6 @@
 export class TourQuery {
-  maxPrice: number;
+  // maxPrice: number;
   date: string;
-  duration: number;
+  // duration: number;
+  all: boolean
 }

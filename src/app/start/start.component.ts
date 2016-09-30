@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class StartComponent implements OnInit {
   constTrue: boolean = true;
 
-  trendingTours: string = 'trending';
+  closeTo: string = 'closeTo';
+  closeToTitle: string = 'Приключения недалеко от вас';
   specialOfferTours: string = 'special-offer';
 
   loginVk: string = 'with VK';

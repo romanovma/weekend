@@ -1,18 +1,193 @@
+@import '../../app.component';
+
+.tourlist__title {
+  font-size: 44px;
+  color: $secondary-color;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
 .tourlist__list {
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  border: 1px solid #999;
+  // border: 1px solid #999;
   padding: 20px;
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.with-city .tourlist__tour__city {
+  display: block;
+  font-family: 'Arial';
+  font-size: 14px;
+  font-weight: bold;
+  padding-top: 7px;
 }
 
 .tourlist__tour {
-  height: 200px;
-  width: 300px;
-  background: #fee;
   cursor: pointer;
   margin: 10px;
+  width: 254px;
+  height: 254px;
+  position: relative;
+
+  &__wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    border: solid 4px rgb(224, 224, 224);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    z-index: 10;
+  }
+
+  &__city {
+    display: none;
+    border: solid 4px rgb(231, 230, 236);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    height: 55px;
+    top: -35px;
+    right: 71px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+  }
+
+  &__rating {
+    position: absolute;
+    border-radius: 10px;
+    background-color: rgb(42, 47, 50);
+    opacity: 0.9;
+    top: -15px;
+    left: -20px;
+    height: 45px;
+    padding-top: 22px;
+    padding-right: 4px;
+    padding-left: 28px;
+
+  }
+  &__rating__icon {
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+    background-image: url('/assets/img/icon-rating.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    margin-right: 4px;
+  }
+
+  &__date {
+    border: solid 4px rgb(224, 224, 224);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    width: 91px;
+    height: 66px;
+    font-size: 26px;
+    padding-top: 23px;
+    padding-left: 11px;
+    padding-right: 31px;
+  }
+
+  &__title {
+    background-color: rgb(42, 47, 50);
+    opacity: 0.9;
+    position: absolute;
+    width: 100%;
+    color: #fff;
+    font-family: 'Arial';
+    font-size: 18px;
+    padding: 15px;
+    bottom: 45px;
+  }
+
+  &__details {
+    background-color: rgb(251, 113, 2);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    color: #fff;
+    text-transform: uppercase;
+    padding-right: 7px;
+    padding-left: 18px;
+    line-height: 45px;
+    //remove space between inline elements
+    font-size: 0;
+
+    span {
+      font-size: 20px;
+    }
+  }
+
+  &__type__icon {
+    background-position: center;
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin-right: 7px;
+    height: 45px;
+    vertical-align: top;
+
+    &.car {
+      width: 18px;
+      background-image: url('/assets/img/icon-auto.png');
+    }
+    &.walk {
+      width: 11px;
+      background-image: url('/assets/img/icon-walk.png');
+    }
+    &.bycicle {
+      background-image: url('/assets/img/icon-bycicle.png');
+    }
+  }
+
+  &__type {
+    display: inline-block;
+    margin-top: 2px;
+    margin-right: 11px;
+  }
+
+  &__duration__icon {
+    background-image: url('/assets/img/icon-duration.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin-right: 5px;
+    height: 45px;
+    width: 14px;
+    vertical-align: top;
+  }
+
+  &__price {
+    height: 33px;
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    background-image: url('/assets/img/price-bg.png');
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    padding-left: 12px;
+    padding-right: 12px;
+    line-height: 36px;
+  }
 }
 
 .grid .tourlist__tour {
@@ -26,6 +201,7 @@
 }
 
 .tourlist__controls {
+  display: none;
   height: 36px;
   position: relative;
   margin: 10px;

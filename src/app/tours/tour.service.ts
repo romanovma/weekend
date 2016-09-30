@@ -78,6 +78,11 @@ export class TourService {
   getToursByCollection(collection: string): Observable<Tour[]> {
     return this.http.get(this.toursUrl)
                     .map(this.extractData)
+                    .map(dataArray => {
+                      return dataArray.filter(d => {
+                        return d.collections.indexOf(collection) > -1
+                      });
+                    })
                     .catch(this.handleError);
   }
 

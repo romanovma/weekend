@@ -13,11 +13,27 @@
 
   <app-tour-filter></app-tour-filter>
 
-  <app-tour-list
-    [collectionId]="trendingTours">
+  <app-tour-list [withCity]="constTrue"
+    [collectionId]="closeTo"
+    [collectionTitle]="closeToTitle">
   </app-tour-list>
 
-  <app-tour-list
-    [collectionId]="specialOfferTours">
-  </app-tour-list>
+  <div class="subscribtion">
+    <h1 class="subscribtion__title">Следите за новыми приключениями!</h1>
+    <div class="subscribtion__form">
+      <input placeholder="Введите ваш email" class="subscribtion__input"/>
+      <button class="subscribtion__submit">подписаться на рассылку</button>
+    </div>
+    <div class="subscribtion__copy">
+      <p>
+        Мы пишем один раз в неделю, никакого спама и банальной рекламы.
+      </p>
+      <p>
+        Качественные обзоры туров, видеоролики, впечатления туристов
+      </p>
+    </div>
+  </div>
+
+
+
 </div>

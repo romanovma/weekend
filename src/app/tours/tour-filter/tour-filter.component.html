@@ -7,17 +7,60 @@
         [(ngModel)]="queryModel.maxPrice"
         name="maxPrice"></md-input>
       </div> -->
-      <div class="form-group">
-        <md-slider class="form-control"
-        [(ngModel)]="queryModel.date"
-        name="date"></md-slider>
-      </div>
       <!-- <div class="form-group">
+        <md-slider class="form-control">
+        </md-slider>
+      </div> -->
+      <div class="form-group full-width">
         <md-input class="form-control"
         placeholder="Date"
         [(ngModel)]="queryModel.date"
         name="date"></md-input>
-      </div> -->
+      </div>
+      <div class="tour-filter__filter__labels">
+        <div class="form-group">
+          <md-checkbox class="form-control checkbox"
+          [(ngModel)]="queryModel.all"
+          name="all">Все</md-checkbox>
+        </div>
+        <div class="form-group">
+          <md-checkbox class="form-control checkbox"
+          [(ngModel)]="queryModel.bycicle"
+          name="bycicle">На велосипеде</md-checkbox>
+        </div>
+        <div class="form-group">
+          <md-checkbox class="form-control checkbox"
+          [(ngModel)]="queryModel.walk"
+          name="walk">Пешие</md-checkbox>
+        </div>
+        <div class="form-group">
+          <md-checkbox class="form-control checkbox"
+          [(ngModel)]="queryModel.timeInterval1"
+          name="timeInterval1">1-2 часа</md-checkbox>
+        </div>
+        <div class="form-group">
+          <md-checkbox class="form-control checkbox"
+          [(ngModel)]="queryModel.timeInterval2"
+          name="timeInterval2">2-4 часа</md-checkbox>
+        </div>
+        <div class="form-group">
+          <md-checkbox class="form-control checkbox"
+          [(ngModel)]="queryModel.timeInterval3"
+          name="timeInterval3">5-8 часов</md-checkbox>
+        </div>
+        <div class="form-group">
+          <md-checkbox class="form-control checkbox"
+          [(ngModel)]="queryModel.individual"
+          name="individual">Индивидуальные</md-checkbox>
+        </div>
+        <div class="form-group">
+          <md-checkbox class="form-control checkbox"
+          [(ngModel)]="queryModel.group"
+          name="group">групповые</md-checkbox>
+        </div>
+
+      </div>
+
       <!-- <div class="form-group">
         <md-input class="form-control"
         placeholder="Duration"

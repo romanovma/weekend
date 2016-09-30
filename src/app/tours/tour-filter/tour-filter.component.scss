@@ -1,10 +1,14 @@
+// @import '../../app.component.scss';
+
 .tour-filter {
   padding: 30px;
-  max-width: 700px;
   margin: auto;
 }
 
-.tour-filter__filter form {
+.tour-filter__filter__labels {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  margin-left: 16%;
+  margin-right: 16%;
 }

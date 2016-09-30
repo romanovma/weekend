@@ -2,7 +2,7 @@
 $primary-color: #fb7102;
 $primary-hover: #ea6001;
 
-$secondary-color: #3e4345;
+$secondary-color: #2a2f32;
 $secondary-hover: #2d3234;
 
 $font-color-primary: #fff;
@@ -27,6 +27,7 @@ $font-style-regular: Lifehack Sans Regular, Arial, Helvetica, sans-serif;
 /* RESET */
 html {
   box-sizing: border-box;
+  background: $secondary-color;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -34,7 +35,6 @@ html {
 
 body {
   margin: 0;
-  background: #000;
 }
 
 input::-webkit-input-placeholder {
@@ -48,6 +48,13 @@ input::-moz-placeholder {
 }
 input:-ms-input-placeholder  {
    color: $font-color-secondary;
+}
+
+
+/* HELPERS */
+.full-width {
+  width: 100%;
+  flex: 0 1 100%;
 }
 
 
@@ -89,6 +96,29 @@ h1 {
   margin: 0;
 }
 
+.checkbox {
+  color: $font-color-secondary;
+  font-size: 24px;
+  line-height: 42px;
+  display: inline-block;
+  border: solid 3px $primary-color;
+  border-radius: 10px;
+  background-color: #fff;
+  height: 42px;
+  padding-left: 13px;
+  padding-right: 13px;
+  margin: 3px;
+
+  &.md-checkbox-checked {
+    color: white;
+    background-color: $primary-color;
+  }
+
+  .md-checkbox-inner-container {
+    display: none;
+  }
+}
+
 .change-region__starter {
   width: 170px;
   height: 40px;
@@ -106,6 +136,7 @@ h1 {
   line-height: 40px;
   text-decoration: none;
   margin-left: 15px;
+  font-family: 'Arial'
 }
 
 .logo {
@@ -118,7 +149,17 @@ h1 {
   position: relative;
   text-align: center;
   line-height: 63px;
+  font-family: $font-style-regular;
 }
+
+.logo--theme-small {
+  font-size: 26px;
+  border-width: 3px;
+  width: 113px;
+  height: 32px;
+  line-height: 32px;
+}
+
 
 /* MATERIAL OVERRIDE */
 md-list {
@@ -146,6 +187,26 @@ md-list-item.highlighted .md-list-item {
     md-toolbar-row {
       height: 40px;
       padding: 0 155px;
+    }
+  }
+
+  .footer {
+    background-color: $secondary-color;
+    height: 80px;
+    width: 100%;
+
+    md-toolbar-row {
+      justify-content: flex-start;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      display: inline-block;
+    }
+
+    .header__link {
+      margin-left: 25px;
     }
   }
 }

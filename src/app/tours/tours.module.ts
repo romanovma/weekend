@@ -10,6 +10,8 @@ import { MdCardModule }         from '@angular2-material/card';
 import { MdButtonModule }       from '@angular2-material/button';
 import { MdRadioModule }       from '@angular2-material/radio';
 import { MdSliderModule }       from '@angular2-material/slider';
+import { MdCheckboxModule }       from '@angular2-material/checkbox';
+
 
 import { InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api';
 import { InMemoryDataService }               from './in-memory-data.service';
@@ -33,7 +35,10 @@ import { tourRouting }    from './tour.routes';
     MdInputModule,
     MdListModule,
     MdCardModule,
-    MdButtonModule
+    MdButtonModule,
+    MdRadioModule,
+    MdSliderModule,
+    MdCheckboxModule
   ],
   declarations: [
     TourListComponent,
