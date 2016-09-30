@@ -1,23 +1,21 @@
 <div class="tour-search">
-  <h1>Search Tour</h1>
 
   <form #tourForm="ngForm"
   (keydown.arrowdown)=onArrowDown()
   (keydown.arrowup)=onArrowUp()
   (keydown.Enter)=onEnter()>
 
-    <div class="form-group tour-search__input">
-      <md-input #tourInput class="form-control"
-      placeholder="I want.." autoFocus
-      (keyup)="search(tourInput.value)">
-      </md-input>
-    </div>
-
-    <button md-button md-raised-button [disabled]="!tourForm.form.valid" class="text-uppercase md-base-color"
+    <button class="button--theme-icon tour-search__button" [disabled]="!tourForm.form.valid"
     (click)="navigate()"
     (touchend)="navigate()">
-    Go
+    <span ></span>
     </button>
+
+    <div class="form-group tour-search__input__wrapper" >
+      <input #tourInput class="form-control tour-search__input"
+      placeholder="Поиск приключений" autoFocus
+      (keyup)="search(tourInput.value)">
+    </div>
 
     <md-list>
       <md-list-item

@@ -1,17 +1,20 @@
 .start {
-  padding: 30px;
-  max-width: 700px;
   margin: auto;
 }
 
 .hero {
+  padding-top: 95px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  height: 460px;
+  background-image: url('assets/img/hero-image.png');
+  background-position: bottom center;
 }
 
 .login-buttons {
+  display: none;
   margin-top: 60px;
   margin-bottom: 30px;
 }

@@ -1,11 +1,37 @@
+@import '../../app.component.scss';
+
 .tour-search {
   position: relative;
   z-index: 10;
+  border-radius: 10px;
+  background-color: #fff;
+  width: 600px;
+  height: 60px;
+  margin-top: 30px;
 }
 
 .tour-search__input {
   display: inline-block;
-  vertical-align: middle;
+  height: 60px;
+  color: $font-color-secondary;
+  border: none;
+  font-size: 16px;
+  outline: none;
+
+  &__wrapper {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+.tour-search__button {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  background-image: url('assets/img/icon-search.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
 }
 
 md-list {

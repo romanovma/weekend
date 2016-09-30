@@ -1,18 +1,65 @@
-/* variables */
-$primary-color: #3F51B5;
-$primary-hover: #283593;
+/* COLORS */
+$primary-color: #fb7102;
+$primary-hover: #ea6001;
 
-$secondary-color: #2196F3;
-$secondary-hover: #1565C0;
+$secondary-color: #3e4345;
+$secondary-hover: #2d3234;
+
+$font-color-primary: #fff;
+$font-color-secondary: #111;
 
 
-/* reset */
+/* FONTS */
+@font-face {
+	font-family: 'Lifehack Sans Regular';
+	src: url('/assets/fonts/Lifehack Sans Regular.eot');
+	src: local('☺'),
+	  url('/assets/fonts/Lifehack Sans Regular.woff') format('woff'),
+	  url('/assets/fonts/Lifehack Sans Regular.ttf') format('truetype'),
+	  url('/assets/fonts/Lifehack Sans Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+$font-style-regular: Lifehack Sans Regular, Arial, Helvetica, sans-serif;
+
+
+/* RESET */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
+  background: #000;
+}
+
+input::-webkit-input-placeholder {
+  color: $font-color-secondary;
+}
+input:-moz-placeholder {
+  color: $font-color-secondary;
+}
+input::-moz-placeholder {
+  color: $font-color-secondary;
+}
+input:-ms-input-placeholder  {
+   color: $font-color-secondary;
 }
 
 
-/* elements */
+/* ELEMENTS */
+h1 {
+  font-size: 80px;
+  font-weight: normal;
+  color: #fff;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .button {
   transition: all 0.3s ease-in;
   padding: 0.5em 1em;
@@ -36,6 +83,44 @@ body {
   }
 }
 
+.button--theme-icon {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.change-region__starter {
+  width: 170px;
+  height: 40px;
+  background: $primary-color;
+  color: #fff;
+  font-size: 13px;
+  line-height: 40px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.header__link {
+  color: #fff;
+  font-size: 13px;
+  line-height: 40px;
+  text-decoration: none;
+  margin-left: 15px;
+}
+
+.logo {
+  border: solid 4px $primary-color;
+  border-radius: 9px;
+  background-color: #fff;
+  width: 238px;
+  height: 63px;
+  font-size: 57px;
+  position: relative;
+  text-align: center;
+  line-height: 63px;
+}
+
+/* MATERIAL OVERRIDE */
 md-list {
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
@@ -45,13 +130,26 @@ md-list-item.highlighted .md-list-item {
   background: rgba(0, 0, 0, 0.04);
 }
 
-
 /* app.component specific */
-md-toolbar a {
-  margin: 0 20px;
-  font-size: 0.7em;
-  text-decoration: none;
+.app {
+  font-family: $font-style-regular;
+  background-image: url('assets/img/main-bg.png');
+  max-width: 1268px;
+  margin-left: auto;
+  margin-right: auto;
+
+  md-toolbar {
+    padding: 0;
+    background-color: $secondary-color;
+    min-height: 0;
+
+    md-toolbar-row {
+      height: 40px;
+      padding: 0 155px;
+    }
+  }
 }
+
 .fill-remaining-space {
   flex: 1 1 auto;
 }

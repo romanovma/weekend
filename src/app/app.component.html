@@ -1,11 +1,12 @@
 <div class="app">
   <md-toolbar>
-    <a class="logo" routerLink="/">Weekend Tour Logo</a>
+    <a class="change-region__starter" routerLink="/">
+      <span class="icon-region"></span>
+      <span>Регион поиска: Уфа</span>
+    </a>
     <span class="fill-remaining-space"></span>
-    <a class="link" routerLink="/help">How it works</a>
-    <a class="link" routerLink="/help">Safety</a>
-    <a class="button button--theme-primary" routerLink="/login">Join</a>
-    <a class="button button--theme-ghost" routerLink="/login">Login</a>
+    <a class="header__link" routerLink="/login">Вход</a>
+    <a class="header__link" routerLink="/login">Регистрация</a>
   </md-toolbar>
 
   <router-outlet></router-outlet>
