@@ -67,6 +67,14 @@ h1 {
   margin-bottom: 5px;
 }
 
+h2 {
+	font-size: 60px;
+	text-align: center;
+	font-weight: normal;
+	margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .button {
   transition: all 0.3s ease-in;
   padding: 0.5em 1em;
@@ -207,6 +215,7 @@ md-list-item.highlighted .md-list-item {
 
     .header__link {
       margin-left: 25px;
+			cursor: pointer;
     }
   }
 }

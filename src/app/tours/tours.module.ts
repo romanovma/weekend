@@ -21,6 +21,8 @@ import { TourBuyComponent }     from './tour-buy/tour-buy.component';
 import { TourAddComponent }     from './tour-add/tour-add.component';
 import { TourSearchComponent }  from './tour-search/tour-search.component';
 import { TourFilterComponent }  from './tour-filter/tour-filter.component';
+import { TourTestimonialComponent }  from './tour-testimonial/tour-testimonial.component';
+import { TourCardComponent }  from './tour-card/tour-card.component';
 
 
 
@@ -45,13 +47,16 @@ import { tourRouting }    from './tour.routes';
     TourBuyComponent,
     TourAddComponent,
     TourSearchComponent,
-    TourFilterComponent
+    TourFilterComponent,
+    TourTestimonialComponent,
+    TourCardComponent
   ],
   exports: [
     TourListComponent,
     TourAddComponent,
     TourSearchComponent,
-    TourFilterComponent
+    TourFilterComponent,
+    TourTestimonialComponent
   ],
   providers: [
     TourService,

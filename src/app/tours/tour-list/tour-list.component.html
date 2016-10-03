@@ -1,4 +1,4 @@
-<div class="tourlist" [class.grid]="grid" [class.with-city]="withCity">
+<div class="tourlist" [class.grid]="grid" >
 
   <h1 class="tourlist__title">{{collectionTitle}}</h1>
 
@@ -16,30 +16,8 @@
   </div>
 
   <div class="tourlist__list">
-    <div class="tourlist__tour" *ngFor="let tour of tours"
-      (click)="onSelect(tour?.id)"
-      (ontouchend)="onSelect(tour)">
-        <div class="tourlist__tour__city">{{tour.city}}</div>
-        <div class="tourlist__tour__wrapper">
-          <img src="/assets/img/tours/{{tour.photo}}" />
-          <div class="tourlist__tour__rating">
-            <span class="tourlist__tour__rating__icon" *ngFor="let i of ratingArr.slice(0, tour.rating > ratingArr.length ? atingArr.length : tour.rating)"></span>
-          </div>
-          <div class="tourlist__tour__date">
-            {{tour.dates[0] | date: 'dd.MM'}}
-          </div>
-          <div class="tourlist__tour__title">
-            {{tour.title}}
-          </div>
-          <div class="tourlist__tour__details">
-            <span class="tourlist__tour__type__icon" [ngClass]="setMovementTypeClass(tour.movementType)"></span>
-            <span class="tourlist__tour__type">{{translateType(tour.movementType)}}</span>
-            <span class="tourlist__tour__duration__icon"></span>
-            <span class="tourlist__tour__duration">{{tour.duration}} Ч</span>
-            <span class="tourlist__tour__price">{{tour.price}} руб</span>
-          </div>
-        </div>
-
+    <div class="tourlist__tour" *ngFor="let tour of tours">
+      <app-tour-card [tour]="tour" [withCity]="withCity"></app-tour-card>
     </div>
   </div>
 

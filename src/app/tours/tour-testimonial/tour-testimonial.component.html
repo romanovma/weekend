@@ -1,0 +1,15 @@
+<div class="tour-testimonial">
+  <h2 class="tour-testimonial__title">Захватывающие впечатления</h2>
+  <div *ngIf="tours && tours.length && tours[0].testimonials && tours[0].testimonials.length" class="tour-testimonial__content">
+    <span class="tour-testimonial__content__arrow--left"></span>
+    <app-tour-card [tour]="tours[0]" [testimonial]="testimonial"></app-tour-card>
+    <div class="tour-testimonial__avatar"><img src="/assets/img/avatars/{{tours[0].testimonials[0].photo}}"/></div>
+    <div class="tour-testimonial__text-wrapper">
+      <div class="tour-testimonial__text-flex">
+        <div class="tour-testimonial__text fill-remaining-space">{{tours[0].testimonials[0].text}}</div>
+        <div class="tour-testimonial__name">{{tours[0].testimonials[0].name}}</div>
+      </div>
+    </div>
+    <span class="tour-testimonial__content__arrow--right"></span>
+  </div>
+</div>

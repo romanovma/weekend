@@ -33,8 +33,6 @@ export class TourListComponent implements OnInit, OnChanges {
   query: TourQuery;
   addingTour = false;
   error: any;
-  ratingArr: number[] = [0,0,0,0,0];
-
 
   constructor(
     private tourService: TourService,
@@ -77,30 +75,5 @@ export class TourListComponent implements OnInit, OnChanges {
     this.addingTour = false;
     if (savedTour) { this.getTours(); }
   }
-
-  setMovementTypeClass(type) {
-    return {
-      car: type === 'car',
-      walk: type === 'walk',
-      bycicle: type === 'bycicle'
-    }
-  }
-
-  //TODO: change to pipe
-  translateType(value) {
-    switch (value) {
-    case "car":
-      return 'на авто';
-    case "walk":
-      return 'пешком';
-    case "bycicle":
-      return 'велосипед';
-    default:
-      return '';
-    }
-  }
-
-  //TODO: create pipe for number formatting for tour price
-
 
 }
