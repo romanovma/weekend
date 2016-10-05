@@ -12,6 +12,7 @@ import { TourService } from '../tour.service';
   styleUrls: ['tour-buy.component.scss']
 })
 export class TourBuyComponent implements OnInit, OnDestroy {
+  withLogo: boolean = true;
   tour: Tour;
   errorMessage: string;
   private sub: Subscription;

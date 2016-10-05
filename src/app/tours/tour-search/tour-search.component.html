@@ -1,9 +1,10 @@
-<div class="tour-search">
+<div class="tour-search" [class.with-logo]="withLogo">
 
   <form #tourForm="ngForm"
   (keydown.arrowdown)=onArrowDown()
   (keydown.arrowup)=onArrowUp()
   (keydown.Enter)=onEnter()>
+    <div class="logo"><span class="logo__text">ORDEN TRAVEL</span></div>
 
     <button class="button--theme-icon tour-search__button" [disabled]="!tourForm.form.valid"
     (click)="navigate()"

@@ -1,45 +1,85 @@
 .tour-buy {
-  padding: 30px;
-  max-width: 700px;
   margin: auto;
-}
+  padding-left: 155px;
+  padding-right: 155px;
 
-.tour-buy__navigation {
-  text-align: center;
-}
-
-
-.tour-buy__main {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  & > div {
-    margin: 10px;
+  &__title {
+    margin-top: 30px;
+    text-align: left;
   }
-}
 
-.tour-buy__video {
-  width: 300px;
-  height: 260px;
-  border: 1px solid #ddd;
-}
-
-.tour-buy__cta {
-  width: 300px;
-  & > div {
-    margin: 5px;
+  &__navigation {
+    text-align: center;
   }
-}
 
-.tour-buy__info {
-  width: 300px;
-  & > div {
-    margin: 5px;
+  &__main {
+    display: flex;
+    justify-content: center;
+    flex-wrap: no-wrap;
   }
-}
 
-.tour-buy__photos {
-  width: 300px;
-  height: 100px;
-  border: 1px solid #eee;
+  &__video {
+    border-radius: 10px;
+    width: 662px;
+    height: 392px;
+    background: #000;
+  }
+
+  &__cta__wrapper {
+    width: 252px;
+  }
+
+  &__cta {
+    border-radius: 10px;
+    background-color: #fff;
+    width: 100%;
+    margin-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-family: 'Arial';
+  }
+
+  &__cta__price__label {
+    text-align: left;
+    font-size: 13px;
+    margin-left: 40px;
+    color: #777;
+    margin-bottom: 5px;
+  }
+
+  &__cta__price {
+    text-align: left;
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 40px;
+    margin-bottom: 10px;
+  }
+
+  &__cta__gift {
+    font-size: 14px;
+    margin-top: 10px;
+    a {
+      color: #000;
+    }
+  }
+
+  &__cta__description {
+    border-radius: 10px;
+    background-color: #fff;
+    width: 100%;
+  }
+
+  &__info {
+    width: 300px;
+    & > div {
+      margin: 5px;
+    }
+  }
+
+  &__photos {
+    width: 300px;
+    height: 100px;
+    border: 1px solid #eee;
+  }
 }

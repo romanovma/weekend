@@ -8,6 +8,17 @@
   width: 600px;
   height: 60px;
   margin-top: 30px;
+
+  .logo {
+    display: none;
+  }
+
+  &.with-logo {
+    .logo {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
 }
 
 .tour-search__input {

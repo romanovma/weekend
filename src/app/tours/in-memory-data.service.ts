@@ -68,7 +68,7 @@ export class InMemoryDataService {
       {
         "id": 5,
         "title": "Каякинг и хуякинг",
-        "video": ["video-1-1.avi"],
+        "video": ["tour-5"],
         "dates": ["2016-04-23T18:25:43.511Z"],
         "duration": 7,
         "movementType": "walk",
