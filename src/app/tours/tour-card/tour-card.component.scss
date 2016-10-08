@@ -1,3 +1,5 @@
+@import "../../app.component";
+
 .tourlist__tour {
   cursor: pointer;
   margin: 10px;
@@ -100,7 +102,7 @@
   }
 
   &__details {
-    background-color: rgb(251, 113, 2);
+    background-color: $primary-color;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -118,42 +120,15 @@
     }
   }
 
-  &__type__icon {
-    background-position: center;
-    background-repeat: no-repeat;
-    display: inline-block;
-    margin-right: 7px;
-    height: 45px;
-    vertical-align: top;
-
-    &.car {
-      width: 18px;
-      background-image: url('/assets/img/icon-auto.png');
-    }
-    &.walk {
-      width: 11px;
-      background-image: url('/assets/img/icon-walk.png');
-    }
-    &.bycicle {
-      background-image: url('/assets/img/icon-bycicle.png');
-    }
-  }
-
   &__type {
     display: inline-block;
     margin-top: 2px;
     margin-right: 11px;
   }
 
-  &__duration__icon {
-    background-image: url('/assets/img/icon-duration.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    display: inline-block;
-    margin-right: 5px;
+  .type__icon,
+  .duration__icon {
     height: 45px;
-    width: 14px;
-    vertical-align: top;
   }
 
   &__price {

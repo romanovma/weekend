@@ -20,17 +20,54 @@
         <div class="tour-buy__cta__gift">или <a href="#"><strong>купить в подарок</strong></a></div>
       </div>
       <div class="tour-buy__cta__description">
-        <div>Duration: {{tour.duration}}</div>
-        <div>Type: {{tour.movementType}}</div>
+        <div class="tour-buy__cta__description__duration" *ngIf="tour.duration">
+          <div class="tour-buy__cta__description__label">Длительность</div>
+          <span class="duration__icon duration__icon--theme-black"></span>
+          {{tour.duration}} часов
+        </div>
+        <div class="tour-buy__cta__description__type" *ngIf="tour.movementType">
+          <div class="tour-buy__cta__description__label">Тип</div>
+          <span class="type__icon type__icon--theme-black" [ngClass]="setMovementTypeClass(tour.movementType)"></span>
+          {{translateType(tour.movementType)}}
+        </div>
+        <div class="tour-buy__cta__description__area" *ngIf="tour.area">
+          <div class="tour-buy__cta__description__label">Вид</div>
+          {{tour.area}}
+        </div>
+        <div class="tour-buy__cta__description__meeting-place" *ngIf="tour.meetingPlace">
+          <div class="tour-buy__cta__description__label">Место встречи</div>
+          {{tour.meetingPlace}}
+        </div>
       </div>
     </div>
   </div>
   <div class="tour-buy__secondary">
-    <div class="tour-buy__calendar">Date: {{tour.dates}}</div>
+    <div class="tour-buy__calendar">
+      <img src="assets/img/mock/calendar.png" />
+      <!-- Date: {{tour.dates}} -->
+    </div>
     <div class="tour-buy__info">
-      <div>operator: {{tour.operator}} - rating: {{tour.rating}}</div>
-      <div>Description:</div>
+      <!-- <div>operator: {{tour.operator}} - rating: {{tour.rating}}</div> -->
+      <h5 class="tour-buy__info__title">{{tour.descriptionTitle}}</h5>
       <div>{{tour.description}}</div>
+    </div>
+    <div class="tour-buy__important" *ngIf="tour.important">
+      <h5 class="labels__title">Важные моменты</h5>
+      <md-checkbox class="form-control checkbox checkbox--theme-readonly" *ngFor="let important of tour.important">
+        {{important}}
+      </md-checkbox>
+    </div>
+    <div class="tour-buy__included" *ngIf="tour.included">
+      <h5 class="labels__title">В стоимость включено</h5>
+      <md-checkbox class="form-control checkbox checkbox--theme-readonly" *ngFor="let included of tour.included">
+        {{included}}
+      </md-checkbox>
+    </div>
+    <div class="tour-buy__not-included" *ngIf="tour.notIncluded">
+      <h5 class="labels__title">В стоимость не включено</h5>
+      <md-checkbox class="form-control checkbox checkbox--theme-readonly" *ngFor="let notIncluded of tour.notIncluded">
+        {{notIncluded}}
+      </md-checkbox>
     </div>
   </div>
 </div>

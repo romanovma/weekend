@@ -14,9 +14,9 @@
         {{tour.title}}
       </div>
       <div class="tourlist__tour__details">
-        <span class="tourlist__tour__type__icon" [ngClass]="setMovementTypeClass(tour.movementType)"></span>
+        <span class="type__icon" [ngClass]="setMovementTypeClass(tour.movementType)"></span>
         <span class="tourlist__tour__type">{{translateType(tour.movementType)}}</span>
-        <span class="tourlist__tour__duration__icon"></span>
+        <span class="duration__icon"></span>
         <span class="tourlist__tour__duration">{{tour.duration}} Ч</span>
         <span class="tourlist__tour__price">{{tour.price}} руб</span>
       </div>

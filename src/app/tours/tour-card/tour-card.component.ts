@@ -27,6 +27,7 @@ export class TourCardComponent implements OnInit {
     }
   }
 
+  //TODO: move to service?
   setMovementTypeClass(type) {
     return {
       car: type === 'car',
@@ -39,11 +40,11 @@ export class TourCardComponent implements OnInit {
   translateType(value) {
     switch (value) {
     case "car":
-      return 'на авто';
+      return 'На авто';
     case "walk":
-      return 'пешком';
+      return 'Пешком';
     case "bycicle":
-      return 'велосипед';
+      return 'Велосипед';
     default:
       return '';
     }

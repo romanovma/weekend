@@ -36,4 +36,27 @@ export class TourBuyComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
+  //TODO: move to service?
+  setMovementTypeClass(type) {
+    return {
+      car: type === 'car',
+      walk: type === 'walk',
+      bycicle: type === 'bycicle'
+    }
+  }
+
+  //TODO: change to pipe
+  translateType(value) {
+    switch (value) {
+    case "car":
+      return 'На авто';
+    case "walk":
+      return 'Пешком';
+    case "bycicle":
+      return 'Велосипед';
+    default:
+      return '';
+    }
+  }
+
 }
