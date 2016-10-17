@@ -14,10 +14,10 @@ import { TourService }          from '../tour.service';
   styleUrls: ['tour-list.component.scss'],
   providers: [
     TourService
-  ],
-  directives:[
-    NgClass
   ]
+  // directives:[
+  //   NgClass
+  // ]
 })
 export class TourListComponent implements OnInit, OnChanges {
   @Input() collectionId: string;

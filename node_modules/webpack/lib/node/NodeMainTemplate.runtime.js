@@ -2,7 +2,7 @@
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
 */
-/*global $hotChunkFilename$ hotAddUpdateChunk $hotMainFilename$ */
+/*global installedChunks $hotChunkFilename$ hotAddUpdateChunk $hotMainFilename$ */
 module.exports = function() {
 	function hotDownloadUpdateChunk(chunkId) { // eslint-disable-line no-unused-vars
 		var chunk = require("./" + $hotChunkFilename$);
@@ -16,5 +16,9 @@ module.exports = function() {
 			return Promise.resolve();
 		}
 		return Promise.resolve(update);
+	}
+
+	function hotDisposeChunk(chunkId) {
+		delete installedChunks[chunkId];
 	}
 };

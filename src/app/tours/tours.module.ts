@@ -1,15 +1,15 @@
-import { NgModule }       from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
-import { FormsModule, disableDeprecatedForms, provideForms }                  from '@angular/forms';
+import { FormsModule }                  from '@angular/forms';
 import { HttpModule, XHRBackend }                   from '@angular/http';
 
 
 import { MdInputModule }        from '@angular2-material/input';
 import { MdListModule }         from '@angular2-material/list';
 import { MdCardModule }         from '@angular2-material/card';
-import { MdButtonModule }       from '@angular2-material/button';
+// import { MdButtonModule }       from '@angular2-material/button';
 import { MdRadioModule }       from '@angular2-material/radio';
-import { MdSliderModule }       from '@angular2-material/slider';
+// import { MdSliderModule }       from '@angular2-material/slider';
 import { MdCheckboxModule }       from '@angular2-material/checkbox';
 
 
@@ -37,9 +37,9 @@ import { tourRouting }    from './tour.routes';
     MdInputModule,
     MdListModule,
     MdCardModule,
-    MdButtonModule,
+    // MdButtonModule,
     MdRadioModule,
-    MdSliderModule,
+    // MdSliderModule,
     MdCheckboxModule
   ],
   declarations: [
@@ -51,6 +51,9 @@ import { tourRouting }    from './tour.routes';
     TourTestimonialComponent,
     TourCardComponent
   ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
   exports: [
     TourListComponent,
     TourAddComponent,
@@ -60,8 +63,8 @@ import { tourRouting }    from './tour.routes';
   ],
   providers: [
     TourService,
-    disableDeprecatedForms(),
-    provideForms(),
+    // disableDeprecatedForms(),
+    // provideForms(),
     { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
     { provide: SEED_DATA,  useClass: InMemoryDataService }     // in-mem server data
   ]

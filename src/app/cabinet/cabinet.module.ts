@@ -1,8 +1,6 @@
 import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
 
-import { MdButtonModule }       from '@angular2-material/button';
-
 import { ToursModule }    from '../tours/tours.module';
 
 import { CabinetComponent } from './cabinet.component';
@@ -16,8 +14,7 @@ import { cabinetRouting }    from './cabinet.routes';
   imports: [
     CommonModule,
     ToursModule,
-    cabinetRouting,
-    MdButtonModule
+    cabinetRouting
   ],
   declarations: [
     CabinetComponent

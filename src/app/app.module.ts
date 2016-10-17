@@ -1,7 +1,7 @@
 import { BrowserModule }                from '@angular/platform-browser';
 import { NgModule }                     from '@angular/core';
 import { CommonModule }                 from '@angular/common';
-import { FormsModule, disableDeprecatedForms, provideForms }                  from '@angular/forms';
+import { FormsModule }                  from '@angular/forms';
 import { HttpModule, XHRBackend }                   from '@angular/http';
 
 import { routing, appRoutingProviders } from './app.routes';
@@ -38,9 +38,9 @@ import { TourCardComponent } from './tours/tour-card/tour-card.component';
     CabinetModule
   ],
   providers: [
-    appRoutingProviders,
-    disableDeprecatedForms(),
-    provideForms()
+    appRoutingProviders
+    // disableDeprecatedForms(),
+    // provideForms()
     // { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
     // { provide: SEED_DATA,  useClass: InMemoryDataService }     // in-mem server data
   ],

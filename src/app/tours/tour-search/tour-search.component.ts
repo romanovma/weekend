@@ -17,7 +17,6 @@ import { Tour }                 from '../tour'
   selector: 'app-tour-search',
   templateUrl: 'tour-search.component.html',
   styleUrls: ['tour-search.component.scss'],
-  directives: [],
   providers: [
     TourService
   ]
