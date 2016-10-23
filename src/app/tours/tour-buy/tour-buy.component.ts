@@ -12,6 +12,9 @@ import { TourService } from '../tour.service';
   styleUrls: ['tour-buy.component.scss']
 })
 export class TourBuyComponent implements OnInit, OnDestroy {
+  activeMediaType: string = 'video';
+  activeMedia: string;
+
   withLogo: boolean = true;
   tour: Tour;
   errorMessage: string;
@@ -27,13 +30,30 @@ export class TourBuyComponent implements OnInit, OnDestroy {
       let id = +params['id'];
       this.tourService.getTourById(id)
                       .subscribe(
-                        tour => this.tour = tour,
+                        tour => {
+                          this.tour = tour;
+                          this.updateActiveMedia(tour);
+                        },
                         error => this.errorMessage = <any>error);
     });
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  updateActiveMedia(tour: Tour) {
+    if (tour.video.length) {
+      this.activeMedia = tour.video[0];
+    } else if (tour.photo.length) {
+      this.activeMedia = tour.photo[0];
+      this.activeMediaType = 'photo';
+    }
+  }
+
+  activateMedia(type: string, media: string) {
+    this.activeMediaType = type;
+    this.activeMedia = media;
   }
 
   //TODO: move to service?

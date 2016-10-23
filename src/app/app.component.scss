@@ -4,9 +4,17 @@ $primary-hover: #ea6001;
 
 $secondary-color: #2a2f32;
 $secondary-hover: #2d3234;
+$tourlist-secondary: #858c90;
 
 $font-color-primary: #fff;
 $font-color-secondary: #111;
+$tourlist-bg: #fff;
+
+$h4-color: #999999;
+$tour-code: #808080;
+$private-header-color: #d6dee2;
+$private-header-settings: #838a8f;
+$private-header-ative: #49545a;
 
 
 /* FONTS */
@@ -22,6 +30,7 @@ $font-color-secondary: #111;
 }
 
 $font-style-regular: Lifehack Sans Regular, Arial, Helvetica, sans-serif;
+$font-style-secondary: 'Arial';
 
 
 /* RESET */
@@ -81,6 +90,15 @@ h3 {
 	font-weight: normal;
 	margin-top: 5px;
   margin-bottom: 5px;
+}
+
+h4 {
+  font-size: 18px;
+  font-family: "Arial";
+  color: rgb(153, 153, 153);
+  font-weight: bold;
+  line-height: 1.2;
+	text-align: left;
 }
 
 h5 {
@@ -180,6 +198,55 @@ h5 {
   text-decoration: none;
   margin-left: 15px;
   font-family: 'Arial'
+}
+
+.private-header {
+	background-color: $private-header-color;
+	width: 100%;
+	height: 54px;
+	display: flex;
+	align-items: center;
+	padding-left: 155px;
+	padding-right: 155px;
+
+	&__link {
+		color: $private-header-settings;
+		font-size: 15px;
+		font-family: 'Arial';
+		font-weight: bold;
+		line-height: 44px;
+		border-top: solid 4px transparent;
+		border-bottom: solid 4px transparent;
+		display: inline-block;
+		margin-left: 24px;
+		cursor: pointer;
+
+		&.active {
+			border-bottom: solid 4px $primary-color;
+			color: $private-header-ative;
+		}
+	}
+
+
+
+	&__settings {
+		color: $private-header-settings;
+		font-size: 15px;
+		font-family: 'Arial';
+		font-weight: bold;
+		cursor: pointer;
+		display: flex;
+
+		&__icon {
+			width: 18px;
+      height: 18px;
+      background-image: url('/assets/img/icon-settings.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      display: inline-block;
+      margin-right: 9px;
+		}
+	}
 }
 
 .logo {

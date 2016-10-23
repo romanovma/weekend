@@ -8,6 +8,9 @@ import { CabinetService }   from './cabinet.service';
 
 
 import { cabinetRouting }    from './cabinet.routes';
+import { CabinetEventsComponent } from './cabinet-events/cabinet-events.component';
+import { CabinetToursComponent } from './cabinet-tours/cabinet-tours.component';
+import { CabinetPayoutComponent } from './cabinet-payout/cabinet-payout.component';
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import { cabinetRouting }    from './cabinet.routes';
     cabinetRouting
   ],
   declarations: [
-    CabinetComponent
+    CabinetComponent,
+    CabinetEventsComponent,
+    CabinetToursComponent,
+    CabinetPayoutComponent
   ],
   providers: [
     CabinetService

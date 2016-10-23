@@ -3,13 +3,28 @@
     <h3 class="tour-buy__title">{{tour.title}}</h3>
   </div>
   <div class="tour-buy__main">
-    <div class="tour-buy__video">
-      <!-- first try HTML5 playback: if serving as XML, expand `controls` to `controls="controls"` and autoplay likewise -->
-      <!-- warning: playback does not work on iOS3 if you include the poster attribute! fixed in iOS4.0 -->
-      <video #movieplayer width="100%" height="100%" controls>
-      	<!-- MP4 must be first for iPad! -->
-      	<source src="assets/video/{{tour.video}}.mp4" type="video/mp4" /><!-- Safari / iOS video    -->
-      </video>
+    <div class="tour-buy__media__container">
+      <div class="tour-buy__media" *ngIf="activeMedia">
+        <img src="assets/img/tours/{{activeMedia}}" *ngIf="activeMediaType === 'photo'" />
+        <!-- first try HTML5 playback: if serving as XML, expand `controls` to `controls="controls"` and autoplay likewise -->
+        <!-- warning: playback does not work on iOS3 if you include the poster attribute! fixed in iOS4.0 -->
+        <video #movieplayer width="100%" height="100%" controls *ngIf="activeMediaType === 'video'">
+        	<!-- MP4 must be first for iPad! -->
+        	<source src="assets/video/{{activeMedia}}.mp4" type="video/mp4" /><!-- Safari / iOS video    -->
+        </video>
+      </div>
+      <div class="tour-buy__media__list">
+        <div class="tour-buy__media__list__icon" *ngFor="let video of tour.video"
+        (click)="activateMedia('video', video)"
+        (touchend)="activateMedia('video', video)">
+          <img src="assets/video/video-placeholder.png" />
+        </div>
+        <div class="tour-buy__media__list__icon" *ngFor="let photo of tour.photo"
+        (click)="activateMedia('photo', photo)"
+        (touchend)="activateMedia('photo', photo)">
+          <img src="assets/img/tours/{{photo}}" />
+        </div>
+      </div>
     </div>
     <div class="fill-remaining-space"></div>
     <div class="tour-buy__cta__wrapper">
@@ -17,7 +32,7 @@
         <div class="tour-buy__cta__price__label">Стоимость</div>
         <div class="tour-buy__cta__price">{{tour.price}} руб.</div>
         <button class="button--theme-primary">Заказать</button>
-        <div class="tour-buy__cta__gift">или <a href="#"><strong>купить в подарок</strong></a></div>
+        <!-- <div class="tour-buy__cta__gift">или <a href="#"><strong>купить в подарок</strong></a></div> -->
       </div>
       <div class="tour-buy__cta__description">
         <div class="tour-buy__cta__description__duration" *ngIf="tour.duration">

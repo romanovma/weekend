@@ -1,13 +1,21 @@
-.user {
-  padding: 30px;
-  max-width: 700px;
-  margin: auto;
+@import '../app.component';
 
-  .tourlist__title {
-    display: none;
+.user {
+  padding: 0 155px 40px;
+  margin: auto;
+}
+
+.user__tours--current {
+  .tourlist {
+    border-radius: 10px;
+    border-width: 9px 7px;
+    border-color: $secondary-color;
+    border-style: solid;
   }
 }
 
-.user__title {
-  text-align: center;
+.user__tours--past {
+  .tourlist__tour--row__date {
+    background: $tourlist-secondary !important;
+  }
 }

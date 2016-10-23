@@ -1,9 +1,17 @@
-<div class="cabinet">
-  <div class="cabinet__header">
-    <div class="cabinet__balance">balance: <strong>1000{{cabinet?.balance}}</strong></div>
-    <div class="cabinet__request-payout">request payout</div>
-    <span class="fill-remaining-space"></span>
+<div class="private-header private-header--user">
+  <div class="logo logo--theme-small"><span class="logo__text">ORDEN TRAVEL</span></div>
+  <div class="private__header__nav">
+    <span class="private-header__link" routerLink="./events" routerLinkActive="active">Заявки</span>
+    <span class="private-header__link" routerLink="./tours" routerLinkActive="active">Мои туры</span>
+    <span class="private-header__link" routerLink="./payout" routerLinkActive="active">Вывод средств</span>
   </div>
-  <h1 class="cabinet__title">My tours</h1>
-  <app-tour-list collectionId="collection" grid="grid"></app-tour-list>
+  <div class="fill-remaining-space"></div>
+  <div class="private-header__settings">
+    <span class="private-header__settings__icon"></span>
+    <span>Настройки</span>
+  </div>
+</div>
+
+<div class="cabinet">
+  <router-outlet></router-outlet>
 </div>
