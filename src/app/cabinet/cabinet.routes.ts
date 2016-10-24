@@ -12,8 +12,8 @@ const cabinetRoutes: Routes = [
     children: [
       { path: '', redirectTo: 'events', },
       { path: 'events', component: CabinetEventsComponent },
-      { path: 'payout', component: CabinetToursComponent },
-      { path: 'tours', component: CabinetPayoutComponent }
+      { path: 'tours', component: CabinetToursComponent },
+      { path: 'payout', component: CabinetPayoutComponent }
     ]
   },
 ];

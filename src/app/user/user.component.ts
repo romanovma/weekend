@@ -15,7 +15,6 @@ import { UserService } from './user.service';
 })
 export class UserComponent implements OnInit, OnDestroy {
   collection: string = "visited";
-  grid: boolean = true;
 
   user: User;
   errorMessage: string;

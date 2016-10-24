@@ -21,8 +21,8 @@ import { TourService }          from '../tour.service';
 })
 export class TourListComponent implements OnInit, OnChanges {
   @Input() collectionId: string;
-  @Input() collectionTitle: string;
   @Input() grid: boolean = false;
+  @Input() cabinet: boolean = false;
   @Input() withCity: boolean = false;
   @Input() maxPrice: number;
   @Input() date: Date;

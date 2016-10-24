@@ -1,14 +1,5 @@
 <div class="tourlist" [class.grid]="grid" >
 
-  <h3 class="tourlist__title">{{collectionTitle}}</h3>
-
-  <div class="tourlist__controls">
-    <button class="text-uppercase tourlist__add"
-    (click)="addTour()">
-    Add Tour
-    </button>
-  </div>
-
   <div class="error" *ngIf="error">{{error}}</div>
 
   <div *ngIf="addingTour">
@@ -20,16 +11,18 @@
     <div class="tourlist__tour"  *ngFor="let tour of tours">
       <app-tour-card [tour]="tour" [withCity]="withCity"></app-tour-card>
     </div>
+    <button class="tourlist__add" (click)="addTour()"><span class="tourlist__add__plus"></span></button>
   </div>
 
  <!-- grid -->
-  <div class="tourlist__list--grid" *ngIf="grid">
+  <div class="tourlist__list--grid" *ngIf="grid" [class.tourlist__list--grid--cabinet]="cabinet">
     <div class="tourlist__tour--row" *ngFor="let tour of tours">
       <span class="tourlist__tour--row__date">
         <span class="tourlist__tour--row__date__icon"></span>
         <span>{{tour.dates[0] | date: 'dd.MM'}}</span>
       </span>
       <span class="tourlist__tour--row__code">{{tour.code}}</span>
+      <span class="tourlist__tour--row__name">Анна Антоновна (1 чел)</span>
       <span class="tourlist__tour--row__title fill-remaining-space"
       (click)="onSelect(tour.id)"
       (ontouchend)="onSelect(tour.id)">
@@ -38,6 +31,10 @@
       <span class="tourlist__tour--row__guide-phone">
         <span class="tourlist__tour--row__guide-phone__icon"></span>
         <span class="tourlist__tour--row__guide-phone__text">{{tour.guidePhone}}</span>
+      </span>
+      <span class="tourlist__tour--row__user-phone">
+        <span class="tourlist__tour--row__user-phone__icon"></span>
+        <span class="tourlist__tour--row__user-phone__text">{{tour.guidePhone}}</span>
       </span>
     </div>
   </div>

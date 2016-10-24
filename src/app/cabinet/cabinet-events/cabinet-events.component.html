@@ -1,7 +1,12 @@
 <div class="cabinet__events">
   <h4 class="cabinet__title">Входящие заявки</h4>
-  <app-tour-list grid="grid" class="user__tours--current"></app-tour-list>
+  <div class="list--black list--black--date-black">
+    <div class="list--black__title">Заявки на сегодня</div>
+    <app-tour-list grid="true" cabinet="true" class="user__tours--current"></app-tour-list>
+  </div>
+
+  <app-tour-list grid="true" cabinet="true"></app-tour-list>
 
   <h4 class="cabinet__title">Архив заявок</h4>
-  <app-tour-list grid="grid" class="user__tours--past"></app-tour-list>
+  <app-tour-list grid="true" cabinet="true" class="user__tours--past"></app-tour-list>
 </div>

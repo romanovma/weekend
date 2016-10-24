@@ -5,17 +5,10 @@
   margin: auto;
 }
 
-.user__tours--current {
-  .tourlist {
-    border-radius: 10px;
-    border-width: 9px 7px;
-    border-color: $secondary-color;
-    border-style: solid;
-  }
-}
-
 .user__tours--past {
-  .tourlist__tour--row__date {
-    background: $tourlist-secondary !important;
+  .tourlist__tour--row {
+    &__date {
+      background: $tourlist-secondary !important;
+    }
   }
 }
