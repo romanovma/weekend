@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NgClass } from '@angular/common';
 
 import { TourCollection }       from '../tour-collection';
@@ -36,7 +36,8 @@ export class TourListComponent implements OnInit, OnChanges {
 
   constructor(
     private tourService: TourService,
-    private router: Router) {}
+    private router: Router,
+    private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.getTours();
@@ -67,6 +68,7 @@ export class TourListComponent implements OnInit, OnChanges {
   }
 
   addTour() {
+    this.router.navigate(['./add-tour', 999], { relativeTo: this.route });
     this.addingTour = true;
     // this.selectedTour = null;
   }

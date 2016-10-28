@@ -1,3 +1,29 @@
-<p>
-  cabinet-payout works!
-</p>
+<div class="cabinet__payout">
+  <h4 class="cabinet__title">Мои туры</h4>
+  <div class="payout__main">
+    <div class="payout__main__available">
+      Доступно средств для вывода: <span class="payout__main__available__amount">3 500 руб.</span>
+    </div>
+    <div class="payout__main__input">
+      <div class="payout__main__card">
+        <h4>Реквизиты карты для вывода</h4>
+        <div class="input-wrapper">
+          <label class="fill-remaining-space">Номер карты</label>
+          <input [(ngModel)]="card.number">
+        </div>
+        <div class="input-wrapper">
+          <label class="fill-remaining-space">ФИО получателя</label>
+          <input [(ngModel)]="card.name">
+        </div>
+        <hr class="payout__main__card__hr" />
+        <button class="button--theme-save">Сохранить</button>
+        <button class="button--theme-cancel">Отменить изменения</button>
+      </div>
+      <div class="payout__main__amount">
+        <label>Укажите сумму для перевода</label>
+        <input [(ngModel)]="amount">
+        <button class="button--theme-save">Вывести на карту</button>
+      </div>
+    </div>
+  </div>
+</div>

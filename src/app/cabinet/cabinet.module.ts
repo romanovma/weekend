@@ -1,5 +1,6 @@
 import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
+import { FormsModule }    from '@angular/forms';
 
 import { ToursModule }    from '../tours/tours.module';
 
@@ -17,7 +18,8 @@ import { CabinetPayoutComponent } from './cabinet-payout/cabinet-payout.componen
   imports: [
     CommonModule,
     ToursModule,
-    cabinetRouting
+    cabinetRouting,
+    FormsModule
   ],
   declarations: [
     CabinetComponent,

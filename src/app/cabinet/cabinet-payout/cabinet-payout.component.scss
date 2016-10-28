@@ -1,0 +1,92 @@
+@import '../../app.component';
+@import '../cabinet.component';
+
+.payout__main {
+    border-radius: 10px;
+    background-color: #fff;
+    width: 100%;
+    padding: 0 23px 115px;
+    font-family: $font-style-secondary;
+
+  &__available {
+    font-weight: bold;
+    font-size: 14px;
+    border-bottom: solid 1px #d6dee2;
+    padding: 20px 0;
+
+    &__amount {
+      color: $primary-color;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  }
+
+  &__input {
+    display: flex;
+  }
+
+  &__card {
+    width: 50%;
+    display: inline-block;
+    padding-right: 26px;
+
+    h4 {
+      font-size: 16px;
+    }
+
+    label {
+      font-weight: bold;
+    	font-size: 14px;
+    }
+
+    input {
+      width: 302px;
+      height: 42px;
+    }
+
+    hr {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      height: 1px;
+      background: #d6dee2;
+      border: none;
+    }
+
+    button {
+      margin-right: 5px;
+    }
+  }
+
+  &__amount {
+    display: inline-block;
+    width: 50%;
+    background: #eff5f8;
+    border-radius: 10px;
+    margin-top: 25px;
+    text-align: center;
+
+    label {
+      display: block;
+      font-size: 18px;
+      margin: 25px auto;
+      color: #626c71;
+    }
+
+    input {
+      display: block;
+      margin-bottom: 25px;
+      width: 242px;
+      height: 65px;
+      border-radius: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 26px;
+      padding: 0;
+      text-align: center;
+    }
+
+    button {
+      margin-bottom: 40px;
+    }
+  }
+}
