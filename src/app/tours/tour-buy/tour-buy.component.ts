@@ -12,6 +12,7 @@ import { TourService } from '../tour.service';
   styleUrls: ['tour-buy.component.scss']
 })
 export class TourBuyComponent implements OnInit, OnDestroy {
+  error: any;
   activeMediaType: string = 'video';
   activeMedia: string;
 
@@ -34,7 +35,8 @@ export class TourBuyComponent implements OnInit, OnDestroy {
                           this.tour = tour;
                           this.updateActiveMedia(tour);
                         },
-                        error => this.errorMessage = <any>error);
+                        error => this.errorMessage = <any>error
+                      );
     });
   }
 

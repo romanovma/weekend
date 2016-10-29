@@ -9,15 +9,16 @@
         <h4>Реквизиты карты для вывода</h4>
         <div class="input-wrapper">
           <label class="fill-remaining-space">Номер карты</label>
-          <input [(ngModel)]="card.number">
+          <input [(ngModel)]="card.number" [disabled]="!editMode">
         </div>
         <div class="input-wrapper">
           <label class="fill-remaining-space">ФИО получателя</label>
-          <input [(ngModel)]="card.name">
+          <input [(ngModel)]="card.name" [disabled]="!editMode">
         </div>
         <hr class="payout__main__card__hr" />
-        <button class="button--theme-save">Сохранить</button>
-        <button class="button--theme-cancel">Отменить изменения</button>
+        <button class="button--theme-save" *ngIf="editMode" (click)="toggleEditCard(false)">Сохранить</button>
+        <button class="button--theme-cancel" *ngIf="editMode" (click)="toggleEditCard(false)">Отменить изменения</button>
+        <button class="button--theme-save" *ngIf="!editMode" (click)="toggleEditCard(true)">Изменить</button>
       </div>
       <div class="payout__main__amount">
         <label>Укажите сумму для перевода</label>

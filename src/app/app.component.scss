@@ -1,5 +1,6 @@
 /* COLORS */
 $primary-color: #fb7102;
+$primary-color-dark: #fb3702;
 $primary-hover: #ea6001;
 
 $save-color: #3fd980;
@@ -87,7 +88,8 @@ h2 {
   margin-bottom: 5px;
 }
 
-h3 {
+h3,
+.h3 {
 	font-size: 46px;
 	text-align: center;
 	font-weight: normal;
@@ -104,7 +106,8 @@ h4 {
 	text-align: left;
 }
 
-h5 {
+h5,
+.h5 {
 	font-size: 18px;
 	text-align: left;
 	font-weight: bold;
@@ -170,13 +173,22 @@ button {
 	align-items: center;
 }
 
-input {
-	border: solid 1px rgb(214, 222, 226);
+.edit-icon {
   border-radius: 6px;
-  background-color: rgb(255, 255, 255);
-	padding-left: 15px;
-	padding-right: 40px;
-	font-size: 14px;
+  background-color: $primary-color;
+  width: 23px;
+  height: 23px;
+  background-image: url('assets/img/icon-edit.png');
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.edit-dropdown {
+	width: 10px;
+	height: 9px;
+	background-image: url('assets/img/icon-dropdown.png');
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 .checkbox {
@@ -200,6 +212,12 @@ input {
   .md-checkbox-inner-container {
     display: none;
   }
+
+	input {
+		color: $font-color-secondary;
+	  font-size: 24px;
+		font-family: $font-style-regular;
+	}
 }
 
 .checkbox--theme-readonly {
@@ -345,6 +363,7 @@ input {
 		background-image: url('/assets/img/icon-walk.png');
 	}
 	&.bycicle {
+		width: 18px;
 		background-image: url('/assets/img/icon-bycicle.png');
 	}
 

@@ -15,11 +15,16 @@ export class CabinetPayoutComponent implements OnInit {
     number: 4444444444444444,
     name: 'Kittiporn Tirasat'
   };
+  editMode: boolean = false;
   amount: number;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggleEditCard(val) {
+    this.editMode = val;
   }
 
 }
