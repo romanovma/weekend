@@ -26,9 +26,10 @@ export class TourAddComponent implements OnInit {
   optionsShown = {
     movementType: false
   };
-  editLabels = {
-    important: []
-  }
+  // editLabels = {
+  //   important: [],
+  //   included
+  // }
 
   constructor(
     private tourService: TourService,
@@ -42,9 +43,12 @@ export class TourAddComponent implements OnInit {
         this.tourService.getTourById(id)
                         .subscribe(
                           tour => {
-                            this.tour = tour;
-                            this.updateActiveMedia(tour);
-                            this.updateEditLabels(tour);
+                            if (tour) {
+                              this.tour = tour;
+                              this.updateActiveMedia(tour);
+                            } else {
+                              this.tour = new Tour();
+                            }
                           },
                           error => this.errorMessage = <any>error
                         );
@@ -127,10 +131,14 @@ export class TourAddComponent implements OnInit {
     event.stopPropagation();
   }
 
-  updateEditLabels(tour) {
-    tour.important.map(() => {
-      this.editLabels.important.push(false);
-    });
+  // updateEditLabels(tour) {
+  //   tour.important.map(() => {
+  //     this.editLabels.important.push(false);
+  //   });
+  // }
+
+  addLabel(type) {
+    this.tour[type].push('');
   }
 
 }

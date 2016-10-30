@@ -180,6 +180,7 @@
     &__type {
       position: relative;
       cursor: pointer;
+      height: 39px;
     }
 
     &__type__text {
@@ -277,11 +278,42 @@
     margin-top: 20px;
   }
 
-  &__included md-checkbox {
-    border-color: #3fd980;
+  input.tour-add__labels__value {
+    font-family: $font-style-regular;
+    color: $font-color-secondary;
+    font-size: 24px;
+    line-height: 42px;
+    display: inline-block;
+    border: solid 3px $primary-color;
+    border-radius: 10px;
+    background-color: #fff;
+    height: 42px;
+    padding-left: 13px;
+    padding-right: 13px;
+    margin: 3px;
+    width: 197px;
+
+    &--included {
+      border-color: #3fd980;
+    }
+
+    &--not-included {
+      border-color: #ff073c;
+    }
   }
 
-  &__not-included md-checkbox {
-    border-color: #ff073c;
+  .labels__plus {
+    border: solid 3px rgb(245, 245, 244);
+    border-radius: 10px;
+    background-color: rgb(245, 245, 244);
+    width: 42px;
+    height: 42px;
+    display: inline-block;
+    margin: 3px;
+    vertical-align: bottom;
+    background-image: url('assets/img/icon-plus-labels.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
   }
 }

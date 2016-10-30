@@ -46,28 +46,26 @@
           <textarea [(ngModel)]="tour.description"></textarea>
           <span class="edit-icon"></span>
         </div>
-        <div class="tour-add__important" *ngIf="tour.important">
+        <div class="tour-add__important">
           <h5 class="labels__title">Важные моменты</h5>
-          <md-checkbox class="form-control checkbox checkbox--theme-readonly"
+          <input class="tour-add__labels__value tour-add__labels__value--important"
           *ngFor="let important of tour.important; let i = index"
-          (click)="editLabels.important[i] = true; ">
-            <span *ngIf="!editLabels.important[i]">{{important}}</span>
-            <input type="text" [(ngModel)]="tour.important[i]"
-            *ngIf="editLabels.important[i]"
-            (blur)="editLabels.important[i] = false"/>
-          </md-checkbox>
+          [(ngModel)]="tour.important[i]"/>
+          <span class="labels__plus" (click)="addLabel('important')"></span>
         </div>
-        <div class="tour-add__included" *ngIf="tour.included">
+        <div class="tour-add__included">
           <h5 class="labels__title">В стоимость включено</h5>
-          <md-checkbox class="form-control checkbox checkbox--theme-readonly" *ngFor="let included of tour.included">
-            {{included}}
-          </md-checkbox>
+          <input class="tour-add__labels__value tour-add__labels__value--included"
+          *ngFor="let included of tour.included; let i = index"
+          [(ngModel)]="tour.included[i]"/>
+          <span class="labels__plus" (click)="addLabel('included')"></span>
         </div>
-        <div class="tour-add__not-included" *ngIf="tour.notIncluded">
+        <div class="tour-add__not-included">
           <h5 class="labels__title">В стоимость не включено</h5>
-          <md-checkbox class="form-control checkbox checkbox--theme-readonly" *ngFor="let notIncluded of tour.notIncluded">
-            {{notIncluded}}
-          </md-checkbox>
+          <input class="tour-add__labels__value tour-add__labels__value--not-included"
+          *ngFor="let notIncluded of tour.notIncluded; let i = index"
+          [(ngModel)]="tour.notIncluded[i]"/>
+          <span class="labels__plus" (click)="addLabel('notIncluded')"></span>
         </div>
       </div>
     </div>
