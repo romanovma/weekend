@@ -1,4 +1,6 @@
-export class InMemoryDataService {
+import { InMemoryDbService } from 'angular-in-memory-web-api';
+
+export class appData implements InMemoryDbService {
   createDb() {
     let tours = [
       {

@@ -3,6 +3,8 @@ import { NgModule }                     from '@angular/core';
 import { CommonModule }                 from '@angular/common';
 import { FormsModule }                  from '@angular/forms';
 import { HttpModule, XHRBackend }                   from '@angular/http';
+import { InMemoryWebApiModule }     from 'angular-in-memory-web-api';
+import { appData }                 from './in-memory-data.service';
 
 import { routing, appRoutingProviders } from './app.routes';
 
@@ -32,6 +34,7 @@ import { TourCardComponent } from './tours/tour-card/tour-card.component';
     FormsModule,
     HttpModule,
     routing,
+    InMemoryWebApiModule.forRoot(appData),
     MdToolbarModule,
     StartModule,
     UserModule,

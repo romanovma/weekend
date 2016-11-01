@@ -13,8 +13,8 @@ import { MdRadioModule }       from '@angular2-material/radio';
 import { MdCheckboxModule }       from '@angular2-material/checkbox';
 
 
-import { InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api';
-import { InMemoryDataService }               from './in-memory-data.service';
+// import { InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api';
+// import { InMemoryDataService }               from './in-memory-data.service';
 
 import { TourListComponent }    from './tour-list/tour-list.component';
 import { TourBuyComponent }     from './tour-buy/tour-buy.component';
@@ -65,8 +65,8 @@ import { tourRouting }    from './tour.routes';
     TourService,
     // disableDeprecatedForms(),
     // provideForms(),
-    { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
-    { provide: SEED_DATA,  useClass: InMemoryDataService }     // in-mem server data
+    // { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
+    // { provide: SEED_DATA,  useClass: InMemoryDataService }     // in-mem server data
   ]
 })
 
