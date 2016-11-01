@@ -27,6 +27,7 @@ export class TourListComponent implements OnInit, OnChanges {
   @Input() maxPrice: number;
   @Input() date: Date;
   @Input() duration: number;
+  @Input() editMode: boolean = false;
 
   errorMessage;
   tours: Tour[];
@@ -60,7 +61,10 @@ export class TourListComponent implements OnInit, OnChanges {
   }
 
   onSelect(id: number) {
-    if (id) {
+    console.log(this.editMode);
+    if (id && this.editMode) {
+      this.router.navigate(['./add-tour', id], { relativeTo: this.route });
+    } else if (id) {
       this.router.navigate(['/tour', id]);
     } else {
       console.error('Cannot navigate to tour as id is not specified');

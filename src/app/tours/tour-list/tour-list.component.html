@@ -9,7 +9,8 @@
   <!-- cards -->
   <div class="tourlist__list--cards" *ngIf="!grid">
     <button class="tourlist__add" (click)="addTour()"><span class="tourlist__add__plus"></span></button>
-    <div class="tourlist__tour"  *ngFor="let tour of tours">
+    <div class="tourlist__tour" *ngFor="let tour of tours"
+    (click)="onSelect(tour.id)" (ontouchend)="onSelect(tour.id)">
       <app-tour-card [tour]="tour" [withCity]="withCity"></app-tour-card>
     </div>
   </div>

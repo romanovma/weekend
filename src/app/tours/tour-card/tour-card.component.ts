@@ -19,14 +19,6 @@ export class TourCardComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSelect(id: number) {
-    if (id) {
-      this.router.navigate(['/tour', id]);
-    } else {
-      console.error('Cannot navigate to tour as id is not specified');
-    }
-  }
-
   //TODO: move to service?
   setMovementTypeClass(type) {
     return {

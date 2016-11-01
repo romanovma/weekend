@@ -1,6 +1,4 @@
-<div class="tourlist__tour" [class.with-city]="withCity" [class.testimonial]="testimonial"
-  (click)="onSelect(tour?.id)"
-  (ontouchend)="onSelect(tour?.id)">
+<div class="tourlist__tour" [class.with-city]="withCity" [class.testimonial]="testimonial">
     <div class="tourlist__tour__city">{{tour.city}}</div>
     <div class="tourlist__tour__wrapper">
       <img src="/assets/img/tours/{{tour.photo}}" />
