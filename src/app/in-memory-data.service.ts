@@ -5,7 +5,7 @@ export class appData implements InMemoryDbService {
     let tours = [
       {
         "id": 1,
-        "code": '#000321',
+        "code": '000321',
         "title": "Легенды, мифы и тайны Уфы",
         "video": ["video-1-1.avi"],
         "dates": ["2016-04-23T18:25:43.511Z"],
@@ -29,7 +29,7 @@ export class appData implements InMemoryDbService {
       },
       {
         "id": 2,
-        "code": '#000322',
+        "code": '000322',
         "title": "Обзорная экскурсия по Уфе",
         "video": ["video-1-1.avi"],
         "dates": ["2016-04-23T18:25:43.511Z"],
@@ -53,7 +53,7 @@ export class appData implements InMemoryDbService {
       },
       {
         "id": 3,
-        "code": '#000323',
+        "code": '000323',
         "title": "Духовное наследие",
         "video": ["video-1-1.avi"],
         "dates": ["2016-04-23T18:25:43.511Z"],
@@ -77,7 +77,7 @@ export class appData implements InMemoryDbService {
       },
       {
         "id": 4,
-        "code": '#000324',
+        "code": '000324',
         "title": "Внедорожный тур Сердце Башкортостана",
         "video": ["video-1-1.avi"],
         "dates": ["2016-04-23T18:25:43.511Z"],
@@ -101,7 +101,7 @@ export class appData implements InMemoryDbService {
       },
       {
         "id": 5,
-        "code": '#000325',
+        "code": '000325',
         "title": "Каякинг и хуякинг",
         "video": ["tour-5"],
         "dates": ["2016-04-23T18:25:43.511Z"],
@@ -131,7 +131,7 @@ export class appData implements InMemoryDbService {
       },
       {
         "id": 6,
-        "code": '#000326',
+        "code": '000326',
         "title": "Старинные музеи Уфы",
         "video": ["video-1-1.avi"],
         "dates": ["2016-04-23T18:25:43.511Z"],
@@ -154,6 +154,52 @@ export class appData implements InMemoryDbService {
         "guidePhone": "8 926 11 11 116"
       }
     ];
-    return {tours};
+
+    let events = [
+      {
+        "id": 1,
+        "code": "001002",
+        "userId": 1,
+        "userName": "Анна Антоновна",
+        "count": 1,
+        "userPhone": '8 926 22 22 222',
+        "tourId": 1,
+        "tourName": 'Легенды, мифы и тайны Уфы',
+        "date": "2016-04-23T18:25:43.511Z",
+        "guidePhone": '8 926 11 11 111'
+      }
+    ]
+
+    let users = [
+      {
+        "id": 1,
+        "email": 'example@example.com',
+        "name": "Анна Антоновна",
+        "userPhone": '8 926 22 22 222'
+      },
+      {
+        "id": 2,
+        "email": 'hochu@greencartu.com',
+        "name": "Ivan",
+        "userPhone": '8 926 22 22 223'
+      },
+    ];
+
+    let guides = [
+      {
+        "id": 1,
+        "email": 'guide-1@guides.com',
+        "name": 'azaza',
+        "phone": '8 926 11 11 111'
+      },
+      {
+        "id": 2,
+        "email": 'guide-2@guides.com',
+        "name": 'ooo semen stepanich',
+        "phone": '8 926 11 11 112'
+      }
+    ];
+
+    return {tours, events, users, guides};
   }
 }
