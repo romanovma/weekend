@@ -1,10 +1,17 @@
 export class Event {
   id: number;
-  date: Date;
-
+  code: number;
+  userId: number;
+  userName: string;
+  count: number;
+  userPhone: string;
+  tourId: number;
+  tourTitle: string;
+  date: number;
+  guideId: number;
+  guidePhone: string;
 
   constructor(
-    id?: number
   ) {  }
 
 }

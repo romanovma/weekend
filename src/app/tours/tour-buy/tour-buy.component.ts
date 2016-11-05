@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { Subscription }                 from 'rxjs/Subscription';
 
 import { Tour } from '../tour';
+import { Event } from '../event';
 import { TourService } from '../tour.service';
 
 @Component({
@@ -17,6 +18,13 @@ export class TourBuyComponent implements OnInit, OnDestroy {
   activeMediaType: string = 'video';
   activeMedia: string;
   date: string;
+  userId: number = 1;
+  userName = 'Анна Антоновна';
+  userPhone = '8 926 22 22 222';
+  event: Event = new Event();
+  count: number = 1;
+  guideId: number = 1;
+  guidePhone = '8 926 11 11 111';
 
   withLogo: boolean = true;
   tour: Tour;
@@ -49,6 +57,7 @@ export class TourBuyComponent implements OnInit, OnDestroy {
                           this.tour = tour;
                           this.updateActiveMedia(tour);
                           this.date = moment(new Date(tour.dates)).format('YYYY-MM-DD');
+                          this.updateEvent();
                         },
                         error => this.errorMessage = <any>error
                       );
@@ -57,6 +66,31 @@ export class TourBuyComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  updateEvent() {
+    this.event.code = 999999;
+    this.event.userId = this.userId;
+    this.event.userName = this.userName;
+    this.event.count = this.count;
+    this.event.userPhone = this.userPhone;
+    this.event.tourId = this.tour.id;
+    this.event.tourTitle = this.tour.title;
+    this.event.date = this.tour.dates;
+    this.event.guideId = this.guideId;
+    this.event.guidePhone = this.guidePhone;
+  }
+
+  order() {
+    this.tourService
+        .postEvent(this.event)
+        .then(event => {
+          this.event = event; // saved tour, w/ id if new
+          this.router.navigate(['/me', this.userId]);
+        })
+        .catch(error => {
+          this.error = error
+        }); // TODO: Display error message
   }
 
   updateActiveMedia(tour: Tour) {
@@ -97,6 +131,6 @@ export class TourBuyComponent implements OnInit, OnDestroy {
   }
 
   onDateChanged(event:any) {
-    
+
   }
 }

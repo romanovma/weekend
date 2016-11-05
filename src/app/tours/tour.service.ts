@@ -40,6 +40,17 @@ export class TourService {
                .catch(this.handleError);
   }
 
+  postEvent(event: Event): Promise<Event> {
+    let headers = new Headers({
+      'Content-Type': 'application/json'});
+
+    return this.http
+               .post(this.eventsUrl, JSON.stringify(event), {headers: headers})
+               .toPromise()
+               .then(res => res.json().data)
+               .catch(this.handleError);
+  }
+
   // Update existing Tour
   private put(tour: Tour) {
     let headers = new Headers();

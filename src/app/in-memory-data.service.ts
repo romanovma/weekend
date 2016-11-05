@@ -152,7 +152,7 @@ export class appData implements InMemoryDbService {
         "count": 1,
         "userPhone": '8 926 22 22 222',
         "tourId": 1,
-        "tourName": 'Легенды, мифы и тайны Уфы',
+        "tourTitle": 'Легенды, мифы и тайны Уфы',
         "date": 1479192300000,
         "guideId": 1,
         "guidePhone": '8 926 11 11 111'
@@ -165,7 +165,7 @@ export class appData implements InMemoryDbService {
         "count": 1,
         "userPhone": '8 926 22 22 222',
         "tourId": 2,
-        "tourName": 'Обзорная экскурсия по Уфе',
+        "tourTitle": 'Обзорная экскурсия по Уфе',
         "date": 1477982700000,
         "guideId": 1,
         "guidePhone": '8 926 11 11 111'
@@ -178,7 +178,7 @@ export class appData implements InMemoryDbService {
         "count": 2,
         "userPhone": '8 926 22 22 224',
         "tourId": 3,
-        "tourName": 'Духовное наследие',
+        "tourTitle": 'Духовное наследие',
         "date": 1478346900000,
         "guideId": 1,
         "guidePhone": '8 926 11 11 111'
