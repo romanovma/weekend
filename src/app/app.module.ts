@@ -22,6 +22,8 @@ import { HelpComponent }                from './help/help.component';
 import { TourTestimonialComponent } from './tours/tour-testimonial/tour-testimonial.component';
 import { TourCardComponent } from './tours/tour-card/tour-card.component';
 
+import { MyDatePickerModule } from 'mydatepicker';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { TourCardComponent } from './tours/tour-card/tour-card.component';
     MdToolbarModule,
     StartModule,
     UserModule,
-    CabinetModule
+    CabinetModule,
+    MyDatePickerModule
   ],
   providers: [
     appRoutingProviders

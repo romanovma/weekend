@@ -79,6 +79,90 @@ input:-ms-input-placeholder  {
 
 
 /* ELEMENTS */
+//my-date-picker
+.mydp * {
+	font-family: $font-style-regular !important;
+	font-size: 20px !important;
+
+	.icon {
+		font-family: 'mydatepicker' !important;
+		color: $primary-color !important;
+	}
+}
+
+.mydp .currmonth {
+	background: none !important;
+	color: $font-color-secondary !important;
+}
+
+.mydp .currday div {
+	border: none !important;
+}
+
+.mydp .nextmonth {
+	color: #ccc !important;
+}
+
+.mydp .sundayDim {
+	opacity: 1 !important;
+}
+
+.mydp .tablesingleday {
+  border-radius: 10px;
+	border: solid 1px transparent;
+
+	&:hover {
+		// color: $font-color-primary !important;
+		// background: none !important;
+		// border: solid 1px $primary-color;
+		// border-radius: 10px;
+	}
+}
+
+.mydp.mydp .selectedday {
+	border-radius: 10px !important;
+	color: $font-color-primary !important;
+	background: $primary-color !important;
+
+	div {
+		border: none !important;
+		background: none !important;
+	}
+}
+
+.mydp .selector {
+	border: none !important;
+	background-color: $primary-color !important;
+	width: 260px !important;
+	margin-left: 0 !important;
+
+	.header {
+		border: none !important;
+	}
+
+	.caltable {
+		border: none !important;
+
+		td {
+			color: $font-color-secondary !important;
+		}
+
+		thead {
+			display: none !important;
+		}
+
+		tbody {
+			border: none !important;
+		}
+	}
+
+	.headertodaybtn {
+		display: none !important;
+		border: none !important;
+	}
+}
+//end of datepicker
+
 h1 {
   font-size: 80px;
   font-weight: normal;

@@ -6,7 +6,7 @@
         <span class="tourlist__tour__rating__icon" *ngFor="let i of ratingArr.slice(0, tour.rating > ratingArr.length ? atingArr.length : tour.rating)"></span>
       </div>
       <div class="tourlist__tour__date">
-        {{tour.dates[0] | date: 'dd.MM'}}
+        {{tour.dates | date: 'dd.MM'}}
       </div>
       <div class="tourlist__tour__title">
         {{tour.title}}

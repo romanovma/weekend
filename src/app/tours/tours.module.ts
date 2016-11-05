@@ -25,6 +25,7 @@ import { TourFilterComponent }  from './tour-filter/tour-filter.component';
 import { TourTestimonialComponent }  from './tour-testimonial/tour-testimonial.component';
 import { TourCardComponent }  from './tour-card/tour-card.component';
 
+import { MyDatePickerModule } from 'mydatepicker';
 
 
 import { TourService }    from './tour.service';
@@ -41,7 +42,8 @@ import { tourRouting }    from './tour.routes';
     // MdButtonModule,
     MdRadioModule,
     // MdSliderModule,
-    MdCheckboxModule
+    MdCheckboxModule,
+    MyDatePickerModule
   ],
   declarations: [
     TourListComponent,

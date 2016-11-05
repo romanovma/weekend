@@ -2,7 +2,7 @@ export class Tour {
   id: number;
   title: string;
   video: string[];
-  dates: number[];
+  dates: number;
   duration: number;
   movementType: string;
   area: string;
@@ -23,7 +23,7 @@ export class Tour {
   constructor(
     title: string = 'Заголовок',
     video: string[] = [],
-    dates: number[] = [1483185300000],
+    dates: number = 1483185300000,
     duration: number = 0,
     movementType: string = 'walk',
     area: string = '',

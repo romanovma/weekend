@@ -112,6 +112,10 @@
           <span class="edit-icon"></span>
         </div>
       </div>
+      <div class="tour-add__dates">
+        <span class="tour-add__dates__text">Отметьте даты, на которые доступен заказ данного тура</span>
+        <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker>
+      </div>
     </div>
   </div>
 

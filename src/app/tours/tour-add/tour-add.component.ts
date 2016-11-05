@@ -27,6 +27,17 @@ export class TourAddComponent implements OnInit {
   optionsShown = {
     movementType: false
   };
+  myDatePickerOptions = {
+    todayBtnTxt: 'Сегодня',
+    dateFormat: 'yyyy-mm-dd',
+    firstDayOfWeek: 'mo',
+    sunHighlight: true,
+    height: '34px',
+    width: '100%',
+    inline: true,
+    disableUntil: {year: 2016, month: 8, day: 10},
+    selectionTxtFontSize: '26px'
+  }
   // editLabels = {
   //   important: [],
   //   included
@@ -43,20 +54,26 @@ export class TourAddComponent implements OnInit {
         this.navigated = true;
         this.tourService.getTourById(id)
                         .subscribe(
-                          tour => {
-                            if (tour) {
-                              this.tour = tour;
-                              this.updateActiveMedia(tour);
-                            } else {
-                              this.tour = new Tour();
-                            }
-                          },
+                          tour => this.initTour(tour),
                           error => this.errorMessage = <any>error
                         );
       } else {
         this.navigated = false;
       }
     });
+  }
+
+  initTour(tour:Tour) {
+    if (tour) {
+      this.tour = tour;
+      this.updateActiveMedia(tour);
+    } else {
+      this.tour = new Tour();
+    }
+  }
+
+  onDateChanged(event:any) {
+      this.tour.dates = event.epoc * 1000;
   }
 
   save() {
