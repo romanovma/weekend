@@ -1,0 +1,125 @@
+@import '../../app.component';
+
+.eventlist__list--grid--cabinet .eventlist__event--row {
+  &__code {
+    order: 1;
+  }
+
+  &__name {
+    order: 2;
+    display: inline-block;
+  }
+
+  &__title {
+    order: 3;
+  }
+
+  &__date {
+    order: 4;
+  }
+
+  &__user-phone {
+    order: 5;
+    display: inline-block;
+  }
+
+  &__guide-phone {
+    display: none;
+  }
+}
+
+.eventlist__event--row {
+  width: 100%;
+  height: 62px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 8px;
+  background: $tourlist-bg;
+  border-radius: 10px;
+  padding: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__date {
+    background: $primary-color;
+    width: 90px;
+    color: $font-color-primary;
+    border-radius: 10px;
+    height: 40px;
+    font-family: $font-style-secondary;
+    font-size: 16px;
+    line-height: 40px;
+    padding: 0 8px;
+    display: flex;
+
+    &__icon {
+      width: 15px;
+      height: 40px;
+      background-image: url('/assets/img/icon-date.png');
+      background-repeat: no-repeat;
+      background-position: 0 12px;
+      display: inline-block;
+      margin-right: 7px;
+    }
+  }
+
+  &__code {
+    width: 65px;
+    margin-left: 15px;
+    font-size: 13px;
+    font-family: $font-style-secondary;
+    color: $tour-code;
+  }
+
+  &__name {
+    display: none;
+    font-size: 14px;
+    font-family: $font-style-secondary;
+  }
+
+  &__title {
+    margin-left: 20px;
+    font-size: 14px;
+    font-family: $font-style-secondary;
+    text-decoration: underline;
+    color: $primary-color;
+    cursor: pointer;
+  }
+
+  &__guide-phone,
+  &__user-phone {
+    min-width: 170px;
+    border-radius: 10px;
+    background: $private-header-color;
+    height: 40px;
+    // line-height: 40px;
+    font-size: 16px;
+    font-family: $font-style-secondary;
+    font-weight: bold;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+
+    &__text {
+      margin-top: 2px;
+    }
+
+    &__icon {
+      width: 25px;
+      height: 25px;
+      background-image: url('/assets/img/icon-call.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      display: inline-block;
+      margin-right: 9px;
+    }
+  }
+
+  &__user-phone {
+    display: none;
+  }
+}

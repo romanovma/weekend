@@ -8,6 +8,8 @@ import                         'rxjs/add/operator/toPromise';
 
 
 import { Tour }           from './tour';
+import { Event }           from './event';
+import { EventQuery }      from './event-query';
 
 
 @Injectable()
@@ -17,6 +19,7 @@ export class TourService {
 
   // private toursUrl = 'app/tours/tours.json';
   private toursUrl = 'app/tours';  // URL to web api
+  private eventsUrl = 'app/events';  // URL to web api
 
 
   getTourById(id: number): Observable<Tour> {
@@ -46,6 +49,19 @@ export class TourService {
 
     return this.http
                .put(url, JSON.stringify(tour), {headers: headers})
+               .toPromise()
+               .then(() => tour)
+               .catch(this.handleError);
+  }
+
+  delete(tour: Tour) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    let url = `${this.toursUrl}/${tour.id}`;
+
+    return this.http
+               .delete(url, {headers: headers})
                .toPromise()
                .then(() => tour)
                .catch(this.handleError);
@@ -89,6 +105,33 @@ export class TourService {
   getToursByQuery(query: Object): Observable<Tour[]> {
     return this.http.get(this.toursUrl)
                     .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  getEventsByQuery(query: EventQuery): Observable<Event[]> {
+    return this.http.get(this.eventsUrl)
+                    .map(this.extractData)
+                    .map(dataArray => dataArray.filter(event => query.userId ? event.userId === query.userId : true))
+                    .map(dataArray => dataArray.filter(event => query.guideId ? event.guideId === query.guideId : true))
+                    .map(dataArray => dataArray.filter(event => {
+                        let todayDate = new Date();
+                        let todayDay = todayDate.setHours(0,0,0,0);
+                        // let today = todayDate.getTime();
+                        let eventDate = new Date(event.date);
+                        let eventDay = eventDate.setHours(0,0,0,0);
+                        switch (query.period) {
+                          case 'past':
+                            return eventDay < todayDay;
+                          case 'today':
+                            return eventDay === todayDay;
+                          case 'future':
+                            return eventDay > todayDay;
+                          case 'todayfuture':
+                            return eventDay >= todayDay;
+                          default:
+                            return true;
+                        }
+                    }))
                     .catch(this.handleError);
   }
 

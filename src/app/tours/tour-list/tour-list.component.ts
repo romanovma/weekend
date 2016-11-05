@@ -55,13 +55,15 @@ export class TourListComponent implements OnInit, OnChanges {
     if (this.collectionId) {
       this.tourService.getToursByCollection(this.collectionId)
                       .subscribe(
-                        tours => this.tours = tours,
+                        tours => {
+                          this.tours = tours;
+                          console.log(tours);
+                        },
                         error => this.errorMessage = <any>error);
     }
   }
 
   onSelect(id: number) {
-    console.log(this.editMode);
     if (id && this.editMode) {
       this.router.navigate(['./add-tour', id], { relativeTo: this.route });
     } else if (id) {

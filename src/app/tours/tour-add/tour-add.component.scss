@@ -2,11 +2,21 @@
 
 .tour-add {
   margin: auto;
+  background: white;
+  border-radius: 10px;
+  padding-left: 25px;
+  padding-right: 10px;
 
   input {
     border: none;
     background: none;
     padding: 0;
+  }
+
+  input,
+  textarea {
+    border: solid 1px #ddd;
+    border-radius: 5px;
   }
 
   &__title__wrapper {
@@ -15,13 +25,13 @@
     .edit-icon {
       position: absolute;
       right: 12px;
-      top: calc(50% + 15px);
+      top: calc(50% + 5px);
       transform: translateY(-50%);
     }
   }
 
   &__title {
-    margin-top: 30px;
+    margin-top: 10px;
     text-align: left;
     width: 100%;
     font-family: $font-style-regular;
@@ -43,10 +53,16 @@
   }
 
   &__media {
-    border-radius: 10px;
-    height: 392px;
-    background: #000;
-    margin-bottom: 20px;
+    height: 100%;
+    width: 100%;
+
+    &__wrapper {
+      height: 392px;
+      background: #000;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
 
     & > img {
       height: 100%;
@@ -270,7 +286,7 @@
       height: 240px;
       resize: none;
       background: transparent;
-      border: none;
+      // border: none;
     }
   }
 
@@ -315,5 +331,16 @@
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
+  }
+
+  &__buttons {
+    padding-top: 15px;
+    padding-bottom: 20px;
+    font-size: 0;
+    border-top: solid 1px $border-light;
+
+    button {
+      margin-right: 10px;
+    }
   }
 }

@@ -17,6 +17,7 @@ import { MdCheckboxModule }       from '@angular2-material/checkbox';
 // import { InMemoryDataService }               from './in-memory-data.service';
 
 import { TourListComponent }    from './tour-list/tour-list.component';
+import { EventListComponent }    from './event-list/event-list.component';
 import { TourBuyComponent }     from './tour-buy/tour-buy.component';
 import { TourAddComponent }     from './tour-add/tour-add.component';
 import { TourSearchComponent }  from './tour-search/tour-search.component';
@@ -49,7 +50,8 @@ import { tourRouting }    from './tour.routes';
     TourSearchComponent,
     TourFilterComponent,
     TourTestimonialComponent,
-    TourCardComponent
+    TourCardComponent,
+    EventListComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -59,7 +61,8 @@ import { tourRouting }    from './tour.routes';
     TourAddComponent,
     TourSearchComponent,
     TourFilterComponent,
-    TourTestimonialComponent
+    TourTestimonialComponent,
+    EventListComponent
   ],
   providers: [
     TourService,

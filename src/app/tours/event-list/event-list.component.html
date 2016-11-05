@@ -1,0 +1,25 @@
+<div class="eventlist">
+  <div class="eventlist__list--grid" [class.eventlist__list--grid--cabinet]="cabinet">
+    <div class="eventlist__event--row" *ngFor="let event of events">
+      <span class="eventlist__event--row__date">
+        <span class="eventlist__event--row__date__icon"></span>
+        <span>{{event.date | date: 'dd.MM'}}</span>
+      </span>
+      <span class="eventlist__event--row__code">#{{event.code}}</span>
+      <span class="eventlist__event--row__name">{{event.userName}} ({{event.count}} чел)</span>
+      <span class="eventlist__event--row__title fill-remaining-space"
+      (click)="onSelect(event.id)"
+      (ontouchend)="onSelect(event.tourId)">
+        {{event.tourName}}
+      </span>
+      <span class="eventlist__event--row__guide-phone">
+        <span class="eventlist__event--row__guide-phone__icon"></span>
+        <span class="eventlist__event--row__guide-phone__text">{{event.guidePhone}}</span>
+      </span>
+      <span class="eventlist__event--row__user-phone">
+        <span class="eventlist__event--row__user-phone__icon"></span>
+        <span class="eventlist__event--row__user-phone__text">{{event.userPhone}}</span>
+      </span>
+    </div>
+  </div>
+</div>

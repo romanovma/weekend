@@ -5,7 +5,6 @@ export class appData implements InMemoryDbService {
     let tours = [
       {
         "id": 1,
-        "code": '000321',
         "title": "Легенды, мифы и тайны Уфы",
         "video": ["video-1-1.avi"],
         "dates": ["2016-04-23T18:25:43.511Z"],
@@ -24,12 +23,10 @@ export class appData implements InMemoryDbService {
         "city": "Уфа",
         "important": ["Экскурсия не для слабонервных!", "Есть опасность для жизни", "Двухразовое питание"],
         "included": ["Питание в кафе на кладбище", "Прокат туалетной бумаги", "Работа инструктора"],
-        "notIncluded": ["Фото-видео съемка"],
-        "guidePhone": "8 926 11 11 111"
+        "notIncluded": ["Фото-видео съемка"]
       },
       {
         "id": 2,
-        "code": '000322',
         "title": "Обзорная экскурсия по Уфе",
         "video": ["video-1-1.avi"],
         "dates": ["2016-04-23T18:25:43.511Z"],
@@ -48,12 +45,10 @@ export class appData implements InMemoryDbService {
         "city": "Уфа",
         "important": ["Экскурсия не для слабонервных!", "Есть опасность для жизни", "Двухразовое питание"],
         "included": ["Питание в кафе на кладбище", "Прокат туалетной бумаги", "Работа инструктора"],
-        "notIncluded": ["Фото-видео съемка"],
-        "guidePhone": "8 926 11 11 112"
+        "notIncluded": ["Фото-видео съемка"]
       },
       {
         "id": 3,
-        "code": '000323',
         "title": "Духовное наследие",
         "video": ["video-1-1.avi"],
         "dates": ["2016-04-23T18:25:43.511Z"],
@@ -72,12 +67,10 @@ export class appData implements InMemoryDbService {
         "city": "Уфа",
         "important": ["Экскурсия не для слабонервных!", "Есть опасность для жизни", "Двухразовое питание"],
         "included": ["Питание в кафе на кладбище", "Прокат туалетной бумаги", "Работа инструктора"],
-        "notIncluded": ["Фото-видео съемка"],
-        "guidePhone": "8 926 11 11 113"
+        "notIncluded": ["Фото-видео съемка"]
       },
       {
         "id": 4,
-        "code": '000324',
         "title": "Внедорожный тур Сердце Башкортостана",
         "video": ["video-1-1.avi"],
         "dates": ["2016-04-23T18:25:43.511Z"],
@@ -96,13 +89,11 @@ export class appData implements InMemoryDbService {
         "city": "Белорецк",
         "important": ["Экскурсия не для слабонервных!", "Есть опасность для жизни", "Двухразовое питание"],
         "included": ["Питание в кафе на кладбище", "Прокат туалетной бумаги", "Работа инструктора"],
-        "notIncluded": ["Фото-видео съемка"],
-        "guidePhone": "8 926 11 11 114"
+        "notIncluded": ["Фото-видео съемка"]
       },
       {
         "id": 5,
-        "code": '000325',
-        "title": "Каякинг и хуякинг",
+        "title": "Каякинг",
         "video": ["tour-5"],
         "dates": ["2016-04-23T18:25:43.511Z"],
         "duration": 7,
@@ -126,12 +117,10 @@ export class appData implements InMemoryDbService {
           "photo": "avatar-user1.png",
           "rating": 5,
           "text": "Катались в первый раз, остались очень довольны. Отличный маршрут, который соединил в себе и прямички, где можно без опаски погонять, ощутить скорость и горный массив, где есть возможность получить удовольствие от управления квадроциклом и красивые… пейзажи, которыми можно насладиться во время привалов. Обязательно берите с собой фотоаппараты, потому что по пути будут очень красивые места к которым невозможно добраться на обычной машине. Отдельная благодарность работникам данного интернет-портала за отличный сервис."
-        }],
-        "guidePhone": "8 926 11 11 115"
+        }]
       },
       {
         "id": 6,
-        "code": '000326',
         "title": "Старинные музеи Уфы",
         "video": ["video-1-1.avi"],
         "dates": ["2016-04-23T18:25:43.511Z"],
@@ -150,8 +139,7 @@ export class appData implements InMemoryDbService {
         "city": "Белорецк",
         "important": ["Экскурсия не для слабонервных!", "Есть опасность для жизни", "Двухразовое питание"],
         "included": ["Питание в кафе на кладбище", "Прокат туалетной бумаги", "Работа инструктора"],
-        "notIncluded": ["Фото-видео съемка"],
-        "guidePhone": "8 926 11 11 116"
+        "notIncluded": ["Фото-видео съемка"]
       }
     ];
 
@@ -165,7 +153,34 @@ export class appData implements InMemoryDbService {
         "userPhone": '8 926 22 22 222',
         "tourId": 1,
         "tourName": 'Легенды, мифы и тайны Уфы',
-        "date": "2016-04-23T18:25:43.511Z",
+        "date": 1479192300000,
+        "guideId": 1,
+        "guidePhone": '8 926 11 11 111'
+      },
+      {
+        "id": 2,
+        "code": "001044",
+        "userId": 1,
+        "userName": "Анна Антоновна",
+        "count": 1,
+        "userPhone": '8 926 22 22 222',
+        "tourId": 2,
+        "tourName": 'Обзорная экскурсия по Уфе',
+        "date": 1477982700000,
+        "guideId": 1,
+        "guidePhone": '8 926 11 11 111'
+      },
+      {
+        "id": 3,
+        "code": "001570",
+        "userId": 2,
+        "userName": "Леонид Иванович",
+        "count": 2,
+        "userPhone": '8 926 22 22 224',
+        "tourId": 3,
+        "tourName": 'Духовное наследие',
+        "date": 1478346900000,
+        "guideId": 1,
         "guidePhone": '8 926 11 11 111'
       }
     ]
@@ -180,22 +195,22 @@ export class appData implements InMemoryDbService {
       {
         "id": 2,
         "email": 'hochu@greencartu.com',
-        "name": "Ivan",
-        "userPhone": '8 926 22 22 223'
+        "name": "Леонид Иванович",
+        "userPhone": '8 926 22 22 224'
       },
     ];
 
     let guides = [
       {
         "id": 1,
-        "email": 'guide-1@guides.com',
-        "name": 'azaza',
+        "email": 'igor@popkov.com',
+        "name": 'ORDEN Travel',
         "phone": '8 926 11 11 111'
       },
       {
         "id": 2,
-        "email": 'guide-2@guides.com',
-        "name": 'ooo semen stepanich',
+        "email": 'elon@mask.com',
+        "name": 'SpaceX',
         "phone": '8 926 11 11 112'
       }
     ];

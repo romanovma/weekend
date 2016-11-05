@@ -1,3 +1,5 @@
+<h4 class="black-color">Редактирование тура</h4>
+
 <div class="tour-add" *ngIf="tour">
   <div class="tour-add__title__wrapper">
     <input class="tour-add__title h3" [(ngModel)]="tour.title" />
@@ -6,14 +8,16 @@
 
   <div class="tour-add__main">
     <div class="tour-add__media__container">
-      <div class="tour-add__media" *ngIf="activeMedia">
-        <img src="assets/img/tours/{{activeMedia}}" *ngIf="activeMediaType === 'photo'" />
-        <!-- first try HTML5 playback: if serving as XML, expand `controls` to `controls="controls"` and autoplay likewise -->
-        <!-- warning: playback does not work on iOS3 if you include the poster attribute! fixed in iOS4.0 -->
-        <video #movieplayer width="100%" height="100%" controls *ngIf="activeMediaType === 'video'">
-        	<!-- MP4 must be first for iPad! -->
-        	<source src="assets/video/{{activeMedia}}.mp4" type="video/mp4" /><!-- Safari / iOS video    -->
-        </video>
+      <div class="tour-add__media__wrapper">
+        <div class="tour-add__media" *ngIf="activeMedia">
+          <img src="assets/img/tours/{{activeMedia}}" *ngIf="activeMediaType === 'photo'" />
+          <!-- first try HTML5 playback: if serving as XML, expand `controls` to `controls="controls"` and autoplay likewise -->
+          <!-- warning: playback does not work on iOS3 if you include the poster attribute! fixed in iOS4.0 -->
+          <video #movieplayer width="100%" height="100%" controls *ngIf="activeMediaType === 'video'">
+          	<!-- MP4 must be first for iPad! -->
+          	<source src="assets/video/{{activeMedia}}.mp4" type="video/mp4" /><!-- Safari / iOS video    -->
+          </video>
+        </div>
       </div>
       <div class="tour-add__media__list">
         <div class="tour-add__media__list__icon" *ngFor="let video of tour.video"
@@ -109,6 +113,12 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="tour-add__buttons">
+    <button class="button--theme-save" (click)="save()">Сохранить</button>
+    <button class="button--theme-cancel" (click)="goBack()">Отменить изменения</button>
+    <button class="button--theme-delete" (click)="delete()">x</button>
   </div>
 
 </div>

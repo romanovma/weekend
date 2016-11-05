@@ -10,12 +10,12 @@
   </div>
 </div>
 
-<div class="user">
+<div class="user" *ngIf="user">
   <h4 class="user__title">Мои туры</h4>
   <div class="list--black">
-    <app-tour-list grid="true" class="user__tours--current"></app-tour-list>
+    <app-event-list class="user__tours--current" [userId]="user.id" [period]="'todayfuture'"></app-event-list>
   </div>
 
   <h4 class="user__title">Прошедшие туры</h4>
-  <app-tour-list grid="true" class="user__tours--past"></app-tour-list>
+  <app-event-list grid="true" class="user__tours--past" [userId]="user.id" [period]="'past'"></app-event-list>
 </div>

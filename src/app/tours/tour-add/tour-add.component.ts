@@ -15,6 +15,7 @@ import { TourService } from '../tour.service';
 export class TourAddComponent implements OnInit {
   @Input() tour: Tour;
   @Output() close = new EventEmitter();
+
   error: any;
   errorMessage: string;
   navigated = false; // true if navigated here
@@ -54,7 +55,6 @@ export class TourAddComponent implements OnInit {
                         );
       } else {
         this.navigated = false;
-        this.tour = new Tour();
       }
     });
   }
@@ -65,6 +65,17 @@ export class TourAddComponent implements OnInit {
         .then(tour => {
           this.tour = tour; // saved tour, w/ id if new
           this.goBack(tour);
+        })
+        .catch(error => {
+          this.error = error
+        }); // TODO: Display error message
+  }
+
+  delete() {
+    this.tourService
+        .delete(this.tour)
+        .then(tour => {
+          this.goBack();
         })
         .catch(error => {
           this.error = error

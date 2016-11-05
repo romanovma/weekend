@@ -26,13 +26,13 @@ export class UserComponent implements OnInit, OnDestroy {
     private userService: UserService) {}
 
   ngOnInit() {
-    // this.sub = this.route.params.subscribe(params => {
-    //   let id = +params['id'];
-    //   this.userService.getUserById(id)
-    //                   .subscribe(
-    //                     user => this.user = user,
-    //                     error => this.errorMessage = <any>error);
-    // });
+    this.sub = this.route.params.subscribe(params => {
+      let id = +params['id'];
+      this.userService.getUserById(id)
+                      .subscribe(
+                        user => this.user = user,
+                        error => this.errorMessage = <any>error);
+    });
   }
 
   ngOnDestroy() {

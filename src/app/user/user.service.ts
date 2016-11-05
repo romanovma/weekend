@@ -12,7 +12,7 @@ export class UserService {
 
   constructor(private http: Http) { }
 
-  private usersUrl = 'app/user/users.json';
+  private usersUrl = 'app/users';  // URL to web api
 
   getUserById(id: number): Observable<User> {
     return this.http.get(this.usersUrl)

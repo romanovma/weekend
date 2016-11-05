@@ -4,6 +4,9 @@ $primary-color-dark: #fb3702;
 $primary-hover: #ea6001;
 
 $save-color: #3fd980;
+$delete-color: #e74e55;
+
+$border-light: #efeef5;
 
 $secondary-color: #2a2f32;
 $secondary-hover: #2d3234;
@@ -68,6 +71,10 @@ input:-ms-input-placeholder  {
 .full-width {
   width: 100%;
   flex: 0 1 100%;
+}
+
+.black-color {
+	color: #000;
 }
 
 
@@ -164,6 +171,11 @@ button {
 	  border: none;
 	  padding: 0;
 	  margin: 0;
+	}
+
+	&--theme-delete {
+		background: $delete-color;
+		font-size: 16px;
 	}
 }
 
