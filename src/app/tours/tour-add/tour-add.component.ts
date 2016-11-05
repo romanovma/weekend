@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import * as moment from 'moment';
 
 import                         'rxjs/add/operator/toPromise';
 
@@ -18,7 +19,7 @@ export class TourAddComponent implements OnInit {
 
   error: any;
   errorMessage: string;
-  date: Date;
+  date: string;
   navigated = false; // true if navigated here
   activeMediaType: string = 'video';
   activeMedia: string;
@@ -68,8 +69,7 @@ export class TourAddComponent implements OnInit {
     if (tour) {
       this.tour = tour;
       this.updateActiveMedia(tour);
-      this.date = new Date(tour.dates);
-      console.log(this.date);
+      this.date = moment(new Date(tour.dates)).format('YYYY-MM-DD');
     } else {
       this.tour = new Tour();
     }

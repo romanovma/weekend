@@ -90,6 +90,10 @@ input:-ms-input-placeholder  {
 	}
 }
 
+.mydp.mydp .disabled {
+	background-color: transparent !important;;
+}
+
 .mydp .currmonth {
 	background: none !important;
 	color: $font-color-secondary !important;

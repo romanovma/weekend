@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute }       from '@angular/router';
+import * as moment from 'moment';
 
 import { Subscription }                 from 'rxjs/Subscription';
 
@@ -15,7 +16,7 @@ export class TourBuyComponent implements OnInit, OnDestroy {
   error: any;
   activeMediaType: string = 'video';
   activeMedia: string;
-  date: number;
+  date: string;
 
   withLogo: boolean = true;
   tour: Tour;
@@ -30,7 +31,7 @@ export class TourBuyComponent implements OnInit, OnDestroy {
     height: '34px',
     width: '100%',
     inline: true,
-    disableUntil: {year: 2016, month: 8, day: 10},
+    disableUntil: {year: 3016, month: 8, day: 10},
     selectionTxtFontSize: '26px'
   }
 
@@ -47,6 +48,7 @@ export class TourBuyComponent implements OnInit, OnDestroy {
                         tour => {
                           this.tour = tour;
                           this.updateActiveMedia(tour);
+                          this.date = moment(new Date(tour.dates)).format('YYYY-MM-DD');
                         },
                         error => this.errorMessage = <any>error
                       );
@@ -95,6 +97,6 @@ export class TourBuyComponent implements OnInit, OnDestroy {
   }
 
   onDateChanged(event:any) {
-      this.date = event.epoc * 1000;
+    
   }
 }
