@@ -11,12 +11,17 @@
         <md-slider class="form-control">
         </md-slider>
       </div> -->
-      <div class="form-group full-width">
+      <!-- <div class="form-group full-width">
         <md-input class="form-control"
         placeholder="Date"
         [(ngModel)]="queryModel.date"
         name="date"></md-input>
+      </div> -->
+      <div class="tour-filter__filter__date">
+        <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker>
       </div>
+
+
       <div class="tour-filter__filter__labels">
         <div class="form-group">
           <md-checkbox class="form-control checkbox"

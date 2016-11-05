@@ -15,11 +15,24 @@ export class TourBuyComponent implements OnInit, OnDestroy {
   error: any;
   activeMediaType: string = 'video';
   activeMedia: string;
+  date: number;
 
   withLogo: boolean = true;
   tour: Tour;
   errorMessage: string;
   private sub: Subscription;
+
+  myDatePickerOptions = {
+    todayBtnTxt: 'Сегодня',
+    dateFormat: 'yyyy-mm-dd',
+    firstDayOfWeek: 'mo',
+    sunHighlight: true,
+    height: '34px',
+    width: '100%',
+    inline: true,
+    disableUntil: {year: 2016, month: 8, day: 10},
+    selectionTxtFontSize: '26px'
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -81,4 +94,7 @@ export class TourBuyComponent implements OnInit, OnDestroy {
     }
   }
 
+  onDateChanged(event:any) {
+      this.date = event.epoc * 1000;
+  }
 }

@@ -58,8 +58,7 @@
   </div>
   <div class="tour-buy__secondary">
     <div class="tour-buy__calendar">
-      <img src="assets/img/mock/calendar.png" />
-      <!-- Date: {{tour.dates}} -->
+      <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker>
     </div>
     <div class="tour-buy__info">
       <!-- <div>operator: {{tour.operator}} - rating: {{tour.rating}}</div> -->

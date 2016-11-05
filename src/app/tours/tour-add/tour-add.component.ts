@@ -18,6 +18,7 @@ export class TourAddComponent implements OnInit {
 
   error: any;
   errorMessage: string;
+  date: Date;
   navigated = false; // true if navigated here
   activeMediaType: string = 'video';
   activeMedia: string;
@@ -36,7 +37,7 @@ export class TourAddComponent implements OnInit {
     width: '100%',
     inline: true,
     disableUntil: {year: 2016, month: 8, day: 10},
-    selectionTxtFontSize: '26px'
+    selectionTxtFontSize: '26px',
   }
   // editLabels = {
   //   important: [],
@@ -67,6 +68,8 @@ export class TourAddComponent implements OnInit {
     if (tour) {
       this.tour = tour;
       this.updateActiveMedia(tour);
+      this.date = new Date(tour.dates);
+      console.log(this.date);
     } else {
       this.tour = new Tour();
     }
