@@ -2,10 +2,20 @@
 
 .start {
   margin: auto;
+  position: relative;
+  padding-top: 95px;
+
+  .logo {
+    margin: auto;
+  }
+
+  h1 {
+    position: relative;
+    text-align: center;
+  }
 }
 
 .hero {
-  padding-top: 95px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +23,9 @@
   height: 460px;
   background-image: url('assets/img/hero-image.png');
   background-position: bottom center;
+  position: absolute;
+  width: 100%;
+  top: 0;
 }
 
 .login-buttons {

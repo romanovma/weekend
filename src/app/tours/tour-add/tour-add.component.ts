@@ -71,7 +71,10 @@ export class TourAddComponent implements OnInit {
       this.updateActiveMedia(tour);
       this.date = moment(new Date(tour.dates)).format('YYYY-MM-DD');
     } else {
+      let today = new Date();
       this.tour = new Tour();
+      this.tour.dates = today.getTime();
+      this.date = moment(today).format('YYYY-MM-DD');
     }
   }
 

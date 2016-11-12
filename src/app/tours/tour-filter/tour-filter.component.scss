@@ -1,8 +1,41 @@
-// @import '../../app.component.scss';
+@import '../../app.component.scss';
 
 .tour-filter {
   padding: 30px;
   margin: auto;
+
+  &__text {
+    display: inline-block;
+    height: 60px;
+    color: $font-color-secondary;
+    border: none;
+    font-size: 16px;
+    outline: none;
+
+    &__wrapper {
+      display: flex;
+      vertical-align: top;
+      position: relative;
+      z-index: 10;
+      border-radius: 10px;
+      background-color: #fff;
+      width: 600px;
+      height: 60px;
+      margin-bottom: 105px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &__button {
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      background-image: url('assets/img/icon-search.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: transparent;
+    }
+  }
 
   &__filter__date {
     height: 211px;

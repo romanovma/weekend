@@ -7,6 +7,8 @@ import { Tour }                 from '../tour';
 import { TourQuery }            from '../tour-query';
 import { TourService }          from '../tour.service';
 
+import { Observable }           from 'rxjs/Observable';
+
 
 @Component({
   selector: 'app-tour-list',
@@ -20,20 +22,24 @@ import { TourService }          from '../tour.service';
   // ]
 })
 export class TourListComponent implements OnInit, OnChanges {
-  @Input() collectionId: string;
-  @Input() grid: boolean = false;
-  @Input() cabinet: boolean = false;
+  // @Input() grid: boolean = false;
+  // @Input() cabinet: boolean = false;
   @Input() withCity: boolean = false;
-  @Input() maxPrice: number;
-  @Input() date: Date;
-  @Input() duration: number;
+  // @Input() maxPrice: number;
+  // @Input() date: Date;
+  // @Input() duration: number;
   @Input() editMode: boolean = false;
 
-  errorMessage;
-  tours: Tour[];
+  @Input() collectionId: string;
+  // @Input() inputTours: Tour[];
+  @Input() tours: Observable<Tour[]>;
+
+
+
   query: TourQuery;
-  addingTour = false;
+  // addingTour = false;
   error: any;
+  errorMessage;
 
   constructor(
     private tourService: TourService,
@@ -41,26 +47,26 @@ export class TourListComponent implements OnInit, OnChanges {
     private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.getTours();
+    // this.getTours();
   }
 
   ngOnChanges() {
-      this.tourService.getToursByQuery(this.query)
-                      .subscribe(
-                        tours => this.tours = tours,
-                        error => this.errorMessage = <any>error);
+      // this.tourService.getToursByQuery(this.query)
+      //                 .subscribe(
+      //                   tours => this.tours = tours,
+      //                   error => this.errorMessage = <any>error);
   }
 
   getTours() {
-    if (this.collectionId) {
-      this.tourService.getToursByCollection(this.collectionId)
-                      .subscribe(
-                        tours => {
-                          this.tours = tours;
-                          console.log(tours);
-                        },
-                        error => this.errorMessage = <any>error);
-    }
+    // if (this.collectionId) {
+    //   this.tourService.getToursByCollection(this.collectionId)
+    //                   .subscribe(
+    //                     tours => {
+    //                       this.tours = tours;
+    //                       console.log(tours);
+    //                     },
+    //                     error => this.errorMessage = <any>error);
+    // }
   }
 
   onSelect(id: number) {
@@ -74,14 +80,14 @@ export class TourListComponent implements OnInit, OnChanges {
   }
 
   addTour() {
-    this.router.navigate(['./add-tour', 999], { relativeTo: this.route });
-    this.addingTour = true;
+    this.router.navigate(['./add-tour', 0], { relativeTo: this.route });
+    // this.addingTour = true;
     // this.selectedTour = null;
   }
 
-  close(savedTour: Tour) {
-    this.addingTour = false;
-    if (savedTour) { this.getTours(); }
-  }
+  // close(savedTour: Tour) {
+  //   this.addingTour = false;
+  //   if (savedTour) { this.getTours(); }
+  // }
 
 }
