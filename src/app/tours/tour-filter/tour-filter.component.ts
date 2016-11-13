@@ -1,4 +1,4 @@
-import { Component, OnInit }    from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges }    from '@angular/core';
 
 import { TourQuery }            from '../tour-query';
 import { TourService }          from '../tour.service';
@@ -44,12 +44,16 @@ export class TourFilterComponent implements OnInit {
         this.tours = this.searchQueryStream
                          .debounceTime(400)
                          .distinctUntilChanged(
-                           (a, b) => {
-                             return a === b
-                           },
-                           x => JSON.stringify(x))
+                             (a, b) => {
+                                 return a === b
+                             },
+                             x => JSON.stringify(x))
                          .do(query => console.log(query))
                          .switchMap(query => this.tourService.getToursByQuery(query))
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        console.log(changes);
     }
 
     onDateChanged(event:any) {
@@ -57,6 +61,28 @@ export class TourFilterComponent implements OnInit {
     }
 
     search() {
+        this.searchQueryStream.next(this.query);
+    }
+
+    onLabelsAllChanged(event) {
+        if (event) {
+            this.query.car = false;
+            this.query.bycicle = false;
+            this.query.walk = false;
+            this.query.smallPeriod = false;
+            this.query.middlePeriod = false;
+            this.query.largPeriod = false;
+            this.query.xlargePeriod = false;
+        }
+
+        this.searchQueryStream.next(this.query);
+    }
+
+    onLabelsOtherChanged(event) {
+        if (event) {
+            this.query.all = false;
+        }
+
         this.searchQueryStream.next(this.query);
     }
 }

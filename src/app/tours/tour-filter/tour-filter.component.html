@@ -21,42 +21,50 @@
         <div class="form-group">
           <md-checkbox class="form-control checkbox"
           [(ngModel)]="query.all"
+          (ngModelChange)="onLabelsAllChanged($event)"
           name="all">Все</md-checkbox>
         </div>
         <div class="form-group">
           <md-checkbox class="form-control checkbox"
           [(ngModel)]="query.car"
+          (ngModelChange)="onLabelsOtherChanged($event)"
           name="car">На машине</md-checkbox>
         </div>
         <div class="form-group">
           <md-checkbox class="form-control checkbox"
           [(ngModel)]="query.bycicle"
+          (ngModelChange)="onLabelsOtherChanged($event)"
           name="bycicle">На велосипеде</md-checkbox>
         </div>
         <div class="form-group">
           <md-checkbox class="form-control checkbox"
           [(ngModel)]="query.walk"
+          (ngModelChange)="onLabelsOtherChanged($event)"
           name="walk">Пешие</md-checkbox>
         </div>
         <div class="form-group">
           <md-checkbox class="form-control checkbox"
-          [(ngModel)]="query.timeInterval1"
-          name="timeInterval1">1-2 часа</md-checkbox>
+          [(ngModel)]="query.smallPeriod"
+          (ngModelChange)="onLabelsOtherChanged($event)"
+          name="smallPeriod">1-2 часа</md-checkbox>
         </div>
         <div class="form-group">
           <md-checkbox class="form-control checkbox"
-          [(ngModel)]="query.timeInterval2"
-          name="timeInterval2">2-4 часа</md-checkbox>
+          [(ngModel)]="query.middlePeriod"
+          (ngModelChange)="onLabelsOtherChanged($event)"
+          name="middlePeriod">2-4 часа</md-checkbox>
         </div>
         <div class="form-group">
           <md-checkbox class="form-control checkbox"
-          [(ngModel)]="query.timeInterval3"
-          name="timeInterval3">5-8 часов</md-checkbox>
+          [(ngModel)]="query.largPeriod"
+          (ngModelChange)="onLabelsOtherChanged($event)"
+          name="largPeriod">5-8 часов</md-checkbox>
         </div>
         <div class="form-group">
           <md-checkbox class="form-control checkbox"
-          [(ngModel)]="query.timeInterval4"
-          name="timeInterval4">Пара дней</md-checkbox>
+          [(ngModel)]="query.xlargePeriod"
+          (ngModelChange)="onLabelsOtherChanged($event)"
+          name="xlargePeriod">Пару дней</md-checkbox>
         </div>
       </div>
     </form>

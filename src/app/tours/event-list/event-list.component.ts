@@ -17,7 +17,7 @@ import { TourService }          from '../tour.service';
 export class EventListComponent implements OnInit {
   @Input() cabinet: boolean = false;
   @Input() userId: number;
-  @Input() guideId: number;
+  @Input() cabinetId: number;
   @Input() period: string;
 
   errorMessage;
@@ -25,7 +25,7 @@ export class EventListComponent implements OnInit {
   query: EventQuery = {
     period: '',
     userId: 0,
-    guideId: 0
+    cabinetId: 0
   };
   error: any;
 
@@ -36,7 +36,7 @@ export class EventListComponent implements OnInit {
 
   ngOnInit() {
     this.query.userId = this.userId;
-    this.query.guideId = this.guideId;
+    this.query.cabinetId = this.cabinetId;
     this.query.period = this.period;
     this.getEvents();
   }
@@ -44,11 +44,9 @@ export class EventListComponent implements OnInit {
   getEvents() {
     this.tourService.getEventsByQuery(this.query)
                     .subscribe(
-                      events => {
-                        this.events = events;
-                        // console.log(this.events);
-                      },
-                      error => this.errorMessage = <any>error);
+                        events => this.events = events,
+                        error => this.errorMessage = <any>error
+                    );
   }
 
   onSelect(id: number) {

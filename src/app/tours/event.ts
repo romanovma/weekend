@@ -8,7 +8,7 @@ export class Event {
   tourId: number;
   tourTitle: string;
   date: number;
-  guideId: number;
+  cabinetId: number;
   guidePhone: string;
 
   constructor(

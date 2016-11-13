@@ -23,7 +23,7 @@ export class TourBuyComponent implements OnInit, OnDestroy {
   userPhone = '8 926 22 22 222';
   event: Event = new Event();
   count: number = 1;
-  guideId: number = 1;
+  cabinetId: number = 1;
   guidePhone = '8 926 11 11 111';
 
   withLogo: boolean = true;
@@ -77,7 +77,7 @@ export class TourBuyComponent implements OnInit, OnDestroy {
     this.event.tourId = this.tour.id;
     this.event.tourTitle = this.tour.title;
     this.event.date = this.tour.dates;
-    this.event.guideId = this.guideId;
+    this.event.cabinetId = this.cabinetId;
     this.event.guidePhone = this.guidePhone;
   }
 

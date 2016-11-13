@@ -19,6 +19,7 @@ export class Tour {
   important: string[];
   included: string[];
   notIncluded: string[];
+  cabinetId: number;
 
   constructor(
     title: string = 'Заголовок',

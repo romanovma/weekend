@@ -8,8 +8,7 @@ export class TourQuery {
     smallPeriod: boolean;
     middlePeriod: boolean;
     largPeriod: boolean;
-    individual: boolean;
-    group: boolean;
+    xlargePeriod: boolean;
 
     constructor (
         title: string = '',
@@ -20,8 +19,7 @@ export class TourQuery {
         smallPeriod: boolean = false,
         middlePeriod: boolean = false,
         largPeriod: boolean = false,
-        individual: boolean = false,
-        group: boolean = false
+        xlargePeriod: boolean = false
     ) {
         this.title = title;
         this.all = all;
@@ -31,7 +29,6 @@ export class TourQuery {
         this.smallPeriod = smallPeriod;
         this.middlePeriod = middlePeriod;
         this.largPeriod = largPeriod;
-        this.individual = individual;
-        this.group = group;
+        this.xlargePeriod = xlargePeriod;
     }
 }

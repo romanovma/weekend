@@ -2,11 +2,11 @@
   <h4 class="cabinet__title">Входящие заявки</h4>
   <div class="list--black list--black--date-black">
     <div class="list--black__title">Заявки на сегодня</div>
-    <app-event-list grid="true" cabinet="true" class="user__tours--current" [period]="'today'"></app-event-list>
+    <app-event-list grid="true" cabinet="true" class="user__tours--current" [period]="'today'" [cabinetId]="cabinetId"></app-event-list>
   </div>
 
-  <app-event-list cabinet="true" [period]="'future'"></app-event-list>
+  <app-event-list cabinet="true" [period]="'future'" [cabinetId]="cabinetId"></app-event-list>
 
   <h4 class="cabinet__title">Архив заявок</h4>
-  <app-event-list grid="true" cabinet="true" class="user__tours--past" [period]="'past'"></app-event-list>
+  <app-event-list grid="true" cabinet="true" class="user__tours--past" [period]="'past'" [cabinetId]="cabinetId"></app-event-list>
 </div>

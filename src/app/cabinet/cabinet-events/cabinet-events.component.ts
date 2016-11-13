@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute }       from '@angular/router';
 
 @Component({
   selector: 'app-cabinet-events',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cabinet-events.component.scss']
 })
 export class CabinetEventsComponent implements OnInit {
+  cabinetId: number;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+      this.cabinetId = this.route.snapshot.parent.params['id'];
   }
 
 }

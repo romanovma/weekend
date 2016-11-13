@@ -5,6 +5,7 @@ import { Observable }     from 'rxjs/Observable';
 import                         'rxjs/add/observable/throw';
 import                         'rxjs/add/operator/catch';
 import                         'rxjs/add/operator/toPromise';
+import                         'rxjs/add/operator/filter';
 
 
 import { Tour }           from './tour';
@@ -42,26 +43,47 @@ export class TourService {
 
       return this.http.get(url)
                       .map(this.extractData)
-                      // .map(dataArray => {
-                      //     return dataArray.filter(d => {
-                      //         return d.title.toLowerCase().indexOf(term.toLowerCase()) > -1 ||
-                      //         d.description.toLowerCase().indexOf(term.toLowerCase()) > -1
-                      //     });
-                      // })
                       .catch(this.handleError);
     }
 
     getToursByQuery(query: TourQuery): Observable<Tour[]> {
 
-        if (query.title.trim() === '') {
-          return Observable.of([]);
+        let url = `${this.toursUrl}/?title=${query.title}`;
+
+        var filterByMovement = function(type, tour) {
+            return query[type] && tour.movementType === type;
         }
 
-        let url = `${this.toursUrl}/?title=${query.title}`;
+        var filterByDuration = function(type, min, max, tour) {
+            return query[type] && (min ? Number(tour.duration) > min : true) && (max ? Number(tour.duration) <= max : true)
+        }
 
         return this.http.get(url)
                         .map(this.extractData)
+                        .map(tours => tours.filter(tour => {
+                            return  !query['car'] && !query['bycicle'] && !query['walk'] ||
+                                    filterByMovement('car', tour) ||
+                                    filterByMovement('bycicle', tour) ||
+                                    filterByMovement('walk', tour)
+                        }))
+                        .map(tours => tours.filter(tour => {
+                            return  !query['smallPeriod'] && !query['middlePeriod'] &&
+                                    !query['largPeriod'] && !query['xlargePeriod'] ||
+                                    filterByDuration('smallPeriod', 0, 2, tour) ||
+                                    filterByDuration('middlePeriod', 2, 4, tour) ||
+                                    filterByDuration('largPeriod', 4, 8, tour) ||
+                                    filterByDuration('xlargePeriod', 8, 0, tour)
+                        }))
                         .catch(this.handleError);
+    }
+
+    getToursByCabinet(id: number): Observable<Tour[]> {
+
+      let url = `${this.toursUrl}/?cabinetId=${id}`;
+
+      return this.http.get(url)
+                      .map(this.extractData)
+                      .catch(this.handleError);
     }
 
     getToursByCollection(collection: string): Observable<Tour[]> {
@@ -135,8 +157,8 @@ export class TourService {
     getEventsByQuery(query: EventQuery): Observable<Event[]> {
         return this.http.get(this.eventsUrl)
                         .map(this.extractData)
-                        .map(dataArray => dataArray.filter(event => query.userId ? event.userId === query.userId : true))
-                        .map(dataArray => dataArray.filter(event => query.guideId ? event.guideId === query.guideId : true))
+                        .map(dataArray => dataArray.filter(event => query.userId ? Number(event.userId) === Number(query.userId) : true))
+                        .map(dataArray => dataArray.filter(event => query.cabinetId ? Number(event.cabinetId) === Number(query.cabinetId) : true ))
                         .map(dataArray => dataArray.filter(event => {
                             let todayDate = new Date();
                             let todayDay = todayDate.setHours(0,0,0,0);
