@@ -41,7 +41,7 @@ import { MyDatePickerModule } from 'mydatepicker';
     StartModule,
     UserModule,
     CabinetModule,
-    MyDatePickerModule
+    MyDatePickerModule  
   ],
   providers: [
     appRoutingProviders

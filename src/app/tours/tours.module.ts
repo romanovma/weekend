@@ -11,6 +11,7 @@ import { MdCardModule }         from '@angular2-material/card';
 import { MdRadioModule }       from '@angular2-material/radio';
 // import { MdSliderModule }       from '@angular2-material/slider';
 import { MdCheckboxModule }       from '@angular2-material/checkbox';
+import { NouisliderModule }             from 'ng2-nouislider';
 
 
 // import { InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api';
@@ -30,6 +31,9 @@ import { MyDatePickerModule } from 'mydatepicker';
 import { TourService }    from './tour.service';
 import { tourRouting }    from './tour.routes';
 
+import { MonthSelectorComponent } from './controls/month-selector/month-selector.component';
+import { MonthNumToTextPipe } from './controls/month-num-to-text.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -42,7 +46,8 @@ import { tourRouting }    from './tour.routes';
     MdRadioModule,
     // MdSliderModule,
     MdCheckboxModule,
-    MyDatePickerModule
+    MyDatePickerModule,
+    NouisliderModule
   ],
   declarations: [
     TourListComponent,
@@ -51,7 +56,9 @@ import { tourRouting }    from './tour.routes';
     TourFilterComponent,
     TourTestimonialComponent,
     TourCardComponent,
-    EventListComponent
+    EventListComponent,
+    MonthSelectorComponent,
+    MonthNumToTextPipe
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

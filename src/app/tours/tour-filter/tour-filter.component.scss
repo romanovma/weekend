@@ -21,7 +21,7 @@
       background-color: #fff;
       width: 600px;
       height: 60px;
-      margin-bottom: 105px;
+      margin-bottom: 125px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -38,8 +38,31 @@
   }
 
   &__filter__date {
-    height: 211px;
     margin: 0 auto 20px;
+
+    &__days {
+        margin: 20px auto 0;
+        padding-left: 170px;
+        display: inline-block;
+    }
+
+    &__day {
+        margin-left: 5px;
+        margin-right: 5px;
+        font-size: 24px;
+        display: inline-block;
+        width: 18px;
+        text-align: center;
+
+        &--selected {
+            color: $primary-color;
+        }
+    }
+
+    &__slider {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
   }
 
   &__filter__labels {

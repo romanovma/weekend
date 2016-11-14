@@ -1,0 +1,48 @@
+@import '../../../app.component.scss';
+
+.month-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: $font-style-regular;
+    font-size: 32px;
+
+    &__month {
+        margin-right: 15px;
+        margin-left: 15px;
+        width: 70px;
+        text-align: center;
+
+        &--disabled {
+            color: #c0c0c0;
+        }
+    }
+
+    &__month--current {
+        font-size: 38px;
+        margin-right: 10px;
+        margin-left: 10px;
+        width: 90px;
+    }
+
+    &__arrow--right,
+    &__arrow--left {
+        background: url('assets/img/icon-arrow-month.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 26px;
+        height: 20px;
+        cursor: pointer;
+
+        &--disabled {
+            background: url('assets/img/icon-arrow-month-inactive.png');
+            cursor: auto;
+        }
+    }
+
+    &__arrow--left {
+        transform: rotate(180deg);
+    }
+
+
+}

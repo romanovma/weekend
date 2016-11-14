@@ -3,11 +3,7 @@
   <div class="tour-filter__filter">
     <form>
       <div class="form-group tour-filter__text__wrapper" >
-        <button class="button--theme-icon tour-filter__text__button" [disabled]="true">
-        <!-- (click)="navigate()"
-        (touchend)="navigate()" -->
-        <span></span>
-        </button>
+        <button class="button--theme-icon tour-filter__text__button" [disabled]="true"></button>
         <input class="form-control tour-filter__text"
         placeholder="Поиск приключений" autoFocus
         [(ngModel)]="query.title"
@@ -15,7 +11,12 @@
         name="text">
       </div>
       <div class="tour-filter__filter__date">
-        <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker>
+        <app-month-selector (onMonthChanged)="onMonthChanged($event)"></app-month-selector>
+        <div class="tour-filter__filter__date__days">
+          <span class="tour-filter__filter__date__day" *ngFor="let day of days; let i = index" [ngClass]="isDaySelected(i + 1)">{{day}}</span>
+          <nouislider class="tour-filter__filter__date__slider" name="day" [behaviour]="'drag'" [connect]="true" [min]="1" [max]="days.length" [step]="1" [(ngModel)]="range" (ngModelChange)="onDaysChanged($event)"></nouislider>
+        </div>
+        <!-- <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker> -->
       </div>
       <div class="tour-filter__filter__labels">
         <div class="form-group">

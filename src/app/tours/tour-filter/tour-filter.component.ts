@@ -1,5 +1,7 @@
 import { Component, OnInit, OnChanges, SimpleChanges }    from '@angular/core';
 
+
+
 import { TourQuery }            from '../tour-query';
 import { TourService }          from '../tour.service';
 import { Tour }                 from '../tour'
@@ -20,7 +22,9 @@ import                               'rxjs/add/operator/do';
 })
 export class TourFilterComponent implements OnInit {
     query: TourQuery = new TourQuery();
-    private searchQueryStream = new Subject<TourQuery>();
+    searchQueryStream = new Subject<TourQuery>();
+    range: number[] = [3, 5];
+    days: number[];
 
     tours: Observable<Tour[]>;
 
@@ -53,15 +57,27 @@ export class TourFilterComponent implements OnInit {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        console.log(changes);
     }
 
-    onDateChanged(event:any) {
-        // this.query.dates = event.epoc * 1000;
+    isDaySelected(i) {
+        if (this.range && i >= this.range[0] && i <= this.range[1]) {
+            return 'tour-filter__filter__date__day--selected';
+        } else {
+            return '';
+        }
     }
 
-    search() {
-        this.searchQueryStream.next(this.query);
+    onMonthChanged(date) {
+        let numDays = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+
+        this.days = Array.from(Array(numDays)).map((e,i) => i+1);
+    }
+
+    // onDateChanged(event:any) {
+    //     // this.query.dates = event.epoc * 1000;
+    // }
+
+    onDaysChanged(days: any) {
     }
 
     onLabelsAllChanged(event) {
@@ -83,6 +99,10 @@ export class TourFilterComponent implements OnInit {
             this.query.all = false;
         }
 
+        this.searchQueryStream.next(this.query);
+    }
+
+    search() {
         this.searchQueryStream.next(this.query);
     }
 }
