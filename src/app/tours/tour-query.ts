@@ -1,6 +1,7 @@
 export class TourQuery {
     title: string;
-    dates: number;
+    dateMin: number;
+    dateMax: number;
     all: boolean;
     car: boolean;
     bycicle: boolean;
@@ -12,6 +13,8 @@ export class TourQuery {
 
     constructor (
         title: string = '',
+        dateMin: number = new Date().getTime(),
+        dateMax: number = new Date().setDate(new Date().getDate() + 1),
         all: boolean = false,
         car: boolean = false,
         bycicle: boolean = false,
@@ -22,6 +25,8 @@ export class TourQuery {
         xlargePeriod: boolean = false
     ) {
         this.title = title;
+        this.dateMin = dateMin;
+        this.dateMax = dateMax;
         this.all = all;
         this.car = car;
         this.bycicle = bycicle;

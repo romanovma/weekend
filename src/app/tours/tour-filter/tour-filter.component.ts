@@ -21,9 +21,9 @@ import                               'rxjs/add/operator/do';
     styleUrls: ['tour-filter.component.scss']
 })
 export class TourFilterComponent implements OnInit {
-    query: TourQuery = new TourQuery();
+    query: TourQuery;
     searchQueryStream = new Subject<TourQuery>();
-    range: number[] = [3, 5];
+    range: number[];
     days: number[];
 
     tours: Observable<Tour[]>;
@@ -42,7 +42,19 @@ export class TourFilterComponent implements OnInit {
 
     constructor(
         private tourService: TourService
-    ) {}
+    ) {
+        this.query = new TourQuery();
+
+        let dateMin = new Date(this.query.dateMin).getDate();
+        let dateMax = new Date(this.query.dateMax).getDate();
+
+        if (dateMax < dateMin) {
+            dateMax = dateMin;
+            dateMin--;
+        }
+
+        this.range = [dateMin, dateMax];
+     }
 
     ngOnInit() {
         this.tours = this.searchQueryStream
@@ -68,16 +80,20 @@ export class TourFilterComponent implements OnInit {
     }
 
     onMonthChanged(date) {
-        let numDays = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+        this.query.dateMin = new Date(this.query.dateMin).setMonth(date.getMonth());
+        this.query.dateMax = new Date(this.query.dateMax).setMonth(date.getMonth());
 
+        let numDays = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
         this.days = Array.from(Array(numDays)).map((e,i) => i+1);
+
+        this.searchQueryStream.next(this.query);
     }
 
-    // onDateChanged(event:any) {
-    //     // this.query.dates = event.epoc * 1000;
-    // }
+    onDaysChanged(days: number[]) {
+        this.query.dateMin = new Date(this.query.dateMin).setDate(days[0]);
+        this.query.dateMax = new Date(this.query.dateMax).setDate(days[1]);
 
-    onDaysChanged(days: any) {
+        this.searchQueryStream.next(this.query);
     }
 
     onLabelsAllChanged(event) {
