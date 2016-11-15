@@ -60,6 +60,7 @@ export class TourService {
 
         return this.http.get(url)
                         .map(this.extractData)
+                        .map(tours => tours.filter(tour => tour.dates <= query.dateMax && tour.dates >= query.dateMin))
                         .map(tours => tours.filter(tour => {
                             return  !query['car'] && !query['bycicle'] && !query['walk'] ||
                                     filterByMovement('car', tour) ||

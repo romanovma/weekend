@@ -13,8 +13,8 @@ export class TourQuery {
 
     constructor (
         title: string = '',
-        dateMin: number = new Date().getTime(),
-        dateMax: number = new Date().setDate(new Date().getDate() + 1),
+        dateMin: number = new Date().setHours(0,0,0,0),
+        dateMax: number = new Date(new Date().setDate(new Date().getDate() + 1)).setHours(23, 59, 59, 0),
         all: boolean = false,
         car: boolean = false,
         bycicle: boolean = false,
