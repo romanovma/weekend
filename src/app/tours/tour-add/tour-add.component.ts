@@ -17,6 +17,7 @@ export class TourAddComponent implements OnInit {
   @Input() tour: Tour;
   @Output() close = new EventEmitter();
 
+  months: Date[] = [];
   error: any;
   errorMessage: string;
   date: string;
@@ -29,17 +30,18 @@ export class TourAddComponent implements OnInit {
   optionsShown = {
     movementType: false
   };
-  myDatePickerOptions = {
-    todayBtnTxt: 'Сегодня',
-    dateFormat: 'yyyy-mm-dd',
-    firstDayOfWeek: 'mo',
-    sunHighlight: true,
-    height: '34px',
-    width: '100%',
-    inline: true,
-    disableUntil: {year: 2016, month: 8, day: 10},
-    selectionTxtFontSize: '26px',
-  }
+
+  // myDatePickerOptions = {
+  //   todayBtnTxt: 'Сегодня',
+  //   dateFormat: 'yyyy-mm-dd',
+  //   firstDayOfWeek: 'mo',
+  //   sunHighlight: true,
+  //   height: '34px',
+  //   width: '100%',
+  //   inline: true,
+  //   disableUntil: {year: 2016, month: 8, day: 10},
+  //   selectionTxtFontSize: '26px',
+  // }
   // editLabels = {
   //   important: [],
   //   included
@@ -47,7 +49,13 @@ export class TourAddComponent implements OnInit {
 
   constructor(
     private tourService: TourService,
-    private route: ActivatedRoute) {}
+    private route: ActivatedRoute) {
+      let curMonth = new Date();
+      [0, 1, 2, 3].map(i => {
+        let date = new Date(curMonth);
+        this.months.push(new Date(date.setMonth(date.getMonth() + i)));
+      });
+    }
 
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
@@ -80,6 +88,35 @@ export class TourAddComponent implements OnInit {
 
   onDateChanged(event:any) {
       this.tour.dates = event.epoc * 1000;
+  }
+
+  getCellsByMonth(month, where) {
+      let numDays = 0;
+      let day;
+      switch (where) {
+          case 'before':
+              day = new Date(month.getFullYear(), month.getMonth(), 1).getDay();
+              numDays = (day === 0) ? 6 : day - 1;
+              break;
+          case 'after':
+              day = new Date(month.getFullYear(), month.getMonth() + 1, 0).getDay();
+              numDays = (day === 0) ? 0 : 7 - day;
+              break;
+          default:
+              let firstDay = new Date(month.getFullYear(), month.getMonth(), 1);
+              let days = [];
+              let monthNum = firstDay.getMonth();
+              while (firstDay.getMonth() === monthNum) {
+                  numDays++;
+                  firstDay.setDate(firstDay.getDate() + 1);
+              }
+      }
+
+      return new Array(numDays).fill(1);
+  }
+
+  toggleDate(month, dayNum) {
+      
   }
 
   save() {

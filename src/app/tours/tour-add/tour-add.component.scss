@@ -261,6 +261,7 @@
     margin-bottom: 37px;
     background: $primary-color;
     border-radius: 10px;
+    border: solid 1px $primary-color;
 
     &__text {
       color: $font-color-primary;
@@ -270,6 +271,35 @@
       padding: 15px 40px;
       display: inline-block;
       width: 100%;
+    }
+
+    &__month {
+        background-color: #fff;
+        text-align: center;
+        font-size: 24px;
+        padding: 5px 0;
+    }
+
+    &__month__days {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        border: solid 1px #ddd;
+        border-radius: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    &__month__days__day {
+        color: #000;
+        font-size: 24px;
+        display: inline-block;
+        text-align: center;
+        line-height: 35px;
+        width: 30px;
+        height: 38px;
+        cursor: pointer;
     }
   }
 
