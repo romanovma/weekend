@@ -20,7 +20,7 @@ export class TourAddComponent implements OnInit {
   months: Date[] = [];
   error: any;
   errorMessage: string;
-  date: string;
+  // date: string;
   navigated = false; // true if navigated here
   activeMediaType: string = 'video';
   activeMedia: string;
@@ -31,63 +31,41 @@ export class TourAddComponent implements OnInit {
     movementType: false
   };
 
-  // myDatePickerOptions = {
-  //   todayBtnTxt: 'Сегодня',
-  //   dateFormat: 'yyyy-mm-dd',
-  //   firstDayOfWeek: 'mo',
-  //   sunHighlight: true,
-  //   height: '34px',
-  //   width: '100%',
-  //   inline: true,
-  //   disableUntil: {year: 2016, month: 8, day: 10},
-  //   selectionTxtFontSize: '26px',
-  // }
-  // editLabels = {
-  //   important: [],
-  //   included
-  // }
-
   constructor(
     private tourService: TourService,
     private route: ActivatedRoute) {
-      let curMonth = new Date();
-      [0, 1, 2, 3].map(i => {
-        let date = new Date(curMonth);
-        this.months.push(new Date(date.setMonth(date.getMonth() + i)));
-      });
+        let curMonth = new Date();
+        [0, 1, 2, 3].map(i => {
+            let date = new Date(curMonth);
+            this.months.push(new Date(date.setMonth(date.getMonth() + i)));
+        });
     }
 
   ngOnInit() {
-    this.route.params.forEach((params: Params) => {
-      if (params['id'] !== undefined) {
-        let id = +params['id'];
-        this.navigated = true;
-        this.tourService.getTourById(id)
-                        .subscribe(
-                          tour => this.initTour(tour),
-                          error => this.errorMessage = <any>error
-                        );
-      } else {
-        this.navigated = false;
-      }
-    });
+      this.route.params.forEach((params: Params) => {
+          if (params['id'] !== undefined) {
+              let id = +params['id'];
+              this.navigated = true;
+              this.tourService.getTourById(id)
+                              .subscribe(
+                                tour => this.initTour(tour),
+                                error => this.errorMessage = <any>error
+                              );
+          } else {
+              this.navigated = false;
+          }
+      });
   }
 
   initTour(tour:Tour) {
     if (tour) {
       this.tour = tour;
       this.updateActiveMedia(tour);
-      this.date = moment(new Date(tour.dates)).format('YYYY-MM-DD');
+      console.log(this.tour.dates);
     } else {
       let today = new Date();
       this.tour = new Tour();
-      this.tour.dates = today.getTime();
-      this.date = moment(today).format('YYYY-MM-DD');
     }
-  }
-
-  onDateChanged(event:any) {
-      this.tour.dates = event.epoc * 1000;
   }
 
   getCellsByMonth(month, where) {
@@ -115,19 +93,35 @@ export class TourAddComponent implements OnInit {
       return new Array(numDays).fill(1);
   }
 
+  isDateSelected(month, dayNum) {
+      let epoch = new Date(month.getFullYear(), month.getMonth(), dayNum).setHours(12, 0, 0, 0);
+      let index = this.tour.dates.indexOf(epoch);
+      if (index > -1) {
+          return true;
+      } else {
+          return false;
+      }
+  }
+
   toggleDate(month, dayNum) {
-      
+      let epoch = new Date(month.getFullYear(), month.getMonth(), dayNum).setHours(12, 0, 0, 0);
+      let index = this.tour.dates.indexOf(epoch);
+      if (this.isDateSelected(month, dayNum)) {
+          this.tour.dates.splice(index, 1);
+      } else {
+          this.tour.dates.push(epoch);
+      }
   }
 
   save() {
     this.tourService
         .save(this.tour)
         .then(tour => {
-          this.tour = tour; // saved tour, w/ id if new
-          this.goBack(tour);
+            this.tour = tour; // saved tour, w/ id if new
+            this.goBack(tour);
         })
         .catch(error => {
-          this.error = error
+            this.error = error
         }); // TODO: Display error message
   }
 

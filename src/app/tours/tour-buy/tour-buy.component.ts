@@ -17,7 +17,8 @@ export class TourBuyComponent implements OnInit, OnDestroy {
   error: any;
   activeMediaType: string = 'video';
   activeMedia: string;
-  date: string;
+  // date: string;
+  selectedDate: number;
   userId: number = 1;
   userName = 'Анна Антоновна';
   userPhone = '8 926 22 22 222';
@@ -31,17 +32,17 @@ export class TourBuyComponent implements OnInit, OnDestroy {
   errorMessage: string;
   private sub: Subscription;
 
-  myDatePickerOptions = {
-    todayBtnTxt: 'Сегодня',
-    dateFormat: 'yyyy-mm-dd',
-    firstDayOfWeek: 'mo',
-    sunHighlight: true,
-    height: '34px',
-    width: '100%',
-    inline: true,
-    disableUntil: {year: 3016, month: 8, day: 10},
-    selectionTxtFontSize: '26px'
-  }
+  // myDatePickerOptions = {
+  //   todayBtnTxt: 'Сегодня',
+  //   dateFormat: 'yyyy-mm-dd',
+  //   firstDayOfWeek: 'mo',
+  //   sunHighlight: true,
+  //   height: '34px',
+  //   width: '100%',
+  //   inline: true,
+  //   disableUntil: {year: 3016, month: 8, day: 10},
+  //   selectionTxtFontSize: '26px'
+  // }
 
   constructor(
     private route: ActivatedRoute,
@@ -56,7 +57,7 @@ export class TourBuyComponent implements OnInit, OnDestroy {
                         tour => {
                           this.tour = tour;
                           this.updateActiveMedia(tour);
-                          this.date = moment(new Date(tour.dates)).format('YYYY-MM-DD');
+                          // this.date = moment(new Date(tour.dates)).format('YYYY-MM-DD');
                           this.updateEvent();
                         },
                         error => this.errorMessage = <any>error
@@ -76,7 +77,7 @@ export class TourBuyComponent implements OnInit, OnDestroy {
     this.event.userPhone = this.userPhone;
     this.event.tourId = this.tour.id;
     this.event.tourTitle = this.tour.title;
-    this.event.date = this.tour.dates;
+    this.event.date = this.selectedDate;
     this.event.cabinetId = this.cabinetId;
     this.event.guidePhone = this.guidePhone;
   }
