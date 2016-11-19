@@ -31,7 +31,7 @@
       <div class="tour-buy__cta">
         <div class="tour-buy__cta__price__label">Стоимость</div>
         <div class="tour-buy__cta__price">{{tour.price}} руб.</div>
-        <button class="button--theme-primary" (click)="order()">Заказать</button>
+        <button [ngClass]="{disabled: !event.date}" class="tour-buy__cta__button button--theme-primary" (click)="order()">Заказать</button>
         <!-- <div class="tour-buy__cta__gift">или <a href="#"><strong>купить в подарок</strong></a></div> -->
       </div>
       <div class="tour-buy__cta__description">
@@ -57,8 +57,18 @@
     </div>
   </div>
   <div class="tour-buy__secondary">
-    <div class="tour-buy__calendar">
-      <!-- <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)" [selDate]="date"></my-date-picker> -->
+    <div class="tour-buy__dates">
+      <div class="tour-buy__dates__month" *ngFor="let month of months">
+          {{month.getMonth() | monthNumToText}}
+          <div class="tour-buy__dates__month__days">
+              <span class="tour-buy__dates__month__days__day" *ngFor="let day of getCellsByMonth(month, 'before')"></span>
+              <span class="tour-buy__dates__month__days__day"
+              *ngFor="let day of getCellsByMonth(month, ''); let i = index"
+              (click)="selectDate(month, i + 1)"
+              [ngClass]="{available: isDateAvailable(month, i + 1), selected: isDateSelected(month, i + 1)}">{{i +  1}}</span>
+              <span class="tour-buy__dates__month__days__day" *ngFor="let day of getCellsByMonth(month, 'after')"></span>
+          </div>
+      </div>
     </div>
     <div class="tour-buy__info">
       <!-- <div>operator: {{tour.operator}} - rating: {{tour.rating}}</div> -->

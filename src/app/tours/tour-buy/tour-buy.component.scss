@@ -1,3 +1,5 @@
+@import '../../app.component';
+
 .tour-buy {
   margin: auto;
   padding-left: 155px;
@@ -16,7 +18,6 @@
     display: flex;
     justify-content: center;
     flex-wrap: no-wrap;
-    margin-bottom: 40px;
   }
 
   &__media__container {
@@ -92,13 +93,21 @@
     margin-bottom: 10px;
   }
 
-  &__cta__gift {
-    font-size: 14px;
-    margin-top: 10px;
-    a {
-      color: #000;
+  &__cta__button {
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.5;
+      cursor: auto;
     }
   }
+
+  // &__cta__gift {
+  //   font-size: 14px;
+  //   margin-top: 10px;
+  //   a {
+  //     color: #000;
+  //   }
+  // }
 
   &__cta__description {
     border-radius: 10px;
@@ -129,10 +138,68 @@
     margin-bottom: 40px;
   }
 
-  &__calendar {
-    height: 211px;
-    margin: 0 auto 37px;
+  &__dates {
+    margin-top: 25px;
+    margin-bottom: 37px;
+    background: $primary-color;
+    border-radius: 10px;
+    border: solid 1px $primary-color;
     display: inline-block;
+
+    &__text {
+      color: $font-color-primary;
+      font-family: $font-style-secondary;
+      font-size: 15px;
+      text-align: center;
+      padding: 15px 40px;
+      display: inline-block;
+      width: 100%;
+    }
+
+    &__month {
+        background-color: #fff;
+        text-align: center;
+        font-size: 24px;
+        padding: 5px 0;
+        display: inline-block;
+        width: 250px;
+    }
+
+    &__month__days {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        border: solid 1px #ddd;
+        border-radius: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    &__month__days__day {
+        color: #000;
+        font-size: 24px;
+        display: inline-block;
+        text-align: center;
+        line-height: 36px;
+        width: 30px;
+        height: 36px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+        // cursor: pointer;
+        padding-top: 2px;
+
+        &.available {
+            color: #fff;
+            background: $primary-color;
+            border-radius: 10px;
+            cursor: pointer;
+
+            &.selected {
+                color: #000;
+            }
+        }
+    }
   }
 
   &__info {

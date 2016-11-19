@@ -121,11 +121,10 @@
                 <span class="tour-add__dates__month__days__day"
                 *ngFor="let day of getCellsByMonth(month, ''); let i = index"
                 (click)="toggleDate(month, i + 1)"
-                [ngClass]="{selected: isDateSelected(month, i + 1)}">{{i +  1}}</span>
+                [ngClass]="{available: isDateAvailable(month, i + 1)}">{{i +  1}}</span>
                 <span class="tour-add__dates__month__days__day" *ngFor="let day of getCellsByMonth(month, 'after')"></span>
             </div>
         </div>
-        <!-- <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)" [selDate]="date"></my-date-picker> -->
       </div>
     </div>
   </div>

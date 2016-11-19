@@ -20,7 +20,6 @@ export class TourAddComponent implements OnInit {
   months: Date[] = [];
   error: any;
   errorMessage: string;
-  // date: string;
   navigated = false; // true if navigated here
   activeMediaType: string = 'video';
   activeMedia: string;
@@ -93,7 +92,7 @@ export class TourAddComponent implements OnInit {
       return new Array(numDays).fill(1);
   }
 
-  isDateSelected(month, dayNum) {
+  isDateAvailable(month, dayNum) {
       let epoch = new Date(month.getFullYear(), month.getMonth(), dayNum).setHours(12, 0, 0, 0);
       let index = this.tour.dates.indexOf(epoch);
       if (index > -1) {
@@ -106,7 +105,7 @@ export class TourAddComponent implements OnInit {
   toggleDate(month, dayNum) {
       let epoch = new Date(month.getFullYear(), month.getMonth(), dayNum).setHours(12, 0, 0, 0);
       let index = this.tour.dates.indexOf(epoch);
-      if (this.isDateSelected(month, dayNum)) {
+      if (this.isDateAvailable(month, dayNum)) {
           this.tour.dates.splice(index, 1);
       } else {
           this.tour.dates.push(epoch);

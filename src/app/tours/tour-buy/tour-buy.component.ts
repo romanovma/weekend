@@ -17,8 +17,6 @@ export class TourBuyComponent implements OnInit, OnDestroy {
   error: any;
   activeMediaType: string = 'video';
   activeMedia: string;
-  // date: string;
-  selectedDate: number;
   userId: number = 1;
   userName = 'Анна Антоновна';
   userPhone = '8 926 22 22 222';
@@ -27,27 +25,25 @@ export class TourBuyComponent implements OnInit, OnDestroy {
   cabinetId: number = 1;
   guidePhone = '8 926 11 11 111';
 
+  months: Date[] = [];
+
+  // dateSelected: number;
+
   withLogo: boolean = true;
   tour: Tour;
   errorMessage: string;
   private sub: Subscription;
 
-  // myDatePickerOptions = {
-  //   todayBtnTxt: 'Сегодня',
-  //   dateFormat: 'yyyy-mm-dd',
-  //   firstDayOfWeek: 'mo',
-  //   sunHighlight: true,
-  //   height: '34px',
-  //   width: '100%',
-  //   inline: true,
-  //   disableUntil: {year: 3016, month: 8, day: 10},
-  //   selectionTxtFontSize: '26px'
-  // }
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private tourService: TourService) {}
+    private tourService: TourService) {
+        let curMonth = new Date();
+        [0, 1].map(i => {
+            let date = new Date(curMonth);
+            this.months.push(new Date(date.setMonth(date.getMonth() + i)));
+        });
+    }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -57,7 +53,6 @@ export class TourBuyComponent implements OnInit, OnDestroy {
                         tour => {
                           this.tour = tour;
                           this.updateActiveMedia(tour);
-                          // this.date = moment(new Date(tour.dates)).format('YYYY-MM-DD');
                           this.updateEvent();
                         },
                         error => this.errorMessage = <any>error
@@ -77,7 +72,6 @@ export class TourBuyComponent implements OnInit, OnDestroy {
     this.event.userPhone = this.userPhone;
     this.event.tourId = this.tour.id;
     this.event.tourTitle = this.tour.title;
-    this.event.date = this.selectedDate;
     this.event.cabinetId = this.cabinetId;
     this.event.guidePhone = this.guidePhone;
   }
@@ -86,7 +80,7 @@ export class TourBuyComponent implements OnInit, OnDestroy {
     this.tourService
         .postEvent(this.event)
         .then(event => {
-          this.event = event; // saved tour, w/ id if new
+          this.event = event; // saved event, w/ id if new
           this.router.navigate(['/me', this.userId]);
         })
         .catch(error => {
@@ -131,7 +125,57 @@ export class TourBuyComponent implements OnInit, OnDestroy {
     }
   }
 
-  onDateChanged(event:any) {
+  getCellsByMonth(month, where) {
+      let numDays = 0;
+      let day;
+      switch (where) {
+          case 'before':
+              day = new Date(month.getFullYear(), month.getMonth(), 1).getDay();
+              numDays = (day === 0) ? 6 : day - 1;
+              break;
+          case 'after':
+              day = new Date(month.getFullYear(), month.getMonth() + 1, 0).getDay();
+              numDays = (day === 0) ? 0 : 7 - day;
+              break;
+          default:
+              let firstDay = new Date(month.getFullYear(), month.getMonth(), 1);
+              let days = [];
+              let monthNum = firstDay.getMonth();
+              while (firstDay.getMonth() === monthNum) {
+                  numDays++;
+                  firstDay.setDate(firstDay.getDate() + 1);
+              }
+      }
+
+      return new Array(numDays).fill(1);
+  }
+
+  isDateAvailable(month, dayNum) {
+      let epoch = new Date(month.getFullYear(), month.getMonth(), dayNum).setHours(12, 0, 0, 0);
+      let index = this.tour.dates.indexOf(epoch);
+      if (index > -1) {
+          return true;
+      } else {
+          return false;
+      }
+  }
+
+  isDateSelected(month, dayNum) {
+      let epoch = new Date(month.getFullYear(), month.getMonth(), dayNum).setHours(12, 0, 0, 0);
+      if (epoch === this.event.date) {
+          return true;
+      } else {
+          return false;
+      }
+  }
+
+  selectDate(month, dayNum) {
+      let epoch = new Date(month.getFullYear(), month.getMonth(), dayNum).setHours(12, 0, 0, 0);
+      if (this.tour.dates.indexOf(epoch) > -1 && this.event.date !== epoch) {
+          this.event.date = epoch;
+      } else {
+          this.event.date = 0;
+      }
 
   }
 }
