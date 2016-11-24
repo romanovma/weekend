@@ -5,7 +5,7 @@
   <div class="tourlist__list--cards">
     <button class="tourlist__add" (click)="addTour()"><span class="tourlist__add__plus"></span></button>
     <div class="tourlist__tour" *ngFor="let tour of tours | async"
-    (click)="onSelect(tour.id)" (ontouchend)="onSelect(tour.id)">
+    (click)="onSelect(tour._id)" (ontouchend)="onSelect(tour._id)">
       <app-tour-card [tour]="tour" [withCity]="withCity"></app-tour-card>
     </div>
   </div>

@@ -1,5 +1,5 @@
 export class Tour {
-  id: number;
+  _id: number;
   title: string;
   video: string[];
   dates: number[];

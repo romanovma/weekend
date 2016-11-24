@@ -14,7 +14,7 @@ import { TourService } from '../tour.service';
   styleUrls: ['tour-add.component.scss']
 })
 export class TourAddComponent implements OnInit {
-  @Input() tour: Tour;
+  @Output() tour: Tour;
   @Output() close = new EventEmitter();
 
   months: Date[] = [];
@@ -47,8 +47,8 @@ export class TourAddComponent implements OnInit {
               this.navigated = true;
               this.tourService.getTourById(id)
                               .subscribe(
-                                tour => this.initTour(tour),
-                                error => this.errorMessage = <any>error
+                                  tour => this.initTour(tour),
+                                  error => this.errorMessage = <any>error
                               );
           } else {
               this.navigated = false;
@@ -56,13 +56,12 @@ export class TourAddComponent implements OnInit {
       });
   }
 
-  initTour(tour:Tour) {
-    if (tour) {
-      this.tour = tour;
-      this.updateActiveMedia(tour);
-      console.log(this.tour.dates);
+  initTour(tour: Tour[]) {
+    if (tour.length) {
+      this.tour = tour[0];
+      this.updateActiveMedia(tour[0]);
     } else {
-      let today = new Date();
+      // let today = new Date();
       this.tour = new Tour();
     }
   }
@@ -93,13 +92,15 @@ export class TourAddComponent implements OnInit {
   }
 
   isDateAvailable(month, dayNum) {
-      let epoch = new Date(month.getFullYear(), month.getMonth(), dayNum).setHours(12, 0, 0, 0);
-      let index = this.tour.dates.indexOf(epoch);
-      if (index > -1) {
-          return true;
-      } else {
-          return false;
+      if (this.tour.dates) {
+          let epoch = new Date(month.getFullYear(), month.getMonth(), dayNum).setHours(12, 0, 0, 0);
+          let index = this.tour.dates.indexOf(epoch);
+          if (index > -1) {
+              return true;
+          }
       }
+
+      return false;
   }
 
   toggleDate(month, dayNum) {
@@ -141,11 +142,11 @@ export class TourAddComponent implements OnInit {
   }
 
   updateActiveMedia(tour: Tour) {
-    if (tour.video.length) {
-      this.activeMedia = tour.video[0];
-    } else if (tour.photo.length) {
-      this.activeMedia = tour.photo[0];
-      this.activeMediaType = 'photo';
+    if (tour.video && tour.video.length) {
+        this.activeMedia = tour.video[0];
+    } else if (tour.photo && tour.photo.length) {
+        this.activeMedia = tour.photo[0];
+        this.activeMediaType = 'photo';
     }
   }
 

@@ -20,11 +20,13 @@ export class TourService {
     constructor(private http: Http) { }
 
     // private toursUrl = 'app/tours/tours.json';
-    private toursUrl = 'app/tours';  // URL to web api
-    private eventsUrl = 'app/events';  // URL to web api
+    // private toursUrl = 'app/tours';  // URL to web api
+    // private eventsUrl = 'app/events';  // URL to web api
+    private toursUrl = 'http://localhost:4300/tour';  // URL to web api
+    private eventsUrl = 'http://localhost:4300/event';  // URL to web api
 
     // Tours
-    getTourById(id: number): Observable<Tour> {
+    getTourById(id: number): Observable<Tour[]> {
 
         let url = this.toursUrl;
 
@@ -48,7 +50,7 @@ export class TourService {
 
     getToursByQuery(query: TourQuery): Observable<Tour[]> {
 
-        let url = `${this.toursUrl}/?title=${query.title}`;
+        let url = `${this.toursUrl}`;
 
         var filterByMovement = function(type, tour) {
             return query[type] && tour.movementType === type;
@@ -60,6 +62,7 @@ export class TourService {
 
         return this.http.get(url)
                         .map(this.extractData)
+                        .do(tours => console.log(tours))
                         .map(tours => tours.filter(tour => tour.dates.filter(date => date <= query.dateMax && date >= query.dateMin).length))
                         .map(tours => tours.filter(tour => {
                             return  !query['car'] && !query['bycicle'] && !query['walk'] ||
@@ -102,6 +105,8 @@ export class TourService {
         let headers = new Headers({
           'Content-Type': 'application/json'});
 
+        console.log(JSON.stringify(tour));
+
         return this.http
                    .post(this.toursUrl, JSON.stringify(tour), {headers: headers})
                    .toPromise()
@@ -114,10 +119,10 @@ export class TourService {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        let url = `${this.toursUrl}/${tour.id}`;
+        let url = `${this.toursUrl}/${tour._id}`;
 
         return this.http
-                   .put(url, JSON.stringify(tour), {headers: headers})
+                   .patch(url, JSON.stringify(tour), {headers: headers})
                    .toPromise()
                    .then(() => tour)
                    .catch(this.handleError);
@@ -127,7 +132,7 @@ export class TourService {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        let url = `${this.toursUrl}/${tour.id}`;
+        let url = `${this.toursUrl}/${tour._id}`;
 
         return this.http
                    .delete(url, {headers: headers})
@@ -137,7 +142,7 @@ export class TourService {
     }
 
     save(tour: Tour): Promise<Tour>  {
-        if (tour.id) {
+        if (tour._id) {
             return this.put(tour);
         }
 
@@ -190,10 +195,10 @@ export class TourService {
     }
 
     private handleError (error: any) {
-        let errMsg = (error.message) ? error.message :
-            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-        console.error(errMsg); // log to console instead
+        // let errMsg = (error.message) ? error.message :
+        //     error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(error); // log to console instead
 
-        return Observable.throw(errMsg);
+        return Observable.throw(error);
     }
 }

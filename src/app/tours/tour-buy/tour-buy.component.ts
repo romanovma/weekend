@@ -51,8 +51,8 @@ export class TourBuyComponent implements OnInit, OnDestroy {
       this.tourService.getTourById(id)
                       .subscribe(
                         tour => {
-                          this.tour = tour;
-                          this.updateActiveMedia(tour);
+                          this.tour = tour[0];
+                          this.updateActiveMedia(tour[0]);
                           this.updateEvent();
                         },
                         error => this.errorMessage = <any>error
@@ -70,7 +70,7 @@ export class TourBuyComponent implements OnInit, OnDestroy {
     this.event.userName = this.userName;
     this.event.count = this.count;
     this.event.userPhone = this.userPhone;
-    this.event.tourId = this.tour.id;
+    this.event.tourId = this.tour._id;
     this.event.tourTitle = this.tour.title;
     this.event.cabinetId = this.cabinetId;
     this.event.guidePhone = this.guidePhone;
