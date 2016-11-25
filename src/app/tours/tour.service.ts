@@ -19,11 +19,8 @@ import { EventQuery }      from './event-query';
 export class TourService {
     constructor(private http: Http) { }
 
-    // private toursUrl = 'app/tours/tours.json';
-    // private toursUrl = 'app/tours';  // URL to web api
-    // private eventsUrl = 'app/events';  // URL to web api
-    private toursUrl = 'http://localhost:4300/tour';  // URL to web api
-    private eventsUrl = 'http://localhost:4300/event';  // URL to web api
+    private toursUrl = 'http://localhost:4300/tour';
+    private eventsUrl = 'http://localhost:4300/event';
 
     // Tours
     getTourById(id: number): Observable<Tour[]> {
@@ -81,11 +78,15 @@ export class TourService {
                         .catch(this.handleError);
     }
 
-    getToursByCabinet(id: number): Observable<Tour[]> {
+    getToursByCabinet(): Observable<Tour[]> {
 
-      let url = `${this.toursUrl}/?cabinetId=${id}`;
+      let url = `${this.toursUrl}/guide`;
 
-      return this.http.get(url)
+      const token = localStorage.getItem('token')
+          ? '?token=' + localStorage.getItem('token')
+          : '';
+
+      return this.http.get(url + token)
                       .map(this.extractData)
                       .catch(this.handleError);
     }
@@ -107,8 +108,12 @@ export class TourService {
 
         console.log(JSON.stringify(tour));
 
+        const token = localStorage.getItem('token')
+            ? '?token=' + localStorage.getItem('token')
+            : '';
+
         return this.http
-                   .post(this.toursUrl, JSON.stringify(tour), {headers: headers})
+                   .post(this.toursUrl + token, JSON.stringify(tour), {headers: headers})
                    .toPromise()
                    .then(res => res.json().data)
                    .catch(this.handleError);
@@ -121,8 +126,12 @@ export class TourService {
 
         let url = `${this.toursUrl}/${tour._id}`;
 
+        const token = localStorage.getItem('token')
+            ? '?token=' + localStorage.getItem('token')
+            : '';
+
         return this.http
-                   .patch(url, JSON.stringify(tour), {headers: headers})
+                   .patch(url + token, JSON.stringify(tour), {headers: headers})
                    .toPromise()
                    .then(() => tour)
                    .catch(this.handleError);
@@ -134,8 +143,12 @@ export class TourService {
 
         let url = `${this.toursUrl}/${tour._id}`;
 
+        const token = localStorage.getItem('token')
+            ? '?token=' + localStorage.getItem('token')
+            : '';
+
         return this.http
-                   .delete(url, {headers: headers})
+                   .delete(url + token, {headers: headers})
                    .toPromise()
                    .then(() => tour)
                    .catch(this.handleError);

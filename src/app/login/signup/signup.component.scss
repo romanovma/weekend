@@ -1,6 +1,6 @@
-@import '../app.component';
+@import '../../app.component';
 
-.login {
+.signup {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,7 +19,7 @@
         padding: 10px;
     }
 
-    &__login {
+    &__save {
         margin-bottom: 20px;
     }
 }

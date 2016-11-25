@@ -11,7 +11,7 @@ import { TourAddComponent } from '../tours/tour-add/tour-add.component';
 
 const cabinetRoutes: Routes = [
   {
-    path: 'cabinet/:id',
+    path: 'cabinet',
     component: CabinetComponent,
     children: [
       {

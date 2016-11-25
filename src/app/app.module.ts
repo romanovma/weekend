@@ -24,6 +24,8 @@ import { TourCardComponent } from './tours/tour-card/tour-card.component';
 
 import { MyDatePickerModule } from 'mydatepicker';
 
+import { UserService } from './user/user.service';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { MyDatePickerModule } from 'mydatepicker';
     MyDatePickerModule
   ],
   providers: [
-    appRoutingProviders
+    appRoutingProviders,
+    UserService
     // disableDeprecatedForms(),
     // provideForms()
     // { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server

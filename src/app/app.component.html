@@ -5,8 +5,9 @@
       <span>Регион поиска: Уфа</span>
     </a>
     <span class="fill-remaining-space"></span>
-    <a class="header__link" routerLink="/login">Вход</a>
-    <a class="header__link" routerLink="/login">Регистрация</a>
+    <a class="header__link" routerLink="/login" *ngIf="!isLoggedIn()">Вход</a>
+    <a class="header__link" routerLink="/signup" *ngIf="!isLoggedIn()">Регистрация</a>
+    <a class="header__link" routerLink="/login" *ngIf="isLoggedIn()" (click)="logout()">Выход</a>
   </md-toolbar>
 
   <router-outlet></router-outlet>

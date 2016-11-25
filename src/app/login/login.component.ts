@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+
+import { User }        from '../user/user';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -6,16 +10,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  constTrue: boolean = true;
+    user: User;
+    error: any;
 
-  loginVk: string = 'with VK';
-  loginFacebook: string = 'with Facebook';
-  loginMail: string = 'with email';
-  loginCabinet: string = 'as operator';
+    constructor(
+      private userService: UserService,
+      private router: Router
+    ) {}
 
-  constructor() {}
+    ngOnInit() {
+        this.user = new User();
+    }
 
-  ngOnInit() {
-  }
-
+    login() {
+      this.userService
+          .login(this.user)
+          .then(data => {
+              localStorage.setItem('token', data.token);
+              localStorage.setItem('userId', data.userId);
+              // this.user = user;
+              this.router.navigate(['/me', data._id]);
+          })
+          .catch(error => {
+              this.error = error
+          }); // TODO: Display error message
+    }
 }

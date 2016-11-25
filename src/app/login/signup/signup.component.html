@@ -1,0 +1,8 @@
+<div class="signup">
+    <h4 class="cabinet__title">Регистрация</h4>
+    <input class="signup__firstname" [(ngModel)]="user.firstName" placeholder="Имя"/>
+    <input class="signup__email" type="email" [(ngModel)]="user.email" placeholder="Email"/>
+    <input class="signup__password" type="password" [(ngModel)]="user.password" placeholder="Пароль"/>
+    <input class="signup__phone" [(ngModel)]="user.phone" placeholder="Телефон"/>
+    <button class="signup__save button--theme-save" (click)="save()">Готово</button>
+</div>

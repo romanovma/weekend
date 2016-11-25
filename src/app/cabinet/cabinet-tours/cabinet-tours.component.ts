@@ -22,7 +22,7 @@ export class CabinetToursComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tours = this.tourService.getToursByCabinet(this.route.snapshot.parent.params['id']);
+    this.tours = this.tourService.getToursByCabinet();
   }
 
 }
