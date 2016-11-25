@@ -14,7 +14,7 @@ export class CabinetEventsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-      this.cabinetId = this.route.snapshot.parent.params['id'];
+      // this.cabinetId = this.route.snapshot.parent.params['id'];
   }
 
 }

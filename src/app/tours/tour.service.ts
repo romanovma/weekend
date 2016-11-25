@@ -60,21 +60,21 @@ export class TourService {
         return this.http.get(url)
                         .map(this.extractData)
                         .do(tours => console.log(tours))
-                        .map(tours => tours.filter(tour => tour.dates.filter(date => date <= query.dateMax && date >= query.dateMin).length))
-                        .map(tours => tours.filter(tour => {
-                            return  !query['car'] && !query['bycicle'] && !query['walk'] ||
-                                    filterByMovement('car', tour) ||
-                                    filterByMovement('bycicle', tour) ||
-                                    filterByMovement('walk', tour)
-                        }))
-                        .map(tours => tours.filter(tour => {
-                            return  !query['smallPeriod'] && !query['middlePeriod'] &&
-                                    !query['largPeriod'] && !query['xlargePeriod'] ||
-                                    filterByDuration('smallPeriod', 0, 2, tour) ||
-                                    filterByDuration('middlePeriod', 2, 4, tour) ||
-                                    filterByDuration('largPeriod', 4, 8, tour) ||
-                                    filterByDuration('xlargePeriod', 8, 0, tour)
-                        }))
+                        // .map(tours => tours.filter(tour => tour.dates.filter(date => date <= query.dateMax && date >= query.dateMin).length))
+                        // .map(tours => tours.filter(tour => {
+                        //     return  !query['car'] && !query['bycicle'] && !query['walk'] ||
+                        //             filterByMovement('car', tour) ||
+                        //             filterByMovement('bycicle', tour) ||
+                        //             filterByMovement('walk', tour)
+                        // }))
+                        // .map(tours => tours.filter(tour => {
+                        //     return  !query['smallPeriod'] && !query['middlePeriod'] &&
+                        //             !query['largPeriod'] && !query['xlargePeriod'] ||
+                        //             filterByDuration('smallPeriod', 0, 2, tour) ||
+                        //             filterByDuration('middlePeriod', 2, 4, tour) ||
+                        //             filterByDuration('largPeriod', 4, 8, tour) ||
+                        //             filterByDuration('xlargePeriod', 8, 0, tour)
+                        // }))
                         .catch(this.handleError);
     }
 
@@ -166,16 +166,65 @@ export class TourService {
     postEvent(event: Event): Promise<Event> {
         let headers = new Headers({'Content-Type': 'application/json'});
 
+        console.log(JSON.stringify(event));
+
+        const token = localStorage.getItem('token')
+            ? '?token=' + localStorage.getItem('token')
+            : '';
+
         return this.http
-                   .post(this.eventsUrl, JSON.stringify(event), {headers: headers})
+                   .post(this.eventsUrl + token, JSON.stringify(event), {headers: headers})
                    .toPromise()
                    .then(res => res.json().data)
                    .catch(this.handleError);
     }
 
-    getEventsByQuery(query: EventQuery): Observable<Event[]> {
-        return this.http.get(this.eventsUrl)
+    getEventsByQueryUser(query: EventQuery): Observable<Event[]> {
+
+        let url = `${this.eventsUrl}/user`;
+
+        const token = localStorage.getItem('token')
+            ? '?token=' + localStorage.getItem('token')
+            : '';
+
+        return this.http.get(url + token)
                         .map(this.extractData)
+                        .do(events => console.log(events))
+                        .map(dataArray => dataArray.filter(event => query.userId ? Number(event.userId) === Number(query.userId) : true))
+                        .map(dataArray => dataArray.filter(event => query.cabinetId ? Number(event.cabinetId) === Number(query.cabinetId) : true ))
+                        .map(dataArray => dataArray.filter(event => {
+                            let todayDate = new Date();
+                            let todayDay = todayDate.setHours(0,0,0,0);
+                            // let today = todayDate.getTime();
+                            let eventDate = new Date(event.date);
+                            let eventDay = eventDate.setHours(0,0,0,0);
+                            switch (query.period) {
+                                case 'past':
+                                    return eventDay < todayDay;
+                                case 'today':
+                                    return eventDay === todayDay;
+                                case 'future':
+                                    return eventDay > todayDay;
+                                case 'todayfuture':
+                                    return eventDay >= todayDay;
+                                default:
+                                    return true;
+                            }
+                        }))
+                        .catch(this.handleError);
+    }
+
+    getEventsByQueryGuide(query: EventQuery): Observable<Event[]> {
+
+        let url = `${this.eventsUrl}/guide`;
+
+        const token = localStorage.getItem('token')
+            ? '?token=' + localStorage.getItem('token')
+            : '';
+
+        return this.http.get(url + token)
+                        .map(this.extractData)
+                        .do(events => console.log(events))
                         .map(dataArray => dataArray.filter(event => query.userId ? Number(event.userId) === Number(query.userId) : true))
                         .map(dataArray => dataArray.filter(event => query.cabinetId ? Number(event.cabinetId) === Number(query.cabinetId) : true ))
                         .map(dataArray => dataArray.filter(event => {

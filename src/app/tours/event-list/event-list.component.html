@@ -6,19 +6,19 @@
         <span>{{event.date | date: 'dd.MM'}}</span>
       </span>
       <span class="eventlist__event--row__code">#{{event.code}}</span>
-      <span class="eventlist__event--row__name">{{event.userName}} ({{event.count}} чел)</span>
+      <span class="eventlist__event--row__name">{{event.userId.firstName}} ({{event.count}} чел)</span>
       <span class="eventlist__event--row__title fill-remaining-space"
-      (click)="onSelect(event.id)"
-      (ontouchend)="onSelect(event.tourId)">
-        {{event.tourTitle}}
+      (click)="onSelect(event.tourId._id)"
+      (ontouchend)="onSelect(event.tourId._id)">
+        {{event.tourId.title}}
       </span>
       <span class="eventlist__event--row__guide-phone">
         <span class="eventlist__event--row__guide-phone__icon"></span>
-        <span class="eventlist__event--row__guide-phone__text">{{event.guidePhone}}</span>
+        <span class="eventlist__event--row__guide-phone__text">{{event.tourId.cabinetId.phone}}</span>
       </span>
       <span class="eventlist__event--row__user-phone">
         <span class="eventlist__event--row__user-phone__icon"></span>
-        <span class="eventlist__event--row__user-phone__text">{{event.userPhone}}</span>
+        <span class="eventlist__event--row__user-phone__text">{{event.userId.phone}}</span>
       </span>
     </div>
   </div>

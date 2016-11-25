@@ -42,11 +42,20 @@ export class EventListComponent implements OnInit {
   }
 
   getEvents() {
-    this.tourService.getEventsByQuery(this.query)
-                    .subscribe(
-                        events => this.events = events,
-                        error => this.errorMessage = <any>error
-                    );
+      if (!this.cabinet) {
+          this.tourService.getEventsByQueryUser(this.query)
+                          .subscribe(
+                              events => this.events = events,
+                              error => this.errorMessage = <any>error
+                          );
+      } else {
+          this.tourService.getEventsByQueryGuide(this.query)
+                          .subscribe(
+                              events => this.events = events,
+                              error => this.errorMessage = <any>error
+                          );
+      }
+
   }
 
   onSelect(id: number) {

@@ -65,15 +65,15 @@ export class TourBuyComponent implements OnInit, OnDestroy {
   }
 
   updateEvent() {
-    this.event.code = 999999;
-    this.event.userId = this.userId;
-    this.event.userName = this.userName;
-    this.event.count = this.count;
-    this.event.userPhone = this.userPhone;
+    // this.event.code = 999999;
+    // this.event.userId = this.userId;
+    // this.event.userName = this.userName;
+    this.event.count = 1;
+    // this.event.userPhone = this.userPhone;
     this.event.tourId = this.tour._id;
-    this.event.tourTitle = this.tour.title;
-    this.event.cabinetId = this.cabinetId;
-    this.event.guidePhone = this.guidePhone;
+    // this.event.tourTitle = this.tour.title;
+    // this.event.cabinetId = this.cabinetId;
+    // this.event.guidePhone = this.guidePhone;
   }
 
   order() {
@@ -81,7 +81,7 @@ export class TourBuyComponent implements OnInit, OnDestroy {
         .postEvent(this.event)
         .then(event => {
           this.event = event; // saved event, w/ id if new
-          this.router.navigate(['/me', this.userId]);
+          this.router.navigate(['/me']);
         })
         .catch(error => {
           this.error = error
@@ -89,12 +89,12 @@ export class TourBuyComponent implements OnInit, OnDestroy {
   }
 
   updateActiveMedia(tour: Tour) {
-    if (tour.video.length) {
-      this.activeMedia = tour.video[0];
-    } else if (tour.photo.length) {
-      this.activeMedia = tour.photo[0];
-      this.activeMediaType = 'photo';
-    }
+      if (tour.video.length) {
+          this.activeMedia = tour.video[0];
+      } else if (tour.photo.length) {
+          this.activeMedia = tour.photo[0];
+          this.activeMediaType = 'photo';
+      }
   }
 
   activateMedia(type: string, media: string) {
