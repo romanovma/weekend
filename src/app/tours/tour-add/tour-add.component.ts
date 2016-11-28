@@ -29,6 +29,9 @@ export class TourAddComponent implements OnInit {
   optionsShown = {
     movementType: false
   };
+  important: Object[] = [];
+  included: Object[] = [];
+  notIncluded: Object[] = [];
 
   constructor(
     private tourService: TourService,
@@ -57,13 +60,15 @@ export class TourAddComponent implements OnInit {
   }
 
   initTour(tour: Tour[]) {
-    if (tour.length) {
-      this.tour = tour[0];
-      this.updateActiveMedia(tour[0]);
-    } else {
-      // let today = new Date();
-      this.tour = new Tour();
-    }
+      if (tour.length) {
+          this.tour = tour[0];
+          this.updateActiveMedia(tour[0]);
+          this.tour.important.map(label => this.important.push({value: label}));
+          this.tour.included.map(label => this.included.push({value: label}));
+          this.tour.notIncluded.map(label => this.notIncluded.push({value: label}));
+      } else {
+          this.tour = new Tour();
+      }
   }
 
   getCellsByMonth(month, where) {
@@ -113,7 +118,15 @@ export class TourAddComponent implements OnInit {
       }
   }
 
+  updateLabels(type) {
+      this.tour[type] = [];
+      this[type].map(label => this.tour[type].push(label.value));
+  }
+
   save() {
+    this.updateLabels('important');
+    this.updateLabels('included');
+    this.updateLabels('notIncluded');
     this.tourService
         .save(this.tour)
         .then(tour => {
@@ -129,53 +142,53 @@ export class TourAddComponent implements OnInit {
     this.tourService
         .delete(this.tour)
         .then(tour => {
-          this.goBack();
+            this.goBack();
         })
         .catch(error => {
-          this.error = error
+            this.error = error
         }); // TODO: Display error message
   }
 
   goBack(savedTour: Tour = null) {
-    this.close.emit(savedTour);
-    if (this.navigated) { window.history.back(); }
+      this.close.emit(savedTour);
+      if (this.navigated) { window.history.back(); }
   }
 
   updateActiveMedia(tour: Tour) {
-    if (tour.video && tour.video.length) {
-        this.activeMedia = tour.video[0];
-    } else if (tour.photo && tour.photo.length) {
-        this.activeMedia = tour.photo[0];
-        this.activeMediaType = 'photo';
-    }
+      if (tour.video && tour.video.length) {
+          this.activeMedia = tour.video[0];
+      } else if (tour.photo && tour.photo.length) {
+          this.activeMedia = tour.photo[0];
+          this.activeMediaType = 'photo';
+      }
   }
 
   activateMedia(type: string, media: string) {
-    this.activeMediaType = type;
-    this.activeMedia = media;
+      this.activeMediaType = type;
+      this.activeMedia = media;
   }
 
   //TODO: move to service?
   setMovementTypeClass(type) {
-    return {
-      car: type === 'car',
-      walk: type === 'walk',
-      bycicle: type === 'bycicle'
-    }
+      return {
+          car: type === 'car',
+          walk: type === 'walk',
+          bycicle: type === 'bycicle'
+      }
   }
 
   //TODO: change to pipe
   translateType(value) {
-    switch (value) {
-    case "car":
-      return 'На авто';
-    case "walk":
-      return 'Пешком';
-    case "bycicle":
-      return 'Велосипед';
-    default:
-      return '';
-    }
+      switch (value) {
+      case "car":
+          return 'На авто';
+      case "walk":
+          return 'Пешком';
+      case "bycicle":
+          return 'Велосипед';
+      default:
+          return '';
+      }
   }
 
   uploadPhoto() {
@@ -187,13 +200,13 @@ export class TourAddComponent implements OnInit {
   }
 
   showOptions(type: string) {
-    this.optionsShown[type] = true;
+      this.optionsShown[type] = true;
   }
 
   selectOption(type: string, option: string, event) {
-    this.optionsShown[type] = false;
-    this.tour[type] = option;
-    event.stopPropagation();
+      this.optionsShown[type] = false;
+      this.tour[type] = option;
+      event.stopPropagation();
   }
 
   // updateEditLabels(tour) {
@@ -203,7 +216,8 @@ export class TourAddComponent implements OnInit {
   // }
 
   addLabel(type) {
-    this.tour[type].push('');
+      // this.tour[type].push('');
+      this[type].push({value: ''});
   }
 
 }

@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
         .save(this.user)
         .then(user => {
             this.user = user;
-            this.router.navigate(['/me', user._id]);
+            this.router.navigate(['/me']);
         })
         .catch(error => {
             this.error = error

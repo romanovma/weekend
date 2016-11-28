@@ -53,8 +53,8 @@
         <div class="tour-add__important">
           <h5 class="labels__title">Важные моменты</h5>
           <input class="tour-add__labels__value tour-add__labels__value--important"
-          *ngFor="let important of tour.important; let i = index; trackBy:important"
-          [(ngModel)]="tour.important[i]"/>
+          *ngFor="let label of important; let i = index"
+          [(ngModel)]="label.value"/>
           <span class="labels__plus" (click)="addLabel('important')"></span>
         </div>
         <div class="tour-add__included">
