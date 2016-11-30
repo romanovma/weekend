@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import * as moment from 'moment';
 
@@ -16,6 +16,8 @@ import { TourService } from '../tour.service';
 export class TourAddComponent implements OnInit {
   @Output() tour: Tour;
   @Output() close = new EventEmitter();
+
+  @ViewChild("fileInput") fileInput;
 
   months: Date[] = [];
   error: any;
@@ -192,7 +194,15 @@ export class TourAddComponent implements OnInit {
   }
 
   uploadPhoto() {
-
+      let fi = this.fileInput.nativeElement;
+      if (fi.files && fi.files[0]) {
+          let fileToUpload = fi.files[0];
+          this.tourService
+              .uploadPhoto(fileToUpload)
+              .subscribe(res => {
+                  console.log(res);
+              });
+      }
   }
 
   uploadVideo() {

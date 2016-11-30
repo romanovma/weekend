@@ -21,6 +21,7 @@ export class TourService {
 
     private toursUrl = 'http://localhost:4300/tour';
     private eventsUrl = 'http://localhost:4300/event';
+    private uploadUrl = 'http://localhost:4300/upload';
 
     // Tours
     getTourById(id: number): Observable<Tour[]> {
@@ -160,6 +161,14 @@ export class TourService {
         }
 
         return this.post(tour);
+    }
+
+    uploadPhoto(fileToUpload: any) {
+        let input = new FormData();
+        input.append("file", fileToUpload);
+
+        return this.http
+            .post(this.uploadUrl, input);
     }
 
     // Events

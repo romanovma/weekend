@@ -30,6 +30,7 @@
         (touchend)="activateMedia('photo', photo)">
           <img src="assets/img/tours/{{photo}}" />
         </div>
+        <input #fileInput type="file"/>
         <div class="tour-add__media__list__icon tour-add__media__list__icon--add-photo"
         (click)="uploadPhoto()"
         (touchend)="uploadPhoto()">
